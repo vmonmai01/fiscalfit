@@ -22,10 +22,11 @@ class ExpenseChart extends Component
 
     private function fetchChartData()
     {
-        return Expense::select('category_id', DB::raw('SUM(amount) as total_amount'))
-            ->whereYear('date', '=', now()->year)
-            ->whereMonth('date', '=', now()->month)
-            ->groupBy('category_id')
-            ->get();
+        return Expense::select('expense_categories.type as category', DB::raw('SUM(expenses.amount) as total_amount'))
+        ->join('expense_categories', 'expenses.expense_category_id', '=', 'expense_categories.id')
+        ->whereYear('expenses.date', '=', now()->year)
+        ->whereMonth('expenses.date', '=', now()->month)
+        ->groupBy('expenses.expense_category_id')
+        ->get();
     }
 }

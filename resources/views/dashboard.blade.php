@@ -14,7 +14,13 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    
+                    <hr>
 
+                    <h1> Grafico de ingresos</h1>
+                    @livewire('income-chart')
+
+                    <hr>
                     @livewire('monthly-income-total')
                     @livewire('monthly-expense-total')
                     @livewire('monthly-balance-total')
