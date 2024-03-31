@@ -1,6 +1,6 @@
 <div>
 
-    <h2> Gráfico </h2>
+    
     <!-- Canvas donde se dibujará el gráfico -->
     <div class="w-64">
         <canvas id="myPieChart" width="400" height="400"></canvas>

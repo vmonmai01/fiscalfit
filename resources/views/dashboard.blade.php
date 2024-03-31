@@ -19,7 +19,11 @@
 
                     <h1> Grafico de ingresos</h1>
                     @livewire('income-chart')
+                    <hr>
 
+                    <h1> Grafico de gastos</h1>
+                    @livewire('expense-chart')
+                    
                     <hr>
                     @livewire('monthly-income-total')
                     @livewire('monthly-expense-total')

@@ -16,10 +16,7 @@ class IncomeChart extends Component
         //dd ($this->chartData);
         
     }
-    public function emit()
-    {
-        $this->chartData;
-    }
+    
     public function render()
     {
         return view('livewire.income-chart');
@@ -34,6 +31,8 @@ class IncomeChart extends Component
         $data = Income::select('income_categories.type as category', DB::raw('SUM(incomes.amount) as total_amount'))
             ->join('income_categories', 'incomes.income_category_id', '=', 'income_categories.id')
             ->where('incomes.user_id', $userId)
+            ->whereYear('incomes.date', '=', now()->year)
+            ->whereMonth('incomes.date', '=', now()->month)
             ->groupBy('income_categories.type')
             ->get();
 
