@@ -3,11 +3,16 @@
         <!-- Formulario para seleccionar fechas -->
         <form>
             <label for="start_date">Fecha de inicio:</label>
-            <input type="date" id="start_date" wire:model wire:change="startDate">
+            <input type="date" id="start_date" wire:model.blur="startDate"wire:change="updateChartData" >
 
             <label for="end_date">Fecha de fin:</label>
-            <input type="date" id="end_date" wire:model="endDate">
+            <input type="date" id="end_date" wire:model.blur="endDate"wire:change="updateChartData" >
         </form>
+        <!-- Mostrar los valores de startDate y endDate -->
+        <div>
+            <p>Fecha de inicio seleccionada: {{ $startDate }}</p>
+            <p>Fecha de fin seleccionada: {{ $endDate }}</p>
+        </div>
     </div>
     <!-- Gráfico -->
     <div id="chart_div">
@@ -50,15 +55,7 @@
                 maintainAspectRatio: false,
             }
         });
-        // Función para generar colores aleatorios
-        function getRandomColor() {
-            var letters = '0123456789ABCDEF';
-            var color = '#';
-            for (var i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
-        }
+        
         // Función para generar colores aleatorios con opacidad
         function getRandomColorWithOpacity() {
             var opacity = 0.6; // Puedes ajustar este valor según lo desees (0 = transparente, 1 = opaco)
@@ -70,4 +67,6 @@
             return color;
         }
     </script>
+    
+    
 </div>

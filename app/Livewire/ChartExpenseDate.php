@@ -16,41 +16,48 @@ class ChartExpenseDate extends Component
 
     public function mount()
     {
-        // Inicializa las fechas con los valores del mes actual
+        // Predefinir startDate como el primer día del mes actual
         $this->startDate = now()->startOfMonth()->toDateString();
+        // Predefinir endDate como el último día del mes actual
         $this->endDate = now()->endOfMonth()->toDateString();
 
         // Llama al método fetchChartData() usando las propiedades de la clase
-        $this->chartData = $this->fetchChartData($this->startDate, $this->endDate);
+        $this->chartData = $this->fetchChartData();
     }
-
     public function render()
     {
+        
         return view('livewire.chart-expense-date');
     }
 
-    private function fetchChartData($startDate, $endDate)
-{
-    // Obtener el ID del usuario autenticado
-    $userId = auth()->id();
+    public function updateChartData()
+    {
 
-    $data = Expense::select('expense_categories.type as category', DB::raw('SUM(expenses.amount) as total_amount'))
-        ->join('expense_categories', 'expenses.expense_category_id', '=', 'expense_categories.id')
-        ->where('expenses.user_id', $userId)
-        ->whereBetween('expenses.date', [$startDate, $endDate]) // Filtrar por rango de fechas
-        ->groupBy('expense_categories.type')
-        ->get();
-
-    $chartData = [];
-
-    foreach ($data as $item) {
-        $chartData[] = [
-            'category' => $item->category,
-            'total_amount' => $item->total_amount,
-        ];
+        $this->chartData = $this->fetchChartData();
+        //$this->emit('updateChartData');
     }
 
-    return $chartData;
-}
+    private function fetchChartData()
+    {
+        $userId = auth()->id();
+
+        $data = Expense::select('expense_categories.type as category', DB::raw('SUM(expenses.amount) as total_amount'))
+            ->join('expense_categories', 'expenses.expense_category_id', '=', 'expense_categories.id')
+            ->where('expenses.user_id', $userId)
+            ->whereBetween('expenses.date', [$this->startDate, $this->endDate])
+            ->groupBy('expense_categories.type')
+            ->get();
+
+        $chartData = [];
+
+        foreach ($data as $item) {
+            $chartData[] = [
+                'category' => $item->category,
+                'total_amount' => $item->total_amount,
+            ];
+        }
+
+        return $chartData;
+    }
 
 }
