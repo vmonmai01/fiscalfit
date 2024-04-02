@@ -6,10 +6,8 @@ use Livewire\Component;
 use App\Models\Expense;
 use Illuminate\Support\Facades\DB;
 
-
 class ChartExpenseDate extends Component
 {
-
     public $chartData;
     public $startDate;
     public $endDate;
@@ -21,20 +19,19 @@ class ChartExpenseDate extends Component
         // Predefinir endDate como el último día del mes actual
         $this->endDate = now()->endOfMonth()->toDateString();
 
-        // Llama al método fetchChartData() usando las propiedades de la clase
+        // Cargar los datos del gráfico inicial
         $this->chartData = $this->fetchChartData();
     }
+
     public function render()
     {
-        
         return view('livewire.chart-expense-date');
     }
 
     public function updateChartData()
     {
-
+        // Cargar los datos del gráfico con las nuevas fechas
         $this->chartData = $this->fetchChartData();
-        //$this->emit('updateChartData');
     }
 
     private function fetchChartData()
@@ -59,5 +56,4 @@ class ChartExpenseDate extends Component
 
         return $chartData;
     }
-
 }
