@@ -67,7 +67,7 @@ class AddExpense extends Component
             'description' => $this->description,
             'date' => $this->date,
             'recurring_period' => $this->recurringPeriod,
-            'photo_path' => $photoName,
+            'photo' => $photoName,
             'expense_category_id' => $this->expense_category_id
         ]);
 
@@ -85,7 +85,7 @@ class AddExpense extends Component
                     'description' => $this->description,
                     'date' => $futureDate,
                     'recurring_period' => 'none', // No queremos que estas copias sean recurrentes
-                    'photo_path' => 'null', // Utilizar la misma foto para todas las copias
+                    'photo' => null, // Utilizar la misma foto para todas las copias
                     'expense_category_id' => $this->expense_category_id
                 ]);
             }
