@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class MonthlyBalanceTotal extends Component
 {
+    
     public $user; 
     
     public $totalIncome;
@@ -31,6 +32,9 @@ class MonthlyBalanceTotal extends Component
 
         $this->user = Auth::user();
         $this->currency = $this->user->currency_preference;
+
+        
+
     }
 
     public function render()
