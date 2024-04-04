@@ -4,7 +4,15 @@
             Balance del Mes
         </div>
         <div class="card-body">
-            <h5 class="card-title">{{ $balance }} €</h5>
+            <h5 class="card-title"> 
+            @if ($currency = "euro")
+            {{ $balance  }} €
+            @else
+            {{ $balance * 1.1 }}  $
+            @endif
+            </h5>
+
+            {{$currency}}
         </div>
     </div>
 </div>
