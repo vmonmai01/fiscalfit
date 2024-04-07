@@ -1,6 +1,4 @@
-<div>
-
-
+<div wire:poll>
     <!-- Canvas donde se dibujará el gráfico -->
     <div class="w-64">
         <canvas id="myPieChartExpenses" width="400" height="400"></canvas>

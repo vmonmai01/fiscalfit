@@ -14,7 +14,12 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    
+                        
+                    <hr>
+
+                    @livewire('pruebachart2')
+
+
                     <hr>
 
                     <h1> Grafico de ingresos</h1>
