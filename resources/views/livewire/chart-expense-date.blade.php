@@ -10,8 +10,8 @@
         </form>
         <!-- Mostrar los valores de startDate y endDate -->
         <div>
-            <p>Fecha de inicio seleccionada: </p>
-            <p>Fecha de fin seleccionada: </p>
+            <p id="start_date_display">Fecha de inicio seleccionada: </p>
+            <p id="end_date_display">Fecha de fin seleccionada: </p>
         </div>
     </div>
 
@@ -79,6 +79,7 @@
     </div>
     
     {{-- Gráfico de flowbite --}}
+    {{-- 
     <div class="div">
         <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
 
@@ -139,6 +140,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> 
+    --}}
     
 </div>
