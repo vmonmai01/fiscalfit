@@ -75,4 +75,22 @@ class ExpenseController extends Controller
 
         return response()->json($data);
     }
+
+    public function getPercentageByCategory($userId, $startDate, $endDate)
+    {
+        $data = Expense::select('expense_categories.type as category', DB::raw('SUM(expenses.amount) as total_amount'))
+            ->join('expense_categories', 'expenses.expense_category_id', '=', 'expense_categories.id')
+            ->where('expenses.user_id', $userId)
+            ->whereBetween('expenses.date', [$startDate, $endDate])
+            ->groupBy('expense_categories.type')
+            ->get();
+
+        // Calcular el porcentaje para cada categoría
+        $totalExpenses = $data->sum('total_amount');
+        foreach ($data as $expense) {
+            $expense->percentage = ($expense->total_amount / $totalExpenses) * 100;
+        }
+
+        return response()->json($data);
+    }
 }
