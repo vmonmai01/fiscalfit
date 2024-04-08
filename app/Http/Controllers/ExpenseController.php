@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Expense;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ExpenseController extends Controller
 {
@@ -61,5 +62,17 @@ class ExpenseController extends Controller
     public function destroy(Expense $expense)
     {
         //
+    }
+    // Funcion para obtener los gastos de un usuario por fechas, agrupados por tipo de gasto
+    public function getExpensesByDateRange($userId, $startDate, $endDate)
+    {
+        $data = Expense::select('expense_categories.type as category', DB::raw('SUM(expenses.amount) as total_amount'))
+            ->join('expense_categories', 'expenses.expense_category_id', '=', 'expense_categories.id')
+            ->where('expenses.user_id', $userId)
+            ->whereBetween('expenses.date', [$startDate, $endDate])
+            ->groupBy('expense_categories.type')
+            ->get();
+
+        return response()->json($data);
     }
 }

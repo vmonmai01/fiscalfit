@@ -23,6 +23,8 @@
 
                     <hr>
 
+                    {{-- 
+                        
                     <h1> Grafico de ingresos</h1>
                     @livewire('income-chart')
                     <hr>
@@ -41,7 +43,9 @@
                     
                     <hr>
 
-                    @livewire('add-expense')
+                    @livewire('add-expense') 
+                    
+                    --}}
                 </div>
             </div>
         </div>
