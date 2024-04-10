@@ -14,7 +14,10 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    
+                    <hr>
+
+                    @livewire('bar-charts.profit-diference')
+
                     <hr>
 
                     @livewire('chart-expense-date')
