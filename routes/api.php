@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExpenseController;
-
+use App\Http\Controllers\FinanceController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -25,3 +25,4 @@ Route::get('/expenses/{userId}/{startDate}/{endDate}', [ExpenseController::class
 
 Route::get('expenses/percentage-by-category/{userId}/{startDate}/{endDate}', [ExpenseController::class, 'getPercentageByCategory']);
 
+Route::get('finance/{userId}/{numMonths}/expenses-incomes', [FinanceController::class, 'getExpensesAndIncomesByMonth']);

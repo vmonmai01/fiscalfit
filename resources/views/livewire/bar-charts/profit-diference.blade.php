@@ -30,7 +30,7 @@
             </dl>
         </div>
 
-        <div id="bar-chart"></div>
+        <div id="bar-chart1"></div>
         <div class="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between">
             <div class="flex justify-between items-center pt-5">
                 <!-- Button -->
@@ -51,29 +51,29 @@
                     class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
                         <li>
-                            <a href="#"
+                            <a onclick="renderChart(1)"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                Last 7 days</a>
+                                Mes actual</a>
                         </li>
                         <li>
-                            <a href="#"
+                            <a onclick="renderChart(3)"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                Last 30 days</a>
+                                Últimos 3 meses</a>
                         </li>
                         <li>
-                            <a href="#"
+                            <a onclick="renderChart(6)"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                Last 90 days</a>
+                                Últimos 6 meses</a>
                         </li>
                         <li>
-                            <a href="#"
+                            <a onclick="renderChart(9)"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                Last 6 months</a>
+                                Últimos 9 meses</a>
                         </li>
                         <li>
-                            <a href="#"
+                            <a onclick="renderChart(12)"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                Last year</a>
+                                Último año</a>
                         </li>
                     </ul>
                 </div>
