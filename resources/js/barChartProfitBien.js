@@ -97,6 +97,7 @@ function renderChart(numMonths) {
     fetch(`/api/finance/1/${numMonths}/expenses-incomes`)
         .then(response => response.json())
         .then(data => {
+            console.log(data);
             // Actualizar los datos del gráfico con los datos recibidos de la API
             options.series[0].data = data.map(item => item.income);
             options.series[1].data = data.map(item => item.expenses);
