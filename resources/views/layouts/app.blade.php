@@ -13,7 +13,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
         <!-- Scripts -->
-        <script src="https://cdn.jsdelivr.net/npm/apexcharts" async></script>
+        {{-- <script src="https://cdn.jsdelivr.net/npm/apexcharts" async></script> --}}
         @vite(['resources/css/app.css', 'resources/js/app.js','resources/js/chartExpesesDates.js','resources/js/barChartProfitBien.js'])
         
     </head>

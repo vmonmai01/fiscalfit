@@ -94,7 +94,7 @@ const options = {
 
 // Función para hacer la llamada a la API y renderizar el gráfico Ingresos/Gastos por mes segun el numero de meses y usuario
 function renderChart(numMonths) {
-    fetch(`/api/finance/1/${numMonths}/expenses-incomes`)
+    fetch(`http://127.0.0.1:8000/api/finance/1/${numMonths}/expenses-incomes`)
         .then(response => response.json())
         .then(data => {
             console.log(data);
