@@ -1,0 +1,71 @@
+/* Estilos para los elementos específicos */
+.news-item {
+    margin: 30px;
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(212, 153, 153, 0.1);
+}
+
+.news-title {
+    font-size: 24px;
+    color: #0a0b0c; /* Azul */
+    margin-bottom: 10px;
+    text-decoration: bold;
+}
+
+.news-author {
+    color: #666; /* Gris */
+    font-style: italic;
+    margin-bottom: 5px;
+}
+
+.news-description {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.news-content {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #000; /* Negro */
+    margin-bottom: 20px;
+}
+
+.news-image {
+    max-width: 400px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.news-link {
+    color: #007bff; /* Azul */
+    text-decoration: none;
+}
+
+.news-link:hover {
+    text-decoration: underline;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .news-item {
+        padding: 15px;
+    }
+
+    .news-title {
+        font-size: 20px;
+    }
+
+    .news-description {
+        font-size: 16px;
+    }
+
+    .news-content {
+        font-size: 14px;
+    }
+}
