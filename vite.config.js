@@ -9,6 +9,7 @@ export default defineConfig({
                 'resources/js/app.js',
                 'resources/js/chartExpesesDates.js',
                 'resources/js/barChartProfitBien.js',
+                'resources/js/chartBtwIncExp.js',
             ],
             refresh: true,
         }),

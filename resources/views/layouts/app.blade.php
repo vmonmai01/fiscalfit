@@ -13,8 +13,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
         <!-- Scripts -->
-        {{-- <script src="https://cdn.jsdelivr.net/npm/apexcharts" async></script> --}}
-        @vite(['resources/css/app.css', 'resources/js/app.js','resources/js/chartExpesesDates.js','resources/js/barChartProfitBien.js'])
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts" async></script>
+        @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/chartExpesesDates.js', 'resources/js/barChartProfitBien.js', 'resources/js/chartBtwIncExp.js'])
         
     </head>
     <body class="font-sans antialiased">
@@ -38,7 +38,7 @@
         <!-- Aquí se incluirán los scripts específicos de la página -->
         @yield('scripts')
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-        
-        
+
+
     </body>
 </html>

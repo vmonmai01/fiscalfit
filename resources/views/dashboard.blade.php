@@ -16,7 +16,13 @@
                     @endif
                     <hr>
 
-                    @livewire('bar-charts.profit-diference')
+                    <div>
+                        <!-- Aquí renderizamos el componente ChartBarDiferenceBtwIncExp -->
+                        <x-chart-bar-diference-btw-inc-exp />
+                    </div>
+
+                    
+                    {{-- @livewire('bar-charts.profit-diference') --}}
 
                     <hr>
 
