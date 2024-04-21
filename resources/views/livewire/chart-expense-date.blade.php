@@ -1,4 +1,8 @@
 <div>
+    <script>
+        const userId = {{ $userId ?? 'null' }};
+        console.log('ID del usuario:', userId);
+    </script>
     <div>
         <!-- Formulario para seleccionar fechas -->
         <form>

@@ -5,7 +5,24 @@ var total_amount;
 let startDate;
 let endDate;
 
-const userId = 1; // Id del usuario
+
+console.log('Id del usuario: ', userId);
+// function selectMonthRange(months) {
+//     const today = new Date();
+//     const startDate = new Date(today.getFullYear(), today.getMonth() - months + 1, 1); // Primer día del mes
+//     const endDate = new Date(today.getFullYear(), today.getMonth() + 1, 0); // Último día del mes
+
+//     const formattedStartDate = formatDate(startDate);
+//     const formattedEndDate = formatDate(endDate);
+
+//     document.getElementById("start_date").value = formattedStartDate;
+//     document.getElementById("end_date").value = formattedEndDate;
+
+//     // document.getElementById("start_date_display").textContent = formattedStartDate;
+//     // document.getElementById("end_date_display").textContent = formattedEndDate;
+
+//     generateExpenseChart(formattedStartDate, formattedEndDate);
+// }
 
 document.addEventListener("DOMContentLoaded", function() {
     const today = new Date(); // Obtener la fecha actual
@@ -41,37 +58,6 @@ function formatDate(date) {
 }
 
 
-// // Solicitud AJAX para obtener los gastos por categoría y su porcentaje por fechas.
-// $.ajax({
-
-//     // Código para generar el gráfico utilizando los datos
-//     url: `http://127.0.0.1:8000/api/expenses/percentage-by-category/${userId}/${startDate}/${endDate}`,
-//     method: 'GET',
-//     success: function (response) {
-//         // Datos recibidos correctamente
-//         // Aquí puedes utilizar los datos para generar tu gráfico
-//         // Por ejemplo, puedes recorrer los datos y asignarlos a las series del gráfico
-//         const seriesData = response.map(item => item.percentage);
-//         const labels = response.map(item => item.category);
-//         const total_amount = response.map(item => item.total_amount);
-
-//         const options = getChartOptionsExpeseDates(seriesData, labels, total_amount);
-//         const chartExpesesDates2 = new ApexCharts(document.getElementById("expenseDate-chart2"), options);
-//         chartExpesesDates2.render();
-
-//         console.log('Consulta 1: montante = ' , total_amount);
-//         console.log('Consulta 1: porcentajes = ' ,seriesData);
-//         console.log('Consulta 1: categorias = ' ,labels);
-
-//     },
-//     error: function (xhr, status, error) {
-//         // Manejar errores si la solicitud falla
-//         console.error(xhr);
-//         console.error(status);
-//         console.error(error);
-//     }
-// });
-
 // Función para generar el gráfico con las fechas seleccionadas
 function generateExpenseChart(startDate, endDate) {
     $.ajax({
@@ -98,8 +84,6 @@ function generateExpenseChart(startDate, endDate) {
     });
 }
 
-
-
 // Evento para detectar cambios en las fechas seleccionadas
 document.getElementById('start_date').addEventListener('change', function () {
     startDate = this.value;
@@ -120,8 +104,6 @@ document.getElementById('end_date').addEventListener('change', function () {
 
     generateExpenseChart(startDate, endDate);
 });
-
-
 
 
 const getChartOptionsExpeseDates = (seriesData,labels, total_amount) => {
@@ -185,80 +167,12 @@ const getChartOptionsExpeseDates = (seriesData,labels, total_amount) => {
     }
 }
 
-
-const getChartOptions = () => {
-    return {
-        series: [52.8, 26.8, 20.4],
-        colors: ["#1C64F2", "#16BDCA", "#9061F9"],
-        chart: {
-            height: 420,
-            width: "100%",
-            type: "pie",
-        },
-        stroke: {
-            colors: ["white"],
-            lineCap: "",
-        },
-        plotOptions: {
-            pie: {
-                labels: {
-                    show: true,
-                },
-                size: "100%",
-                dataLabels: {
-                    offset: -25
-                }
-            },
-        },
-        labels: ["Direct", "Organic search", "Referrals"],
-        dataLabels: {
-            enabled: true,
-            style: {
-                fontFamily: "Inter, sans-serif",
-            },
-        },
-        legend: {
-            position: "bottom",
-            fontFamily: "Inter, sans-serif",
-        },
-        yaxis: {
-            labels: {
-                formatter: function (value) {
-                    return value + "%"
-                },
-            },
-        },
-        xaxis: {
-            labels: {
-                formatter: function (value) {
-                    return value + "%"
-                },
-            },
-            axisTicks: {
-                show: false,
-            },
-            axisBorder: {
-                show: false,
-            },
-        },
-    }
-}
 document.addEventListener("DOMContentLoaded", function() {
     // Tu código JavaScript aquí
     
     // Por ejemplo, inicializar el gráfico con ApexCharts
-    if (document.getElementById("pie-chart") && typeof ApexCharts !== 'undefined') {
-        const chart = new ApexCharts(document.getElementById("pie-chart"), getChartOptions());
+    if (document.getElementById("expenseDate-chart") && typeof ApexCharts !== 'undefined') {
+        const chart = new ApexCharts(document.getElementById("expenseDate-chart"), getChartOptionsExpeseDates());
         chart.render();
     }
 });
-
-// document.addEventListener("DOMContentLoaded", function() {
-//     // Tu código JavaScript aquí
-    
-//     // Por ejemplo, inicializar el gráfico con ApexCharts
-//     if (document.getElementById("expenseDate-chart") && typeof ApexCharts !== 'undefined') {
-//         const chart = new ApexCharts(document.getElementById("expenseDate-chart"), getChartOptionsExpeseDates());
-//         chart.render();
-//     }
-// });

@@ -23,6 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/expenses/{userId}/{startDate}/{endDate}', [ExpenseController::class, 'getExpensesByDateRange'])->name('getExpensesByDateRange');
 
+
 Route::get('expenses/percentage-by-category/{userId}/{startDate}/{endDate}', [ExpenseController::class, 'getPercentageByCategory']);
 
 Route::get('finance/{userId}/{numMonths}/expenses-incomes', [FinanceController::class, 'getExpensesAndIncomesByMonth']);
