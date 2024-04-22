@@ -22,6 +22,6 @@ class Income extends Model
     protected $dates = ['deleted_at'];
     public function category()
     {
-        return $this->belongsTo(IncomeCategory::class);
+        return $this->belongsTo(IncomeCategory::class, 'income_category_id');
     }
 }

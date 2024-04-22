@@ -94,4 +94,23 @@ class ExpenseController extends Controller
         return response()->json($data);
     }
 
+
+    // La buena, hay que implementarla en el js ! 
+    public function getExpensesByMonthRange($userId, $numberOfMonths)
+    {
+        // Calcular las fechas de inicio y fin basadas en el número de meses atrás
+        $endDate = Carbon::now()->endOfMonth(); // Fin del mes actual
+        $startDate = Carbon::now()->subMonths($numberOfMonths - 1)->startOfMonth(); // Inicio del mes más antiguo incluido
+
+        $data = Expense::select('expense_categories.type as category', DB::raw('SUM(expenses.amount) as total_amount'))
+            ->join('expense_categories', 'expenses.expense_category_id', '=', 'expense_categories.id')
+            ->where('expenses.user_id', $userId)
+            ->whereBetween('expenses.date', [$startDate, $endDate])
+            ->groupBy('expense_categories.type')
+            ->get();
+
+        return response()->json($data);
+    }
+
+
 }

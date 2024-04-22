@@ -15,8 +15,13 @@
                         </div>
                     @endif
                     <hr>
-
-
+                    <div>
+                        @livewire('expenses-table')
+                    </div>
+                    <hr>
+                    <div>
+                        @livewire('incomes-table')
+                    </div>
                     <div>
                         <!-- Aquí renderizamos el componente ChartBarDiferenceBtwIncExp -->
                         <x-chart-bar-diference-btw-inc-exp />
