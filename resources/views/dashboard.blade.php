@@ -22,7 +22,9 @@
                         <x-chart-bar-diference-btw-inc-exp />
                     </div>
 
-                    
+                    <div>
+                        @livewire('chart-incomes-date')
+                    </div>
                     {{-- @livewire('bar-charts.profit-diference') --}}
 
                     <hr>

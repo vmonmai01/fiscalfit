@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Income;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 
 class IncomeController extends Controller
@@ -84,5 +85,21 @@ class IncomeController extends Controller
 
         // Devolver los datos de ingresos por categoría en formato JSON
         return response()->json($ingresosPorCategoria);
+    }
+
+    public function getIncomesByMonthRange($userId, $numberOfMonths)
+    {
+        // Calcular las fechas de inicio y fin basadas en el número de meses atrás
+        $endDate = Carbon::now()->endOfMonth(); // Fin del mes actual
+        $startDate = Carbon::now()->subMonths($numberOfMonths - 1)->startOfMonth(); // Inicio del mes más antiguo incluido
+
+        $data = Income::select('income_categories.type as category', DB::raw('SUM(incomes.amount) as total_amount'))
+            ->join('income_categories', 'incomes.income_category_id', '=', 'income_categories.id')
+            ->where('incomes.user_id', $userId)
+            ->whereBetween('incomes.date', [$startDate, $endDate])
+            ->groupBy('income_categories.type')
+            ->get();
+
+        return response()->json($data);
     }
 }

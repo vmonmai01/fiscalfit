@@ -12,6 +12,7 @@ export default defineConfig({
                 'resources/js/barChartProfitBien.js',
                 'resources/js/chartBtwIncExp.js',
                 'resources/js/noticias.js',
+                'resources/js/chartIncomesDates.js',
             ],
             refresh: true,
         }),

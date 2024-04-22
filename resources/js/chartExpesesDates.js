@@ -72,9 +72,9 @@ function generateExpenseChart(startDate, endDate) {
             const chartExpesesDates2 = new ApexCharts(document.getElementById("expenseDate-chart2"), options);
             chartExpesesDates2.render();
 
-            console.log('Consulta 1: montante = ', total_amount);
-            console.log('Consulta 1: porcentajes = ', seriesData);
-            console.log('Consulta 1: categorias = ', labels);
+            // console.log('Consulta 1: montante = ', total_amount);
+            // console.log('Consulta 1: porcentajes = ', seriesData);
+            // console.log('Consulta 1: categorias = ', labels);
         },
         error: function (xhr, status, error) {
             console.error(xhr);
