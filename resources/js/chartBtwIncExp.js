@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
                  // Llamar a la función para actualizar los elementos HTML con los resultados calculados
-                 updateHTML(data);
+                updateHTML(data);
 
                 
             },
