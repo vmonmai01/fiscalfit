@@ -3,21 +3,6 @@
         const userId = {{ $userId ?? 'null' }};
         console.log('ID del usuario:', userId);
     </script> --}}
-    <div>
-        <!-- Formulario para seleccionar fechas -->
-        <form>
-            <label for="start_date">Fecha de inicio:</label>
-            <input type="date" id="start_date">
-
-            <label for="end_date">Fecha de fin:</label>
-            <input type="date" id="end_date">
-        </form>
-        <!-- Mostrar los valores de startDate y endDate -->
-        <div>
-            <p id="start_date_display">Fecha de inicio seleccionada: </p>
-            <p id="end_date_display">Fecha de fin seleccionada: </p>
-        </div>
-    </div>
 
     <!-- Gráfico de porcentage de gastos por fecha -->
     <div class="div">
@@ -38,7 +23,7 @@
             <div class="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between">
                 <div class="flex justify-between items-center pt-5">
                     <!-- Button -->
-                    <button id="dropdownDefaultButton" data-dropdown-toggle="lastDaysdropdown"
+                    <button id="dropdownExpenses" data-dropdown-toggle="lastDaysExpenses"
                         data-dropdown-placement="bottom"
                         class="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 text-center inline-flex items-center dark:hover:text-white"
                         type="button">
@@ -49,24 +34,21 @@
                                 d="m1 1 4 4 4-4" />
                         </svg>
                     </button>
-                    <div id="lastDaysdropdown"
+                    <div id="lastDaysExpenses"
                         class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-                            <li>
-                                <a href="#"
-                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last
-                                    7 days</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last
-                                    30 days</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last
-                                    90 days</a>
-                            </li>
+                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownExpenses">
+                            <button
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                type="button" value="1"> 1 Mes</button>
+                            <button
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                type="button" value="3"> 3 Meses</button>
+                            <button
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                type="button" value="6"> 6 Meses</button>
+                            <button
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                type="button" value="12"> 1 Año</button>
                         </ul>
                     </div>
                 </div>

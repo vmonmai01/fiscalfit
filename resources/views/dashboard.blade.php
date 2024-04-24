@@ -16,11 +16,11 @@
                     @endif
                     <hr>
                     <div>
-                        @livewire('expenses-table')
+                        {{-- @livewire('expenses-table') --}}
                     </div>
                     <hr>
                     <div>
-                        @livewire('incomes-table')
+                        {{-- @livewire('incomes-table') --}}
                     </div>
                     <div>
                         <!-- Aquí renderizamos el componente ChartBarDiferenceBtwIncExp -->
@@ -40,8 +40,8 @@
 
                     <hr>
 
-                    
-                        
+
+
                     {{-- <h1> Grafico de ingresos</h1>
                     @livewire('income-chart') --}}
                     <hr>
@@ -63,6 +63,9 @@
 
                     @livewire('add-expense') 
                     --}}
+                    
+
+
                 </div>
             </div>
         </div>

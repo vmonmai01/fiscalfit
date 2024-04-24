@@ -15,14 +15,14 @@ function generateIncomeChart(userId, numOfMonths) {
         success: function (response) {
             const seriesData = response.map(item => parseFloat(item.total_amount));
             const labels = response.map(item => item.category);
-            // const total_amount = response.map(item => item.total_amount);
+           
 
             const options = getChartOptionsIncomeDates(seriesData, labels);
             const chartIncomesDates = new ApexCharts(document.getElementById("incomesDate-chart"), options);
             chartIncomesDates.render();
 
             // console.log('Ingresos: montante = ', total_amount);
-            console.log('Ingresos: porcentajes = ', seriesData);
+            console.log('Ingresos: montantes = ', seriesData);
             console.log('Ingresos: categorias = ', labels);
         },
         error: function (xhr, status, error) {
@@ -72,16 +72,15 @@ const getChartOptionsIncomeDates = (seriesData, labels) => {
             labels: {
                 formatter: function (val, opts) {
                     const index = opts.dataPointIndex;
-                    const label = labels[index];
                     const amount = seriesData[index];
-                    return `${label}: ${amount} €`;
+                    return `${amount} €`;
                 },
             },
         },
         xaxis: {
             labels: {
                 formatter: function (value) {
-                    return value + "% aqwui"
+                    return value + "% aqui"
                 },
             },
             axisTicks: {
@@ -116,9 +115,10 @@ document.addEventListener("DOMContentLoaded", function () {
     dropdownList.querySelectorAll("button").forEach(function (button) {
         button.addEventListener("click", function () {
             const numOfMonths = parseInt(button.value, 10);
-
+            console.log("Meses Ingresos", numOfMonths);
             if (!isNaN(numOfMonths) && numOfMonths > 0) {
                 generateIncomeChart(userId, numOfMonths);
+                console.log('numOfMonths ingreso seleccionado:', numOfMonths);
                 dropdownList.classList.add("hidden"); // Ocultar el dropdown después de seleccionar una opción
             } else {
                 console.error("Número de meses no válido:", numOfMonths);
