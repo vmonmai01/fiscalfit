@@ -2,10 +2,10 @@
     <div>
         <form wire:submit.prevent="submit">
             <div>
-                <label for="amount">Amount:</label>
+                <label for="amount">Amount (€):</label>
                 <input type="text" id="amount" wire:model="amount">
                 @error('amount')
-                    <span>{{ $message }}</span>
+                    <span class="text-red-500">{{ $message }}</span>
                 @enderror
             </div>
 
@@ -13,7 +13,7 @@
                 <label for="description">Description:</label>
                 <input type="text" id="description" wire:model="description">
                 @error('description')
-                    <span>{{ $message }}</span>
+                    <span class="text-red-500">{{ $message }}</span>
                 @enderror
             </div>
 
@@ -21,7 +21,7 @@
                 <label for="date">Date:</label>
                 <input type="date" id="date" wire:model="date">
                 @error('date')
-                    <span>{{ $message }}</span>
+                    <span class="text-red-500">{{ $message }}</span>
                 @enderror
             </div>
 
@@ -39,7 +39,7 @@
                     <option value="annually">Annually</option>
                 </select>
                 @error('recurringPeriod')
-                    <span>{{ $message }}</span>
+                    <span class="text-red-500">{{ $message }}</span>
                 @enderror
             </div>
 
@@ -53,7 +53,7 @@
                     </div>
                 @endforeach
                 @error('expense_category_id')
-                    <span>{{ $message }}</span>
+                    <span class="text-red-500">{{ $message }}</span>
                 @enderror
             </div>
 
@@ -61,7 +61,7 @@
                 <label for="photo">Photo:</label>
                 <input type="file" id="photo" wire:model="photo">
                 @error('photo')
-                    <span>{{ $message }}</span>
+                    <span class="text-red-500">{{ $message }}</span>
                 @enderror
             </div>
 

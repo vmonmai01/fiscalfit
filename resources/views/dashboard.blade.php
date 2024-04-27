@@ -60,9 +60,9 @@
                     @livewire('add-income')    
                     
                     <hr>
-
+    --}}                   
                     @livewire('add-expense') 
-                    --}}
+                    
                     
 
 

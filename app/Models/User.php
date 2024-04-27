@@ -8,6 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Notification;
+use App\Models\Expense;
+use App\Models\Income;
 
 class User extends Authenticatable
 {
@@ -48,4 +51,22 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    /**
+     * Retrieves the notifications associated with this object.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
+    }
+    public function expenses()
+    {
+        return $this->hasMany(Expense::class);
+    }
+    public function incomes()
+    {
+        return $this->hasMany(Income::class);
+    }
 }

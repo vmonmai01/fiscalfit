@@ -13,14 +13,11 @@ class Notification extends Model
     protected $fillable = [
         'user_id',
         'message',
+        'expense_id',
         'send_at',
         'read',
     ];
 
     protected $dates = ['deleted_at'];
     
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 }

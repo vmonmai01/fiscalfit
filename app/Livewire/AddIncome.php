@@ -95,87 +95,86 @@ class AddIncome extends Component
     }
 
     // Método para calcular las fechas futuras basadas en la periodicidad
-private function calculateFutureDates($startDate, $recurringPeriod)
-{
-    // Lógica para calcular las fechas futuras según la periodicidad
+    private function calculateFutureDates($startDate, $recurringPeriod)
+    {
+        // Lógica para calcular las fechas futuras según la periodicidad
 
-    // Usamos Carbon para calcular las fechas futuras
-    $futureDates = [];
-    $currentDate = \Carbon\Carbon::parse($startDate);
+        // Usamos Carbon para calcular las fechas futuras
+        $futureDates = [];
+        $currentDate = \Carbon\Carbon::parse($startDate);
 
 
-    // Agregar fechas futuras basadas en la periodicidad
-    switch ($recurringPeriod) {
-        //diario
-        case 'daily':
-            // Agregar 30 días para calcular una fecha futura
-            for ($i = 1; $i <= 365; $i++) {
-                $currentDate->addDays(1);
-                $futureDates[] = $currentDate->toDateString();
-            }
-            break;
-        //semanal 
-        case 'weekly':
-            // Agregar 52 semanas para calcular fechas futuras durante un año
-            for ($i = 1; $i <= 52; $i++) {
-                $currentDate->addWeek();
-                $futureDates[] = $currentDate->toDateString();
-            }
-            break;
-        // Bisemanal
-        case 'biweekly':
-            // Agregar 26 períodos de dos semanas para calcular fechas futuras durante un año
-            for ($i = 1; $i <= 26; $i++) {
-                $currentDate->addWeeks(2);
-                $futureDates[] = $currentDate->toDateString();
-            }
-            break;
-        // Mensual
-        case 'monthly':
-            // Agregar 12 meses para calcular fechas futuras durante un año
-            for ($i = 1; $i <= 12; $i++) {
-                $currentDate->addMonths(1);
-                $futureDates[] = $currentDate->toDateString();
-            }
-            break;
-        // Bimensual
-        case 'bimonthly':
-            // Agregar 6 meses para calcular fechas futuras durante un año
-            for ($i = 1; $i <= 6; $i++) {
-                $currentDate->addMonths(2);
-                $futureDates[] = $currentDate->toDateString();
-            }
-            break;
+        // Agregar fechas futuras basadas en la periodicidad
+        switch ($recurringPeriod) {
+                //diario
+            case 'daily':
+                // Agregar 30 días para calcular una fecha futura
+                for ($i = 1; $i <= 365; $i++) {
+                    $currentDate->addDays(1);
+                    $futureDates[] = $currentDate->toDateString();
+                }
+                break;
+                //semanal 
+            case 'weekly':
+                // Agregar 52 semanas para calcular fechas futuras durante un año
+                for ($i = 1; $i <= 52; $i++) {
+                    $currentDate->addWeek();
+                    $futureDates[] = $currentDate->toDateString();
+                }
+                break;
+                // Bisemanal
+            case 'biweekly':
+                // Agregar 26 períodos de dos semanas para calcular fechas futuras durante un año
+                for ($i = 1; $i <= 26; $i++) {
+                    $currentDate->addWeeks(2);
+                    $futureDates[] = $currentDate->toDateString();
+                }
+                break;
+                // Mensual
+            case 'monthly':
+                // Agregar 12 meses para calcular fechas futuras durante un año
+                for ($i = 1; $i <= 12; $i++) {
+                    $currentDate->addMonths(1);
+                    $futureDates[] = $currentDate->toDateString();
+                }
+                break;
+                // Bimensual
+            case 'bimonthly':
+                // Agregar 6 meses para calcular fechas futuras durante un año
+                for ($i = 1; $i <= 6; $i++) {
+                    $currentDate->addMonths(2);
+                    $futureDates[] = $currentDate->toDateString();
+                }
+                break;
 
-        // Trimestral
-        case 'quarterly':
-            // Agregar 3 meses por trimestre, para calcular fechas futuras durante un año
-            for ($i = 1; $i <= 4; $i++) {
-                $currentDate->addMonths(3);
-                $futureDates[] = $currentDate->toDateString();
-            }
-            break;
+                // Trimestral
+            case 'quarterly':
+                // Agregar 3 meses por trimestre, para calcular fechas futuras durante un año
+                for ($i = 1; $i <= 4; $i++) {
+                    $currentDate->addMonths(3);
+                    $futureDates[] = $currentDate->toDateString();
+                }
+                break;
 
-        //Semianual
-        case 'semiannually':
-            // Agregar 6 meses por semestre, para calcular fechas futuras durante un año
-            for ($i = 1; $i <= 2; $i++) {
+                //Semianual
+            case 'semiannually':
+                // Agregar 6 meses por semestre, para calcular fechas futuras durante un año
+
                 $currentDate->addMonths(6);
                 $futureDates[] = $currentDate->toDateString();
-            }
-            break;
 
-        // Anual
-        case 'annually':
-            // Agregar 1 año para calcular fechas futuras
-            $currentDate->addYear();
-            $futureDates[] = $currentDate->toDateString();
-            break;
-        
+                break;
+
+                // Anual
+            case 'annually':
+                // Agregar 1 año para calcular fechas futuras
+                $currentDate->addYear();
+                $futureDates[] = $currentDate->toDateString();
+                break;
+        }
+
+        return $futureDates;
     }
-
-    return $futureDates;
-}
 
 
     public function render()

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\NotificationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,6 +30,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/news', [NewsController::class, 'index'])->name('news.index');
+Route::get('/notifications', [NotificationController::class, 'index']);
 
 
 require __DIR__.'/auth.php';

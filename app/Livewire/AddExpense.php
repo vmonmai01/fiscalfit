@@ -7,6 +7,7 @@ use App\Models\Expense;
 use Illuminate\Support\Facades\Storage;
 use Livewire\WithFileUploads;
 use App\Models\ExpenseCategory;
+use App\Models\Notification;
 
 class AddExpense extends Component
 {
@@ -21,9 +22,11 @@ class AddExpense extends Component
     public $expense_category_id;
     public $photo;
 
+
+
     protected $rules = [
         'amount' => 'required|numeric|min:0',
-        'description' => 'nullable|string|max:255',
+        'description' => 'required|string|max:255',
         'date' => 'required|date',
         'expense_category_id' => 'required|exists:expense_categories,id',
         'recurringPeriod' => 'in:none,daily,weekly,biweekly,monthly,bimonthly,quarterly,semiannually,annually',
@@ -50,6 +53,7 @@ class AddExpense extends Component
         $this->validate();
 
         $photoName = null;
+        $limit = 40; // Cantidad que marca el corte para enviar o no notificaciones, si es > se envía. 
 
         // Verificar si se ha proporcionado una foto
         if ($this->photo) {
@@ -61,7 +65,7 @@ class AddExpense extends Component
         }
 
         // Crear el gasto en la base de datos
-        Expense::create([
+        $expense = Expense::create([
             'user_id' => auth()->user()->id,
             'amount' => $this->amount,
             'description' => $this->description,
@@ -70,8 +74,18 @@ class AddExpense extends Component
             'photo' => $photoName,
             'expense_category_id' => $this->expense_category_id
         ]);
-
-
+        // Calculamos la fecha de envío de la notificación (3 días antes de la fecha efectiva del gasto).
+        $notificationDate = \Carbon\Carbon::parse($this->date)->subDays(3);
+        // Crear notificación si el gasto es mayor que 40.00
+        if ($expense->amount > $limit) {
+            Notification::create([
+                'user_id' => auth()->user()->id,
+                'message' => 'Tienes un gasto pendiente en los proximos días de más de ' . $expense->amount . '€, con fecha: ' . $expense->date . '. Detalles: ' . $expense->description,
+                'expense_id' => $expense->id,
+                'send_at' => $notificationDate, // Enviar notificación 3 días después de la creación del gasto
+                'read' => false,
+            ]);
+        }
         // Si el gasto tiene una periodicidad, crear copias del gasto para las fechas correspondientes
         if ($this->recurringPeriod !== 'none') {
             // Obtener las fechas futuras basadas en la periodicidad
@@ -79,7 +93,9 @@ class AddExpense extends Component
 
             // Crear copias del gasto para las fechas futuras
             foreach ($futureDates as $futureDate) {
-                Expense::create([
+
+                // Crear gasto para cada instancia recurrente
+                $newExpense = Expense::create([
                     'user_id' => auth()->user()->id,
                     'amount' => $this->amount,
                     'description' => $this->description,
@@ -88,6 +104,20 @@ class AddExpense extends Component
                     'photo' => null, // Utilizar la misma foto para todas las copias
                     'expense_category_id' => $this->expense_category_id
                 ]);
+
+                // Crear notificación para cada instancia recurrente
+                if ($newExpense->amount > $limit) {
+                    // Calculamos la fecha de envío de la notificación (3 días antes de la fecha efectiva del gasto recurrente).
+                    $notificationDate = \Carbon\Carbon::parse($futureDate)->subDays(3);
+
+                    Notification::create([
+                        'user_id' => auth()->user()->id,
+                        'message' => 'Tienes un gasto recurrente pendiente en los próximos días de más de ' . $newExpense->amount . '€, con fecha: ' . $futureDate . '. Detalles: ' . $this->description,
+                        'expense_id' => $newExpense->id, // Usar el ID del gasto recién creado
+                        'send_at' => $notificationDate, // Enviar notificación 3 días antes de la fecha del gasto recurrente
+                        'read' => false,
+                    ]);
+                }
             }
         }
 
@@ -156,11 +186,10 @@ class AddExpense extends Component
 
                 //Semianual
             case 'semiannually':
-                // Agregar 6 meses por semestre, para calcular fechas futuras durante un año
-                for ($i = 1; $i <= 2; $i++) {
-                    $currentDate->addMonths(6);
-                    $futureDates[] = $currentDate->toDateString();
-                }
+
+                $currentDate->addMonths(6);
+                $futureDates[] = $currentDate->toDateString();
+
                 break;
 
                 // Anual
