@@ -26,4 +26,8 @@ class Expense extends Model
     {
         return $this->belongsTo(ExpenseCategory::class, 'expense_category_id');
     }
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
+    }
 }
