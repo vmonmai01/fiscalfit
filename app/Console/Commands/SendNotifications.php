@@ -11,12 +11,17 @@ use Illuminate\Support\Facades\Mail;
 
 class SendNotifications extends Command
 {
+    
+    protected $signature = 'notifications:send';
     /**
      * Execute the console command.
      */
     public function handle()
     {
-        //
+        
+        // Mensaje informativo
+        // $this->info('El comando send:notifications está siendo ejecutado...');
+        $this->info('Mensaje informativo aquí');
         // Obtener las notificaciones pendientes para hoy
         $notifications = Notification::whereDate('send_at', today())->get();
 
