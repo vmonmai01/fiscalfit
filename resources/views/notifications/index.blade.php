@@ -9,7 +9,7 @@
     @if ($notifications->isNotEmpty())
     <p>Entra en notificaciones</p>
     @foreach ($notifications as $notification)
-        <h2>Mensaje: {{ $notification->data['message'] }}</h2>
+        <h2>Mensaje: {{ $notification->message }}</h2>
     @endforeach
     @else
         <p>No tienes notificaciones.</p>

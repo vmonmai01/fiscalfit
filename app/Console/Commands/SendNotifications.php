@@ -4,15 +4,13 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Models\Notification;
-use App\Models\Expense;
-use App\Models\User;
 use App\Mail\NotificationMail;
 use Illuminate\Support\Facades\Mail;
 
 class SendNotifications extends Command
 {
     
-    protected $signature = 'notifications:send';
+    protected $signature = 'send:notifications';
     /**
      * Execute the console command.
      */
@@ -21,7 +19,8 @@ class SendNotifications extends Command
         
         // Mensaje informativo
         // $this->info('El comando send:notifications está siendo ejecutado...');
-        $this->info('Mensaje informativo aquí');
+        $this->info('Se han enviado los correos de notificación de gasto');
+        
         // Obtener las notificaciones pendientes para hoy
         $notifications = Notification::whereDate('send_at', today())->get();
 
