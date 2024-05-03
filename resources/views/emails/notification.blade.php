@@ -9,7 +9,7 @@
     <h1>Notificación de Gasto</h1>
     
     <h2> Hola {{$user->name }} {{$user->lastname }}, tiene un gasto proximamente. </h2>
-    <img src="{{ asset('storage/user_avatar/' . $user->avatar) }}"alt="Avatar de {{ $user->name }}">
+    <img src="{{ asset($user->avatar) }}"alt="Avatar de {{ $user->name }}">
 
     <p>Detalles del gasto:</p>
     <ul>
