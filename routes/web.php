@@ -31,6 +31,10 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/news', [NewsController::class, 'index'])->name('news.index');
 Route::get('/notifications', [NotificationController::class, 'index']);
-
-
+Route::get('/prueba', function () {
+    return view('prueba');
+});
+Route::get('/prueba1', function () {
+    return view('prueba1');
+});
 require __DIR__.'/auth.php';
