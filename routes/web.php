@@ -37,4 +37,7 @@ Route::get('/prueba', function () {
 Route::get('/prueba1', function () {
     return view('prueba1');
 });
+Route::get('/prueba2', function () {
+    return view('prueba2');
+});
 require __DIR__.'/auth.php';
