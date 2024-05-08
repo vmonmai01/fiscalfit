@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\CryptoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,4 +41,7 @@ Route::get('/prueba1', function () {
 Route::get('/prueba2', function () {
     return view('prueba2');
 });
+
+Route::get('/cryptos', [CryptoController::class, 'getPrices']);
+
 require __DIR__.'/auth.php';
