@@ -4,15 +4,17 @@
         <thead>
             <tr>
                 <th>Cryptomoneda</th>
-                <th>Precio(€)</th>
+                <th> Simbolo </th>
+                <th>Precio (€)</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($data as $crypto)
-            <tr>
-                <td>{{ $crypto['name'] }}</td>
-                <td>{{ $crypto['quote']['EUR']['price'] }}</td>
-            </tr>
+            @foreach ($data as $crypto)
+                <tr>
+                    <td>{{ $crypto['data','name'] }}</td>
+                    <td>{{ $crypto['symbol'] }}</td>
+                    <td>{{ $crypto['quote']['EUR']['price'] }}</td>
+                </tr>
             @endforeach
         </tbody>
     </table>

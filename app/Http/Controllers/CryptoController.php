@@ -18,7 +18,7 @@ class CryptoController extends Controller
     public function getPrices()
     {
         $client = new Client();
-        $response = $client->get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest', [
+        $response = $client->get('https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest', [
             'headers' => [
                 'X-CMC_PRO_API_KEY' => $this->apiKey
             ],
