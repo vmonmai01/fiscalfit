@@ -15,6 +15,11 @@
                         </div>
                     @endif
                     <hr>
+                    
+                    <div>
+                        @livewire('crypto-table')
+                    </div>
+                    <hr>
                     <div>
                         {{-- @livewire('expenses-table') --}}
                     </div>
@@ -45,7 +50,7 @@
                     {{-- <h1> Grafico de ingresos</h1>
                     @livewire('income-chart') --}}
                     <hr>
-                    {{-- 
+    {{-- 
                     <h1> Grafico de gastos</h1>
                     @livewire('expense-chart')
                     

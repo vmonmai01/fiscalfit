@@ -1,6 +1,6 @@
-<x-app-layout>
+<div>
     <h1>Precios de Criptomonedas</h1>
-    <table border="1" color="black">
+    <table border="1">
         <thead>
             <tr>
                 <th>Cryptomoneda</th>
@@ -16,7 +16,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($data['data'] as $symbol => $crypto)
+            @foreach ($data as $symbol => $crypto)
                 <tr>
                     <td>{{ $crypto[0]['name'] }}</td>
                     <td>{{ $symbol }}</td>
@@ -30,9 +30,6 @@
                     <td>{{ $crypto[0]['cmc_rank'] }}</td>
                 </tr>
             @endforeach
-
-
         </tbody>
     </table>
-
-</x-app-layout>
+</div>

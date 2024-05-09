@@ -23,7 +23,7 @@ class CryptoController extends Controller
                 'X-CMC_PRO_API_KEY' => $this->apiKey   // 02098cd6-4aa0-4950-a4b4-1a058cd96523
             ],
             'query' => [
-                'symbol' => 'BTC,ETH,ADA,DOGE,SOL',
+                'symbol' => 'BTC,ETH,ADA,BNB,SOL',
                 'convert' => 'EUR'
             ]
         ]);
@@ -32,7 +32,7 @@ class CryptoController extends Controller
 
         // Añadir la depuración aquí
         // Esto mostrará la estructura de $data antes de pasarlo a la vista
-         dd($data);
+        // dd($data);
         return view('crypto', ['data' => $data]);
     }
 }
