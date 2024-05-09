@@ -20,7 +20,7 @@ class CryptoController extends Controller
         $client = new Client();
         $response = $client->get('https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest', [
             'headers' => [
-                'X-CMC_PRO_API_KEY' => $this->apiKey
+                'X-CMC_PRO_API_KEY' => $this->apiKey   // 02098cd6-4aa0-4950-a4b4-1a058cd96523
             ],
             'query' => [
                 'symbol' => 'BTC,ETH,ADA,DOGE,SOL',
@@ -29,6 +29,10 @@ class CryptoController extends Controller
         ]);
 
         $data = json_decode($response->getBody()->getContents(), true);
+
+        // Añadir la depuración aquí
+        // Esto mostrará la estructura de $data antes de pasarlo a la vista
+         dd($data);
         return view('crypto', ['data' => $data]);
     }
 }
