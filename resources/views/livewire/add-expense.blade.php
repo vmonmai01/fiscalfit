@@ -20,7 +20,8 @@
 
             <div class="bg-white p-4 rounded-lg">
                 <div class="relative bg-inherit">
-                    <input type="text" id="description" name="description" wire:model="description" placeholder="Description"
+                    <input type="text" id="description" name="description" wire:model="description"
+                        placeholder="Description"
                         class="peer bg-transparent h-10 w-72 rounded-lg text-gray-200 placeholder-transparent ring-2 px-2 ring-gray-500 focus:ring-sky-600 focus:outline-none focus:border-blue-600" />
                     <label for="description"
                         class="absolute cursor-text left-0 -top-3 text-sm text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3 peer-focus:text-sky-600 peer-focus:text-sm transition-all">Description:</label>
@@ -66,12 +67,13 @@
             </div>
 
             <div class="bg-white p-4 rounded-lg">
-                <div class="relative bg-inherit">
+                <label>Select Expense Category:</label>
+                <div class="grid grid-cols-2 gap-4 mb-5">
                     @foreach ($categories as $category)
                         <div>
                             <input type="radio" id="{{ $category->id }}" name="expense_category_id"
                                 value="{{ $category->id }}" wire:model="expense_category_id" />
-                            <label for="{{ $category->id }}" class="cursor-pointer">{{ $category->type }} :
+                            <label for="{{ $category->id }}" class="cursor-pointer mb-5">{{ $category->type }} :
                                 {{ $category->description }}</label>
                         </div>
                     @endforeach
@@ -80,6 +82,7 @@
                     <span class="text-red-500">{{ $message }}</span>
                 @enderror
             </div>
+
 
             <div class="bg-white p-4 rounded-lg">
                 <div class="relative bg-inherit">
@@ -93,7 +96,8 @@
                 @enderror
 
                 @if ($photo)
-                    <img src="{{ $photo->temporaryUrl() }}" alt="Photo Preview" class="mt-4 rounded-lg max-h-[200px] max-w-[200px]">
+                    <img src="{{ $photo->temporaryUrl() }}" alt="Photo Preview"
+                        class="mt-4 rounded-lg max-h-[200px] max-w-[200px]">
                 @endif
             </div>
 
