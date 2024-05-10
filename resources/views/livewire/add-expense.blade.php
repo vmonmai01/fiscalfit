@@ -67,16 +67,15 @@
             </div>
 
             <div class="bg-white p-4 rounded-lg">
-                <label>Select Expense Category:</label>
-                <div class="grid grid-cols-2 gap-4 mb-5">
-                    @foreach ($categories as $category)
-                        <div>
-                            <input type="radio" id="{{ $category->id }}" name="expense_category_id"
-                                value="{{ $category->id }}" wire:model="expense_category_id" />
-                            <label for="{{ $category->id }}" class="cursor-pointer mb-5">{{ $category->type }} :
-                                {{ $category->description }}</label>
-                        </div>
-                    @endforeach
+                <div class="relative bg-inherit">
+                    <select id="expense_category_id" name="expense_category_id" wire:model="expense_category_id"
+                        class="peer bg-transparent h-10 w-72 rounded-lg text-gray-200 placeholder-transparent ring-2 px-2 ring-gray-500 focus:ring-sky-600 focus:outline-none focus:border-blue-600">
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->type }} : {{ $category->description }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <label for="expense_category_id" class="absolute cursor-text left-0 -top-3 text-sm text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3 peer-focus:text-sky-600 peer-focus:text-sm transition-all">Select Expense Category:</label>
                 </div>
                 @error('expense_category_id')
                     <span class="text-red-500">{{ $message }}</span>
@@ -102,7 +101,7 @@
             </div>
 
 
-            <button type="submit">Submit</button>
+            <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" type="submit">Submit</button>
         </form>
 
     </div>

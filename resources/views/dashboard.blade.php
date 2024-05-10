@@ -17,7 +17,9 @@
                     <hr>
                     
                     <div>
-                        @livewire('crypto-table')
+                        {{-- 
+                                @livewire('crypto-table') 
+                        --}}
                     </div>
                     <hr>
                     <div>
@@ -61,11 +63,11 @@
                     @livewire('monthly-balance-total')
 
                     <hr>
-
+--}}
                     @livewire('add-income')    
                     
                     <hr>
-    --}}                   
+                       
                     @livewire('add-expense') 
                     
                     

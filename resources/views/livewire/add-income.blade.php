@@ -1,5 +1,6 @@
 <div>
     <!-- resources/views/livewire/add-income.blade.php -->
+    <h2> Añadir nuevo Ingreso </h2>
 
     <form wire:submit.prevent="submit">
         <div class="bg-white p-4 rounded-lg">
@@ -63,20 +64,22 @@
 
         <div class="bg-white p-4 rounded-lg">
             <div class="relative bg-inherit">
-                <label>Select Income Category:</label>
-                @foreach ($categories as $category)
-                    <div>
-                        <input type="radio" id="{{ $category->id }}" name="income_category_id"
-                            value="{{ $category->id }}" wire:model="income_category_id" />
-                        <label for="{{ $category->id }}"
-                            class="cursor-pointer">{{ $category->type }} : {{$category->description}}</label>
-                    </div>
-                @endforeach
+                <select id="income_category_id" name="income_category_id" wire:model="income_category_id"
+                    class="peer bg-transparent h-10 w-72 rounded-lg text-gray-200 placeholder-transparent ring-2 px-2 ring-gray-500 focus:ring-sky-600 focus:outline-none focus:border-blue-600">
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->type }} : {{ $category->description }}
+                        </option>
+                    @endforeach
+                </select>
+                <label for="income_category_id"
+                    class="absolute cursor-text left-0 -top-3 text-sm text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3 peer-focus:text-sky-600 peer-focus:text-sm transition-all">Select
+                    Income Category:</label>
             </div>
             @error('income_category_id')
                 <span class="text-red-500">{{ $message }}</span>
             @enderror
         </div>
+
 
         <div class="bg-white p-4 rounded-lg">
             <div class="relative bg-inherit">
@@ -94,7 +97,8 @@
             @endif
         </div>
 
-        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Submit</button>
+        <button type="submit"
+            class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Submit</button>
     </form>
 
 </div>

@@ -50,3 +50,15 @@ getNews()
     .catch(error => {
         console.error('Error al obtener noticias:', error);
     });
+
+
+// Para el degradado entre noticias
+
+const items = document.querySelectorAll(".item");
+
+
+items.forEach((item) => {
+ 
+  item.style.setProperty('--clip-i')
+  item.style.setProperty('--clip-f')
+});
