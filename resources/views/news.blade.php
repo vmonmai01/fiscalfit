@@ -21,15 +21,28 @@
                             </div>
                             <div class="col-md-6">
                                 <p class="news-description">{{ $article['description'] }}</p>
+                                <!-- Aquí estoy truncando el contenido del artículo a una longitud específica -->
                                 @if (isset($article['content']))
-                                    <p class="news-content">{{ $article['content'] }}</p>
+                                    @php
+                                        $content = $article['content'];
+                                        // Encuentra la posición de la cadena '[+' o '[ +' en el contenido del artículo
+                                        $char_pos = preg_match('/\[\s*\+/', $content, $matches, PREG_OFFSET_CAPTURE);
+                                        // Si se encuentra la posición de '[+' o '[ +', truncar la cadena antes de ese punto
+                                        if ($char_pos !== false && count($matches) > 0) {
+                                            $char_pos = $matches[0][1]; // Obtener la posición de la coincidencia
+                                            $content = substr($content, 0, $char_pos);
+                                        }
+                                    @endphp
+                                    <p class="news-content">{{ $content }}
+                                        @if (isset($article['url']))
+                                            <a href="{{ $article['url'] }}" class="news-link">Ver noticia completa</a>
+                                        @endif
+                                    </p>
                                 @endif
                                 @if (isset($article['author']))
                                     <p class="news-author">{{ $article['author'] }}</p>
                                 @endif
-                                @if (isset($article['url']))
-                                    <a href="{{ $article['url'] }}" class="news-link">Ver noticia completa</a>
-                                @endif
+
                             </div>
                         @else
                             <div class="col-md-6 order-md-2">
@@ -41,7 +54,21 @@
                             <div class="col-md-6 order-md-1">
                                 <p class="news-description">{{ $article['description'] }}</p>
                                 @if (isset($article['content']))
-                                    <p class="news-content">{{ $article['content'] }}</p>
+                                    @php
+                                        $content = $article['content'];
+                                        // Encuentra la posición de la cadena '[+' o '[ +' en el contenido del artículo
+                                        $char_pos = preg_match('/\[\s*\+/', $content, $matches, PREG_OFFSET_CAPTURE);
+                                        // Si se encuentra la posición de '[+' o '[ +', truncar la cadena antes de ese punto
+                                        if ($char_pos !== false && count($matches) > 0) {
+                                            $char_pos = $matches[0][1]; // Obtener la posición de la coincidencia
+                                            $content = substr($content, 0, $char_pos);
+                                        }
+                                    @endphp
+                                    <p class="news-content">{{ $content }}
+                                        @if (isset($article['url']))
+                                            <a href="{{ $article['url'] }}" class="news-link">Ver noticia completa</a>
+                                        @endif
+                                    </p>
                                 @endif
                                 @if (isset($article['author']))
                                     <p class="news-author">{{ $article['author'] }}</p>
