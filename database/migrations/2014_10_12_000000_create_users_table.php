@@ -16,21 +16,15 @@ return new class extends Migration
             $table->string('name');
             $table->string('lastname');
             $table->date('birthdate');
-            $table->enum('currency_preference', ['euro', 'dollar']);
             $table->string('avatar');
             $table->enum('rol', ['user', 'admin']);
+            $table->decimal('simulator_balance', 20, 8)->default(1000);
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();
-        });
-        Schema::table('users', function (Blueprint $table) {
-            $table->decimal('simulator_balance', 20, 8)->after('rol')->default(1000);
-        });
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('currency_preference');
         });
         
     }

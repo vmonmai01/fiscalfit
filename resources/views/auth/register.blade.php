@@ -23,15 +23,6 @@
                 required autofocus autocomplete="birthdate" />
             <x-input-error :messages="$errors->get('birthdate')" class="mt-2" />
         </div>
-        <!-- Currency Preference -->
-        <div>
-            <x-input-label for="currency_preference" :value="__('Currency Preference')" />
-            <select id="currency_preference" class="block mt-1 w-full" name="currency_preference" required autofocus>
-                <option value="euro" {{ old('currency_preference') == 'euro' ? 'selected' : '' }}>Euro</option>
-                <option value="dollar" {{ old('currency_preference') == 'dollar' ? 'selected' : '' }}>Dollar</option>
-            </select>
-            <x-input-error :messages="$errors->get('currency_preference')" class="mt-2" />
-        </div>
         <!-- Email Address -->
         <div class="mt-4">
             <x-input-label for="email" :value="__('Email')" />

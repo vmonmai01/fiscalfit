@@ -36,7 +36,6 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/'],
             'lastname'=> ['required', 'string', 'max:255'],
             'birthdate' => ['required', 'date'],
-            'currency_preference' => ['required', 'string', 'in:euro,dollar'],
             
         ]);
 
@@ -45,11 +44,9 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'lastname' => $request->lastname,
-            'birthdate'=> $request->birthdate,
-            'currency_preference'=> $request->currency_preference,
+            'birthdate'=> $request->birthdate,            
             'avatar' =>  'UserProfile.png',
-            'rol' => 'user',
-            
+            'rol' => 'user',           
 
         ]);
 

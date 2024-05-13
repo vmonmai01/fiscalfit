@@ -30,6 +30,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'birthdate',
         'avatar',
         'rol',
+        'simulator_balance',
         'email',
         'password',
     ];
