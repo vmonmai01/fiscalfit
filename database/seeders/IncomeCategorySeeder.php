@@ -15,11 +15,12 @@ class IncomeCategorySeeder extends Seeder
     {
         //
         $incomeCategories = [
-            ['type' => 'Salary', 'description' => 'Regular income from employment'],
-            ['type' => 'Freelance', 'description' => 'Income from freelance work'],
-            ['type' => 'Investment', 'description' => 'Income from investments'],
-            ['type' => 'Other', 'description' => 'Any other type of income not covered in the above categories'],
+            ['type' => 'Salario', 'description' => 'Ingresos regulares del empleo'],
+            ['type' => 'Trabajo Freelance', 'description' => 'Ingresos de trabajo autónomo o independiente'],
+            ['type' => 'Inversiones', 'description' => 'Ingresos de inversiones'],
+            ['type' => 'Otros', 'description' => 'Cualquier otro tipo de ingreso no cubierto en las categorías anteriores'],
         ];
+        
 
         DB::table('income_categories')->insert($incomeCategories);
     }

@@ -15,20 +15,20 @@ class ExpenseCategorySeeder extends Seeder
     {
         //
         $expenseCategories = [
-            ['type' => 'Rent or Mortgage', 'description' => 'Monthly payments for housing rent or mortgage'],
-            ['type' => 'Utilities', 'description' => 'Payments for basic utilities such as electricity, water, gas, phone, internet, etc.'],
-            ['type' => 'Groceries', 'description' => 'Expenses related to purchasing food and groceries'],
-            ['type' => 'Transportation', 'description' => 'Expenses related to transportation, such as gasoline, public transportation, vehicle maintenance, etc.'],
-            ['type' => 'Healthcare', 'description' => 'Expenses related to healthcare, such as medical insurance, doctor visits, medications, etc.'],
-            ['type' => 'Education', 'description' => 'Expenses related to education, such as tuition fees, books, school supplies, etc.'],
-            ['type' => 'Entertainment', 'description' => 'Expenses related to leisure and entertainment activities, such as movies, restaurants, trips, etc.'],
-            ['type' => 'Clothing', 'description' => 'Expenses related to purchasing clothing and accessories'],
-            ['type' => 'Savings and Investments', 'description' => 'Funds allocated for savings or investments'],
-            ['type' => 'Debts', 'description' => 'Payments for loans, credit cards, or other outstanding debts'],
-            ['type' => 'Insurance', 'description' => 'Payments for insurance, such as life insurance, home insurance, car insurance, etc.'],
-            ['type' => 'Gifts and Donations', 'description' => 'Expenses related to gifts for friends and family, as well as donations to charitable organizations'],
-            ['type' => 'Taxes', 'description' => 'Payments for taxes, such as income taxes, property taxes, etc.'],
-            ['type' => 'Other', 'description' => 'Any other type of expense not covered in the above categories']
+            ['type' => 'Alquiler o Hipoteca', 'description' => 'Pagos mensuales por alquiler de vivienda o hipoteca'],
+            ['type' => 'Servicios', 'description' => 'Pagos por servicios básicos como electricidad, agua, gas, teléfono, internet, etc.'],
+            ['type' => 'Comestibles', 'description' => 'Gastos relacionados con la compra de alimentos y comestibles'],
+            ['type' => 'Transporte', 'description' => 'Gastos relacionados con el transporte, como gasolina, transporte público, mantenimiento de vehículos, etc.'],
+            ['type' => 'Cuidado de la Salud', 'description' => 'Gastos relacionados con la atención médica, como seguro médico, visitas al médico, medicamentos, etc.'],
+            ['type' => 'Educación', 'description' => 'Gastos relacionados con la educación, como matrículas, libros, material escolar, etc.'],
+            ['type' => 'Entretenimiento', 'description' => 'Gastos relacionados con actividades de ocio y entretenimiento, como películas, restaurantes, viajes, etc.'],
+            ['type' => 'Ropa', 'description' => 'Gastos relacionados con la compra de ropa y accesorios'],
+            ['type' => 'Ahorros e Inversiones', 'description' => 'Fondos asignados para ahorros o inversiones'],
+            ['type' => 'Deudas', 'description' => 'Pagos de préstamos, tarjetas de crédito u otras deudas pendientes'],
+            ['type' => 'Seguros', 'description' => 'Pagos por seguros, como seguros de vida, seguros de hogar, seguros de automóvil, etc.'],
+            ['type' => 'Regalos y Donaciones', 'description' => 'Gastos relacionados con regalos para amigos y familiares, así como donaciones a organizaciones benéficas'],
+            ['type' => 'Impuestos', 'description' => 'Pagos de impuestos, como impuestos sobre la renta, impuestos sobre la propiedad, etc.'],
+            ['type' => 'Otros', 'description' => 'Cualquier otro tipo de gasto no cubierto en las categorías anteriores']
         ];
 
         DB::table('expense_categories')->insert($expenseCategories);
