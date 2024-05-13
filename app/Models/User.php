@@ -70,4 +70,19 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Income::class);
     }
+    /**
+     * Define la relación uno a muchos con la tabla 'balances'.
+     */
+    public function balances()
+    {
+        return $this->hasMany(Balance::class);
+    }
+
+    /**
+     * Define la relación uno a muchos con la tabla 'transactions'.
+     */
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }
