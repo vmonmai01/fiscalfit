@@ -4,22 +4,22 @@
             Noticas última hora
         </h2>
     </x-slot>
-    <div>
+    <div class="p-4 mb-5">
         <h1 class="news-title">Últimas noticias</h1>
 
         <div class="news-container">
             @foreach ($articles as $index => $article)
                 <div class="item news-item">
                     <h2 class="news-title">{{ $article['title'] }}</h2>
-                    <div class="row">
+                    <div class="flex flex-wrap items-center">
                         @if ($index % 2 == 0)
-                            <div class="col-md-6">
+                            <div class="w-full md:w-1/2 p-4 flex justify-center items-center">
                                 @if (isset($article['urlToImage']))
-                                    <img class="news-image" src="{{ $article['urlToImage'] }}"
-                                        alt="Imagen de la noticia {{ $article['title'] }}">
+                                    <img class="news-image max-h-500 w-full h-auto mb-4 rounded-lg" src="{{ $article['urlToImage'] }}"
+                                        alt="Imagen de la noticia {{ $article['title'] }}" loading="lazy">
                                 @endif
                             </div>
-                            <div class="col-md-6">
+                            <div class="w-full md:w-1/2 p-4">
                                 <p class="news-description">{{ $article['description'] }}</p>
                                 <!-- Aquí estoy truncando el contenido del artículo a una longitud específica -->
                                 @if (isset($article['content']))
@@ -45,13 +45,8 @@
 
                             </div>
                         @else
-                            <div class="col-md-6 order-md-2">
-                                @if (isset($article['urlToImage']))
-                                    <img class="news-image" src="{{ $article['urlToImage'] }}"
-                                        alt="Imagen de la noticia {{ $article['title'] }}">
-                                @endif
-                            </div>
-                            <div class="col-md-6 order-md-1">
+                            
+                            <div class="w-full md:w-1/2 p-4">
                                 <p class="news-description">{{ $article['description'] }}</p>
                                 @if (isset($article['content']))
                                     @php
@@ -73,8 +68,11 @@
                                 @if (isset($article['author']))
                                     <p class="news-author">{{ $article['author'] }}</p>
                                 @endif
-                                @if (isset($article['url']))
-                                    <a href="{{ $article['url'] }}" class="news-link">Ver noticia completa</a>
+                            </div>
+                            <div class="w-full md:w-1/2 p-4 flex justify-center items-center">
+                                @if (isset($article['urlToImage']))
+                                    <img class="news-image max-w-500 w-full h-auto mb-4 rounded-lg" src="{{ $article['urlToImage'] }}"
+                                        alt="Imagen de la noticia {{ $article['title'] }}" loading="lazy">
                                 @endif
                             </div>
                         @endif
@@ -83,6 +81,5 @@
                 </div>
             @endforeach
         </div>
-
     </div>
 </x-app-layout>

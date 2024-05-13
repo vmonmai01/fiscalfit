@@ -9,10 +9,10 @@ export default defineConfig({
                 'resources/css/news.css',
                 'resources/js/app.js',
                 'resources/js/chartExpesesDates.js',
-                'resources/js/barChartProfitBien.js',
+                'resources/js/chartIncomesDates.js',
                 'resources/js/chartBtwIncExp.js',
                 'resources/js/noticias.js',
-                'resources/js/chartIncomesDates.js',
+                
             ],
             refresh: true,
         }),
