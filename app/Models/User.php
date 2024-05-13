@@ -12,6 +12,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Notification;
 use App\Models\Expense;
 use App\Models\Income;
+use App\Models\Balance;
+use App\Models\Transaction;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -26,7 +28,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'lastname',
         'birthdate',
-        'currency_preference',
         'avatar',
         'rol',
         'email',

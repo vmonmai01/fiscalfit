@@ -26,6 +26,13 @@ return new class extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
+        Schema::table('users', function (Blueprint $table) {
+            $table->decimal('simulator_balance', 20, 8)->after('rol')->default(1000);
+        });
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('currency_preference');
+        });
+        
     }
 
     /**
