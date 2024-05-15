@@ -19,18 +19,38 @@
                 </th>
                 <th>
                     <button wire:click="sortBy('lastname')">Apellido</button>
+                    @if ($sortField == 'lastname' && $sortAsc)
+                        <span><i class="fa-solid fa-arrow-up-long fa-bounce" style="color: green;"></i></span>
+                    @elseif($sortField == 'lastname' && !$sortAsc)
+                        <span><i class="fa-solid fa-arrow-down-long fa-bounce" style="color: red"></i></span>
+                    @endif
                 </th>
                 <th>
                     <button wire:click="sortBy('birthdate')">Fecha de Nacimiento</button>
+                    @if ($sortField == 'birthdate' && $sortAsc)
+                        <span><i class="fa-solid fa-arrow-up-long fa-bounce" style="color: green;"></i></span>
+                    @elseif($sortField == 'birthdate' && !$sortAsc)
+                        <span><i class="fa-solid fa-arrow-down-long fa-bounce" style="color: red"></i></span>
+                    @endif
                 </th>
                 <th>
                     <button wire:click="sortBy('simulator_balance')">Saldo simulador</button>
                 </th>
                 <th>
                     <button wire:click="sortBy('email')">Correo Electrónico</button>
+                    @if ($sortField == 'email' && $sortAsc)
+                        <span><i class="fa-solid fa-arrow-up-long fa-bounce" style="color: green;"></i></span>
+                    @elseif($sortField == 'email' && !$sortAsc)
+                        <span><i class="fa-solid fa-arrow-down-long fa-bounce" style="color: red"></i></span>
+                    @endif
                 </th>
                 <th>
                     <button wire:click="sortBy('rol')">Rol</button>
+                    @if ($sortField == 'name' && $sortAsc)
+                        <span><i class="fa-solid fa-arrow-up-long fa-bounce" style="color: green;"></i></span>
+                    @elseif($sortField == 'name' && !$sortAsc)
+                        <span><i class="fa-solid fa-arrow-down-long fa-bounce" style="color: red"></i></span>
+                    @endif
                 </th>
                 <th>Acciones</th>
             </tr>
