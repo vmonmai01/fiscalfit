@@ -17,6 +17,11 @@ class UserController extends Component
 
     public $sortAsc = true; // Determina si el ordenamiento debe ser ascendente (true) o descendente (false).
 
+    public $userDetails;
+    public $showModalDetails = false;
+
+
+
     public function sortBy($field)
     {
         //Alterna la ordenación ascendente/descendente de un campo, reiniciando a ascendente al cambiar de campo.        
@@ -37,4 +42,39 @@ class UserController extends Component
 
         return view('livewire.user.user-controller', compact('users'));
     }
+   
+    // Función para lanzar el modal de vista detalle usuario
+    public function showUserDetail($userId)
+    {
+        // Cargar los detalles del usuario basados en el ID recibido
+        $user = User::find($userId);
+
+        // Hacer algo con los detalles del usuario, como mostrarlos en el modal
+        $this->userDetails = $user;
+
+        // Mostrar el modal
+        $this->showModalDetails = true;
+    }
+
+    public function closeUserDetail()
+    {
+        // Ocultar el modal
+        $this->showModalDetails = false;
+    }
+
+
+    // Función para lanzar el modal de Seguridad antes de borrar usuario
+    public function confirmUserDeletion($userId)
+    {
+        $this->emit('confirmUserDeletionModal', ['userId' => $userId]);
+    }
+    // Función para eliminar el usuario
+    public function deleteUser($userId)
+    {
+        $user = User::findOrFail($userId);
+        $user->delete();
+
+       
+    }
+
 }
