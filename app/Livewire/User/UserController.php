@@ -31,7 +31,7 @@ class UserController extends Component
         $this->sortAsc = $this->sortField === $field ? !$this->sortAsc : true;
         $this->sortField = $field;
     }
-    
+
     #[On('updatelist')]
     public function render()
     {
@@ -45,15 +45,12 @@ class UserController extends Component
 
         return view('livewire.user.user-controller', compact('users'));
     }
-   
+
     // Función para lanzar el modal de vista detalle usuario
     public function showUserDetail($userId)
     {
         // Cargar los detalles del usuario basados en el ID recibido
-        $user = User::find($userId);
-
-        // Hacer algo con los detalles del usuario, como mostrarlos en el modal
-        $this->userDetails = $user;
+        $this->userDetails = User::find($userId);
 
         // Mostrar el modal
         $this->showModalDetails = true;
@@ -65,14 +62,11 @@ class UserController extends Component
         $this->showModalDetails = false;
     }
 
-
     // Función para lanzar el modal de Seguridad antes de borrar usuario
     public function showUserDelete($userId)
     {
         // Cargar los detalles del usuario basados en el ID recibido
-        $user = User::find($userId);
-        // Hacer algo con los detalles del usuario, como mostrarlos en el modal
-        $this->userDelete = $user;
+        $this->userDelete = User::find($userId);
         // Mostrar el modal
         $this->showModalDelete = true;
     }
@@ -84,10 +78,14 @@ class UserController extends Component
     }
     // Función para eliminar el usuario
     public function deleteUser($userId)
-    {
+    {      
+        // Ocultar el modal
+        $this->showModalDelete = false;
+        // Esperar 1 segundo antes de eliminar el usuario
+        sleep(1);
         $user = User::findOrFail($userId);
         $user->delete();
-       
+        
+        
     }
-
 }
