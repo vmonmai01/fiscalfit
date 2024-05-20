@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/news', [NewsController::class, 'index'])->name('news.index');
 Route::get('/notifications', [NotificationController::class, 'index']);
+Route::post('/notifications/mark-as-read/{id}', [NotificationController::class, 'markAsRead'])->name('notifications.markAsRead');
 Route::get('/prueba', function () {
     return view('prueba');
 });
