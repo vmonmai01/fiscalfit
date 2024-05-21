@@ -55,53 +55,62 @@
         </div>
     @endif
 
-    @if ($notifications->isNotEmpty())
-
-        <table>
-            <thead>
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-6 my-6">
+        <table class="table-auto w-full text-md text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
-                    <th>Descripción del gasto</th>
-                    <th>Importe gasto</th>
-                    <th>Fecha del gasto</th>
-                    <th>Fecha notificación</th>
-                    <th> Leída </th>
-                    <th> Marcar como leida </th>
+                    <th scope="col" class="px-6 py-3 tracking-wider" >Descripción del gasto</th>
+                    <th scope="col" class="px-6 py-3 tracking-wider" >Importe gasto</th>
+                    <th scope="col" class="px-6 py-3 tracking-wider" >Fecha del gasto</th>
+                    <th scope="col" class="px-6 py-3 tracking-wider" >Fecha notificación</th>
+                    <th scope="col" class="px-6 py-3 tracking-wider" > Leída </th>
+                    <th scope="col" class="px-6 py-3 tracking-wider" > Marcar como leida </th>
                 </tr>
             </thead>
             <tbody>
+                @if ($notifications->isNotEmpty())
+                    @foreach ($notifications as $notification)
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <td class="px-6 py-4">{{ $notification->expense->description }}</td>
 
-                @foreach ($notifications as $notification)
-                    <tr>
-                        <td>{{ $notification->expense->description }}</td>
+                            <td class="px-6 py-4">{{ $notification->expense->amount }}</td>
 
-                        <td>{{ $notification->expense->amount }}</td>
+                            <td class="px-6 py-4">{{ \Carbon\Carbon::parse($notification->expense->date)->format('d-m-Y') }}</td>
 
-                        <td>{{ \Carbon\Carbon::parse($notification->expense->date)->format('d-m-Y') }}</td>
+                            <td class="px-6 py-4">{{ \Carbon\Carbon::parse($notification->send_at)->format('d-m-Y') }}</td>
 
-                        <td>{{ \Carbon\Carbon::parse($notification->send_at)->format('d-m-Y') }}</td>
+                            <td class="px-6 py-4">
+                                @if ($notification->read)
+                                    <svg class="w-3 h-3 text-green-500" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
+                                    </svg>
+                                @else
+                                    <svg class="w-3 h-3 text-red-500" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                    </svg>
+                                @endif
+                            </td>
+                            <td class="px-6 py-4">
+                                @if (!$notification->read)
+                                    <form action="{{ route('notifications.markAsRead', $notification->id) }}"
+                                        method="POST">
+                                        @csrf
+                                        <button type="submit">Marcar como leída</button>
+                                    </form>
+                                @endif
+                            </td>
 
-                        <td>
-                            @if ($notification->read)
-                                ✔
-                            @else
-                                ✘
-                            @endif
-                        </td>
-                        <td>
-                            @if (!$notification->read)
-                                <form action="{{ route('notifications.markAsRead', $notification->id) }}"
-                                    method="POST">
-                                    @csrf
-                                    <button type="submit">Marcar como leída</button>
-                                </form>
-                            @endif
-                        </td>
-
-                    <tr>
-                @endforeach
-            @else
-                <p>No tienes notificaciones.</p>
-    @endif
+                        <tr>
+                    @endforeach
+                @else
+                    <p>No tienes notificaciones.</p>
+                @endif
+        </table>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -119,7 +128,7 @@
 
             setTimeout(function() {
                 element.classList.add('hidden'); // Ocultar el elemento después de 5 segundos
-            }, 5000); 
+            }, 5000);
         }
     </script>
 

@@ -1,15 +1,15 @@
-<div>
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-6 my-6" >
     <!-- Búsqueda -->
     <input type="text" wire:model.live="search" placeholder="Buscar por nombre, apellido, email, etc.">
 
     <!-- Tabla de usuarios -->
-    <table>
-        <thead>
+    <table class="w-full text-md text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-                <th>
+                <th scope="col" class="px-6 py-3 tracking-wider">
                     <button>Avatar</button>
                 </th>
-                <th>
+                <th scope="col" class="px-6 py-3 tracking-wider">
                     <button wire:click="sortBy('name')">Nombre</button>
                     @if ($sortField == 'name' && $sortAsc)
                         <span><i class="fa-solid fa-arrow-up-long fa-bounce" style="color: green;"></i></span>
@@ -17,7 +17,7 @@
                         <span><i class="fa-solid fa-arrow-down-long fa-bounce" style="color: red"></i></span>
                     @endif
                 </th>
-                <th>
+                <th scope="col" class="px-6 py-3 tracking-wider">
                     <button wire:click="sortBy('lastname')">Apellido</button>
                     @if ($sortField == 'lastname' && $sortAsc)
                         <span><i class="fa-solid fa-arrow-up-long fa-bounce" style="color: green;"></i></span>
@@ -25,7 +25,7 @@
                         <span><i class="fa-solid fa-arrow-down-long fa-bounce" style="color: red"></i></span>
                     @endif
                 </th>
-                <th>
+                <th scope="col" class="px-6 py-3 tracking-wider">
                     <button wire:click="sortBy('birthdate')">Fecha de Nacimiento</button>
                     @if ($sortField == 'birthdate' && $sortAsc)
                         <span><i class="fa-solid fa-arrow-up-long fa-bounce" style="color: green;"></i></span>
@@ -33,10 +33,10 @@
                         <span><i class="fa-solid fa-arrow-down-long fa-bounce" style="color: red"></i></span>
                     @endif
                 </th>
-                <th>
+                <th scope="col" class="px-6 py-3 tracking-wider">
                     <button wire:click="sortBy('simulator_balance')">Saldo simulador</button>
                 </th>
-                <th>
+                <th scope="col" class="px-6 py-3 tracking-wider">
                     <button wire:click="sortBy('email')">Correo Electrónico</button>
                     @if ($sortField == 'email' && $sortAsc)
                         <span><i class="fa-solid fa-arrow-up-long fa-bounce" style="color: green;"></i></span>
@@ -44,7 +44,7 @@
                         <span><i class="fa-solid fa-arrow-down-long fa-bounce" style="color: red"></i></span>
                     @endif
                 </th>
-                <th>
+                <th scope="col" class="px-6 py-3 tracking-wider">
                     <button wire:click="sortBy('rol')">Rol</button>
                     @if ($sortField == 'rol' && $sortAsc)
                         <span><i class="fa-solid fa-arrow-up-long fa-bounce" style="color: green;"></i></span>
@@ -52,23 +52,23 @@
                         <span><i class="fa-solid fa-arrow-down-long fa-bounce" style="color: red"></i></span>
                     @endif
                 </th>
-                <th>Acciones</th>
+                <th scope="col" class="px-6 py-3 tracking-wider">Acciones</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($users as $user)
-                <tr>
-                    <td><img src="{{ asset('storage/user_avatar/' . $user->avatar) }}"
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <td class="px-6 py-4"><img src="{{ asset('storage/user_avatar/' . $user->avatar) }}"
                             alt="Avatar de {{ $user->name }}" class="w-12 h-12 rounded-full mx-2"></td>
-                    <td>{{ $user->name }}</td>
-                    <td>{{ $user->lastname }}</td>
-                    <td>{{ date('d-m-Y', strtotime($user->birthdate)) }}</td>
-                    <td>{{ number_format($user->simulator_balance, 2) }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td>{{ $user->rol }}</td>
-                    <td>
+                    <td class="px-6 py-4">{{ $user->name }}</td>
+                    <td class="px-6 py-4">{{ $user->lastname }}</td>
+                    <td class="px-6 py-4">{{ date('d-m-Y', strtotime($user->birthdate)) }}</td>
+                    <td class="px-6 py-4">{{ number_format($user->simulator_balance, 2) }}</td>
+                    <td class="px-6 py-4">{{ $user->email }}</td>
+                    <td class="px-6 py-4" >{{ $user->rol }}</td>
+                    <td class="px-6 py-4">
                         <button wire:click="showUserDetail({{ $user->id }})">Ver Detalles</button>
-                        <button wire:click="confirmUserDeletion({{ $user->id }})">Eliminar</button>
+                        <button wire:click="showUserDelete({{ $user->id }})">Eliminar</button>
                     </td>
                 </tr>
             @endforeach
@@ -146,7 +146,7 @@
     @endif
 
     <!-- Modal para confirmar eliminación del usuario -->
-    @if ($showModalDetails)
+    @if ($showModalDelete)
 
         <div class="modal" id="medium-modal" tabindex="-1"
             class="shadow-xl fixed inset-0 z-50 overflow-y-auto bg-gray-900 bg-opacity-60 flex justify-center items-center">
