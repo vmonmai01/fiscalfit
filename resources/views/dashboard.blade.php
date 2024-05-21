@@ -23,11 +23,11 @@
                     </div>
                     <hr>
                     <div>
-                        {{-- @livewire('expenses-table') --}}
+                        @livewire('expenses-table')
                     </div>
                     <hr>
                     <div>
-                        {{-- @livewire('incomes-table') --}}
+                        @livewire('incomes-table')
                     </div>
                     <div>
                         <!-- Aquí renderizamos el componente ChartBarDiferenceBtwIncExp -->

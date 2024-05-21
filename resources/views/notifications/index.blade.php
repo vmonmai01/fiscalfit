@@ -55,7 +55,7 @@
         </div>
     @endif
 
-    <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-6 my-6">
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-5 my-5">
         <table class="table-auto w-full text-md text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
@@ -104,11 +104,12 @@
                                 @endif
                             </td>
 
-                        <tr>
+                        
                     @endforeach
                 @else
-                    <p>No tienes notificaciones.</p>
+                <td colspan="6" class="text-red-500 font-bold py-4">No tienes notificaciones.</td>
                 @endif
+                <tr>
         </table>
     </div>
 
