@@ -1,18 +1,18 @@
 <div class="max-w-md w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
     <div class="flex justify-between border-gray-200 border-b dark:border-gray-700 pb-3">
         <dl>
-            <dt class="text-base font-normal text-gray-500 dark:text-gray-400 pb-1">Profit</dt>
-            <dd id="Diferencia" class="leading-none text-3xl font-bold text-gray-900 dark:text-white">$5,405</dd>
+            <dt class="text-base font-normal text-gray-500 dark:text-gray-400 pb-1"> Diferencia </dt>
+            <dd id="Diferencia" class="leading-none text-3xl font-bold text-gray-900 dark:text-white"></dd>
         </dl>
     </div>
     <div>
         <div class="grid grid-cols-2 py-3 ">
             <dl>
-                <dt class="text-base font-normal text-gray-500 dark:text-gray-400 pb-1 ml-3">Income</dt>
+                <dt class="text-base font-normal text-gray-500 dark:text-gray-400 pb-1 ml-3">Ingresos</dt>
                 <dd id="totalIncome" class="leading-none text-xl font-bold text-green-500 dark:text-green-400"></dd>
             </dl>
             <dl>
-                <dt class="text-base font-normal text-gray-500 dark:text-gray-400 pb-1">Expense</dt>
+                <dt class="text-base font-normal text-gray-500 dark:text-gray-400 pb-1"> Gastos</dt>
                 <dd id="totalExpenses" class="leading-none text-xl font-bold text-red-600 dark:text-red-500"></dd>
             </dl>
         </div>

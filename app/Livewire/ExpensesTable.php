@@ -29,10 +29,10 @@ class ExpensesTable extends Component
     {
         $expenses = Expense::where('user_id', auth()->user()->id)
             ->where(function ($query) {
-                $query->where('description', 'like', '%'.$this->expenseSearch.'%')
-                      ->orWhere('date', 'like', '%'.$this->expenseSearch.'%')
-                      ->orWhereHas('category', function ($query) {
-                        $query->where('type', 'like', '%'.$this->expenseSearch.'%');
+                $query->where('description', 'like', '%' . $this->expenseSearch . '%')
+                    ->orWhere('date', 'like', '%' . $this->expenseSearch . '%')
+                    ->orWhereHas('category', function ($query) {
+                        $query->where('type', 'like', '%' . $this->expenseSearch . '%');
                     });
             })
             ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')

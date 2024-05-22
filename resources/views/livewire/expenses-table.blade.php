@@ -1,6 +1,6 @@
 <div>
 
-    <h1> Gastos Registrados </h1>
+    <h1 class="font-bold text-3xl"> Gastos Registrados </h1>
     @if (session()->has('message'))
         <div>{{ session('message') }}</div>
     @endif
@@ -32,8 +32,7 @@
         <table class="table-auto w-full text-md text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
-                    <th scope="col" class="px-6 py-3 tracking-wider">Marcar</th>
-                    <th scope="col" class="px-6 py-3 tracking-wider" wire:click="sortBy('id')">ID</th>
+                    <th scope="col" class="px-6 py-3 tracking-wider">Marcar</th>                    
                     <th scope="col" class="px-6 py-3 tracking-wider" wire:click="sortBy('description')">Descripción</th>
                     <th scope="col" class="px-6 py-3 tracking-wider" wire:click="sortBy('amount')">Monto</th>
                     <th scope="col" class="px-6 py-3 tracking-wider" wire:click="sortBy('date')">Fecha</th>
@@ -45,15 +44,13 @@
                 @forelse($expenses as $expense)
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <td class="px-6 py-4"> <input id="{{ $expense->id }}" type="checkbox" wire:model="selectedExpenses"
-                                value="{{ $expense->id }}"> </td>
-                        <td class="px-6 py-4">{{ $expense->id }}</td>
+                                value="{{ $expense->id }}"> </td>                        
                         <td class="px-6 py-4">{{ $expense->description }}</td>
                         <td class="px-6 py-4">{{ $expense->amount }}</td>
                         <td class="px-6 py-4">{{ $expense->date }}</td>
                         <td class="px-6 py-4">{{ $expense->category->type }}</td>
                         <td class="px-6 py-4">
-                            <button wire:click="editExpense({{ $expense->id }})">Editar</button>
-                            <button wire:click="deleteExpense({{ $expense->id }})">Eliminar</button>
+                            <x-boton-delete wire:click="deleteExpense({{ $expense->id }})"/>
                         </td>
                     </tr>
                 @empty
@@ -65,8 +62,7 @@
             </tbody>
         </table>
         {{ $expenses->onEachSide(0)->links() }}
-        @if ($selectedExpenses && count($selectedExpenses) > 0)
-            <button wire:click="deleteSelected">Eliminar Seleccionados</button>
-        @endif
+        <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded" wire:click="deleteSelected">Eliminar Seleccionados</button>
+        
     </div>
 </div>

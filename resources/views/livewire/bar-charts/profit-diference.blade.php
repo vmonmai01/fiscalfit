@@ -22,11 +22,11 @@
         <div class="grid grid-cols-2 py-3 px-3">
             <dl>
                 <dt class="text-base font-normal text-gray-500 dark:text-gray-400 pb-1">Income</dt>
-                <dd class="leading-none text-xl font-bold text-green-500 dark:text-green-400">$23,635</dd>
+                <dd class="leading-none text-xl font-bold text-green-500 dark:text-green-400">€23,635</dd>
             </dl>
             <dl>
                 <dt class="text-base font-normal text-gray-500 dark:text-gray-400 pb-1">Expense</dt>
-                <dd class="leading-none text-xl font-bold text-red-600 dark:text-red-500">-$18,230</dd>
+                <dd class="leading-none text-xl font-bold text-red-600 dark:text-red-500">-€18,230</dd>
             </dl>
         </div>
 

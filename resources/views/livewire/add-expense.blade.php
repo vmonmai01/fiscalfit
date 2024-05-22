@@ -69,7 +69,7 @@
             <div class="bg-white p-4 rounded-lg">
                 <div class="relative bg-inherit">
                     <select id="expense_category_id" name="expense_category_id" wire:model="expense_category_id"
-                        class="peer bg-transparent h-10 w-72 rounded-lg text-gray-200 placeholder-transparent ring-2 px-2 ring-gray-500 focus:ring-sky-600 focus:outline-none focus:border-blue-600">
+                        class=" peer bg-transparent h-10 w-72 rounded-lg text-gray-200 placeholder-transparent ring-2 px-2 ring-gray-500 focus:ring-sky-600 focus:outline-none focus:border-blue-600">
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->type }} : {{ $category->description }}
                             </option>
@@ -101,7 +101,7 @@
             </div>
 
 
-            <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" type="submit">Submit</button>
+            <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold m-3 py-2 px-4 rounded" type="submit">Submit</button>
         </form>
 
     </div>

@@ -1,9 +1,10 @@
 <x-app-layout>
-    <h1>Precios de Criptomonedas</h1>
-    <table border="1" color="black">
+    @livewire('crypto-table')
+    {{-- <h1>Precios de Criptomonedas</h1>
+    <table >
         <thead>
             <tr>
-                <th>Cryptomoneda</th>
+                <th class="text-red-500">Cryptomoneda</th>
                 <th> Simbolo </th>
                 <th>Precio (€)</th>
                 <th>Cambios de precio en 24H (%)</th>
@@ -31,6 +32,6 @@
                 </tr>
             @endforeach
         </tbody>
-    </table>
+    </table> --}}
 
 </x-app-layout>

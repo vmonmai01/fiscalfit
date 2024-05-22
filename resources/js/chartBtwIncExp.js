@@ -135,9 +135,9 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(`Diferencia: ${difference.toFixed(2)}`);
 
         // Actualizar los elementos HTML con los resultados calculados
-        document.getElementById("totalIncome").textContent = "$" + totalIncome.toFixed(2);
-        document.getElementById("totalExpenses").textContent = "$" + totalExpenses.toFixed(2);
-        document.getElementById("Diferencia").textContent = "$" + difference.toFixed(2);
+        document.getElementById("totalIncome").textContent =  totalIncome.toFixed(2) + "€";
+        document.getElementById("totalExpenses").textContent =  totalExpenses.toFixed(2) + "€";
+        document.getElementById("Diferencia").textContent =  difference.toFixed(2) + "€";
     }
     // Asociar eventos de clic a los botones usando addEventListener
     document.getElementById("btn3").addEventListener("click", function () {

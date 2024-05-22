@@ -31,9 +31,7 @@
             <thead class="text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3 tracking-wider">Marcar</th>
-                    <th scope="col" class="px-6 py-3 tracking-wider" wire:click="sortBy('id')">ID</th>
-                    <th scope="col" class="px-6 py-3 tracking-wider" wire:click="sortBy('description')">Descripción
-                    </th>
+                    <th scope="col" class="px-6 py-3 tracking-wider" wire:click="sortBy('description')">Descripción </th>
                     <th scope="col" class="px-6 py-3 tracking-wider" wire:click="sortBy('amount')">Monto</th>
                     <th scope="col" class="px-6 py-3 tracking-wider" wire:click="sortBy('date')">Fecha</th>
                     <th scope="col" class="px-6 py-3 tracking-wider">Categoría</th>
@@ -44,16 +42,13 @@
                 @forelse($incomes as $income)
                     <tr
                         class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <td class="px-6 py-4"> <input id="{{ $income->id }}" type="checkbox"
-                                wire:model="selectedIncomes" value="{{ $income->id }}"> </td>
-                        <td class="px-6 py-4">{{ $income->id }}</td>
+                        <td class="px-6 py-4"> <input id="{{ $income->id }}" type="checkbox" wire:model="selectedIncomes" value="{{ $income->id }}"> </td>
                         <td class="px-6 py-4">{{ $income->description }}</td>
                         <td class="px-6 py-4">{{ $income->amount }}</td>
                         <td class="px-6 py-4">{{ $income->date }}</td>
                         <td class="px-6 py-4">{{ $income->category->type }}</td>
                         <td class="px-6 py-4">
-                            <button wire:click="editIncome({{ $income->id }})">Editar</button>
-                            <button wire:click="deleteIncome({{ $income->id }})">Eliminar</button>
+                            <x-boton-delete wire:click="deleteIncome({{ $income->id }})"/>
                         </td>
                     </tr>
                 @empty
@@ -67,7 +62,7 @@
         </table>
         {{ $incomes->links() }}
 
-        <button wire:click="deleteSelected" @if ($selectedIncomes && count($selectedIncomes) == 0) disabled @endif>Eliminar
+        <button class="bg-red-500 hover:bg-red-600 text-white font-bold m-3 py-2 px-4 rounded" wire:click="deleteSelected" >Eliminar
             Seleccionados
         </button>
 
