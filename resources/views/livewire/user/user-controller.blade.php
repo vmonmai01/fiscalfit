@@ -1,8 +1,7 @@
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-5 my-5" >
     <!-- Búsqueda -->
     <form class="max-w-lg mx-auto">
-        <div class="flex">
-                    
+        <div class="flex">                    
             <div class="relative w-full">
                 <input type="text" id="search" wire:model.live="search"
                     class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-s-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
@@ -28,7 +27,7 @@
                     <button>Avatar</button>
                 </th>
                 <th scope="col" class="px-6 py-3 tracking-wider">
-                    <button wire:click="sortBy('name')">Nombre</button>
+                    <button wire:click="sortBy('name')">NOMBRE</button>
                     @if ($sortField == 'name' && $sortAsc)
                         <span><i class="fa-solid fa-arrow-up-long fa-bounce" style="color: green;"></i></span>
                     @elseif($sortField == 'name' && !$sortAsc)
@@ -36,7 +35,7 @@
                     @endif
                 </th>
                 <th scope="col" class="px-6 py-3 tracking-wider">
-                    <button wire:click="sortBy('lastname')">Apellido</button>
+                    <button wire:click="sortBy('lastname')">APELLIDO</button>
                     @if ($sortField == 'lastname' && $sortAsc)
                         <span><i class="fa-solid fa-arrow-up-long fa-bounce" style="color: green;"></i></span>
                     @elseif($sortField == 'lastname' && !$sortAsc)
@@ -44,7 +43,7 @@
                     @endif
                 </th>
                 <th scope="col" class="px-6 py-3 tracking-wider">
-                    <button wire:click="sortBy('birthdate')">Fecha de Nacimiento</button>
+                    <button wire:click="sortBy('birthdate')">FECHA DE NACIMIENTO</button>
                     @if ($sortField == 'birthdate' && $sortAsc)
                         <span><i class="fa-solid fa-arrow-up-long fa-bounce" style="color: green;"></i></span>
                     @elseif($sortField == 'birthdate' && !$sortAsc)
@@ -52,10 +51,10 @@
                     @endif
                 </th>
                 <th scope="col" class="px-6 py-3 tracking-wider">
-                    <button wire:click="sortBy('simulator_balance')">Saldo simulador</button>
+                    <button wire:click="sortBy('simulator_balance')">SALDO SIMULADOR</button>
                 </th>
                 <th scope="col" class="px-6 py-3 tracking-wider">
-                    <button wire:click="sortBy('email')">Correo Electrónico</button>
+                    <button wire:click="sortBy('email')">CORRE ELECTRÓNICO</button>
                     @if ($sortField == 'email' && $sortAsc)
                         <span><i class="fa-solid fa-arrow-up-long fa-bounce" style="color: green;"></i></span>
                     @elseif($sortField == 'email' && !$sortAsc)
@@ -63,14 +62,14 @@
                     @endif
                 </th>
                 <th scope="col" class="px-6 py-3 tracking-wider">
-                    <button wire:click="sortBy('rol')">Rol</button>
+                    <button wire:click="sortBy('rol')">ROL</button>
                     @if ($sortField == 'rol' && $sortAsc)
                         <span><i class="fa-solid fa-arrow-up-long fa-bounce" style="color: green;"></i></span>
                     @elseif($sortField == 'rol' && !$sortAsc)
                         <span><i class="fa-solid fa-arrow-down-long fa-bounce" style="color: red"></i></span>
                     @endif
                 </th>
-                <th scope="col" class="px-6 py-3 tracking-wider">Acciones</th>
+                <th scope="col" class="px-6 py-3 tracking-wider">ACCIONES</th>
             </tr>
         </thead>
         <tbody>
@@ -100,8 +99,6 @@
 
     <!-- Paginación -->
     {{ $users->links() }}
-
-
 
     <!-- Modal para mostrar detalles del usuario -->
     <!-- Modal -->
@@ -206,13 +203,6 @@
                             class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Cerrar</button>
                     </div>
                 </div>
-            </div>
-            
+            </div>            
     @endif
-
-
-
-
-
-
 </div>

@@ -63,8 +63,8 @@
                     <th scope="col" class="px-6 py-3 tracking-wider" >Importe gasto</th>
                     <th scope="col" class="px-6 py-3 tracking-wider" >Fecha del gasto</th>
                     <th scope="col" class="px-6 py-3 tracking-wider" >Fecha notificación</th>
-                    <th scope="col" class="px-6 py-3 tracking-wider" > Leída </th>
-                    <th scope="col" class="px-6 py-3 tracking-wider" > Marcar como leida </th>
+                    <th scope="col" class="px-6 py-3 tracking-wider" >Leída </th>
+                    <th scope="col" class="px-6 py-3 tracking-wider" >Marcar como leida </th>
                 </tr>
             </thead>
             <tbody>
