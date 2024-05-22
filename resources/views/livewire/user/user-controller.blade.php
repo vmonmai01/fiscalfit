@@ -1,84 +1,104 @@
-<div>
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-5 my-5 py-5 px-5" >
     <!-- Búsqueda -->
-    <input type="text" wire:model.live="search" placeholder="Buscar por nombre, apellido, email, etc.">
+    <form class="max-w-lg mx-auto py-5 px-5">
+        <div class="flex">                    
+            <div class="relative w-full">
+                <input type="text" id="search" wire:model.live="search"
+                    class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-s-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
+                    placeholder="Buscar por nombre, apellido, email, etc..."  />
+                <button disabled
+                    class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-blue-700 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                    </svg>
+                    <span class="sr-only">Search</span>
+                </button>
+            </div>
+        </div>
+    </form>
 
     <!-- Tabla de usuarios -->
-    <table>
-        <thead>
+    <table class="w-full text-md text-left rtl:text-right text-gray-500 dark:text-gray-400 rounded-md">
+        <thead class="text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-                <th>
+                <th scope="col" class="px-6 py-3 tracking-wider">
                     <button>Avatar</button>
                 </th>
-                <th>
-                    <button wire:click="sortBy('name')">Nombre</button>
+                <th scope="col" class="px-6 py-3 tracking-wider">
+                    <button wire:click="sortBy('name')">NOMBRE</button>
                     @if ($sortField == 'name' && $sortAsc)
                         <span><i class="fa-solid fa-arrow-up-long fa-bounce" style="color: green;"></i></span>
                     @elseif($sortField == 'name' && !$sortAsc)
                         <span><i class="fa-solid fa-arrow-down-long fa-bounce" style="color: red"></i></span>
                     @endif
                 </th>
-                <th>
-                    <button wire:click="sortBy('lastname')">Apellido</button>
+                <th scope="col" class="px-6 py-3 tracking-wider">
+                    <button wire:click="sortBy('lastname')">APELLIDO</button>
                     @if ($sortField == 'lastname' && $sortAsc)
                         <span><i class="fa-solid fa-arrow-up-long fa-bounce" style="color: green;"></i></span>
                     @elseif($sortField == 'lastname' && !$sortAsc)
                         <span><i class="fa-solid fa-arrow-down-long fa-bounce" style="color: red"></i></span>
                     @endif
                 </th>
-                <th>
-                    <button wire:click="sortBy('birthdate')">Fecha de Nacimiento</button>
+                <th scope="col" class="px-6 py-3 tracking-wider">
+                    <button wire:click="sortBy('birthdate')">FECHA DE NACIMIENTO</button>
                     @if ($sortField == 'birthdate' && $sortAsc)
                         <span><i class="fa-solid fa-arrow-up-long fa-bounce" style="color: green;"></i></span>
                     @elseif($sortField == 'birthdate' && !$sortAsc)
                         <span><i class="fa-solid fa-arrow-down-long fa-bounce" style="color: red"></i></span>
                     @endif
                 </th>
-                <th>
-                    <button wire:click="sortBy('simulator_balance')">Saldo simulador</button>
+                <th scope="col" class="px-6 py-3 tracking-wider">
+                    <button wire:click="sortBy('simulator_balance')">SALDO SIMULADOR</button>
                 </th>
-                <th>
-                    <button wire:click="sortBy('email')">Correo Electrónico</button>
+                <th scope="col" class="px-6 py-3 tracking-wider">
+                    <button wire:click="sortBy('email')">CORRE ELECTRÓNICO</button>
                     @if ($sortField == 'email' && $sortAsc)
                         <span><i class="fa-solid fa-arrow-up-long fa-bounce" style="color: green;"></i></span>
                     @elseif($sortField == 'email' && !$sortAsc)
                         <span><i class="fa-solid fa-arrow-down-long fa-bounce" style="color: red"></i></span>
                     @endif
                 </th>
-                <th>
-                    <button wire:click="sortBy('rol')">Rol</button>
+                <th scope="col" class="px-6 py-3 tracking-wider">
+                    <button wire:click="sortBy('rol')">ROL</button>
                     @if ($sortField == 'rol' && $sortAsc)
                         <span><i class="fa-solid fa-arrow-up-long fa-bounce" style="color: green;"></i></span>
                     @elseif($sortField == 'rol' && !$sortAsc)
                         <span><i class="fa-solid fa-arrow-down-long fa-bounce" style="color: red"></i></span>
                     @endif
                 </th>
-                <th>Acciones</th>
+                <th scope="col" class="px-6 py-3 tracking-wider">ACCIONES</th>
             </tr>
         </thead>
         <tbody>
+            @if(count($users) != 0)
             @foreach ($users as $user)
-                <tr>
-                    <td><img src="{{ asset('storage/user_avatar/' . $user->avatar) }}"
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <td class="px-6 py-4"><img src="{{ asset('storage/user_avatar/' . $user->avatar) }}"
                             alt="Avatar de {{ $user->name }}" class="w-12 h-12 rounded-full mx-2"></td>
-                    <td>{{ $user->name }}</td>
-                    <td>{{ $user->lastname }}</td>
-                    <td>{{ date('d-m-Y', strtotime($user->birthdate)) }}</td>
-                    <td>{{ number_format($user->simulator_balance, 2) }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td>{{ $user->rol }}</td>
-                    <td>
+                    <td class="px-6 py-4">{{ $user->name }}</td>
+                    <td class="px-6 py-4">{{ $user->lastname }}</td>
+                    <td class="px-6 py-4">{{ date('d-m-Y', strtotime($user->birthdate)) }}</td>
+                    <td class="px-6 py-4">{{ number_format($user->simulator_balance, 2) }} €</td>
+                    <td class="px-6 py-4">{{ $user->email }}</td>
+                    <td class="px-6 py-4" >{{ $user->rol }}</td>
+                    <td class="px-6 py-4">
                         <button wire:click="showUserDetail({{ $user->id }})">Ver Detalles</button>
                         <x-boton-delete wire:click="showUserDelete({{ $user->id }})" />
                     </td>
-                </tr>
+                
             @endforeach
+            @else
+                <td colspan="8" class="text-red-500 font-bold py-4">No se encontraron usuarios de la aplicación.</td>
+            @endif
+            </tr>
         </tbody>
     </table>
 
     <!-- Paginación -->
     {{ $users->links() }}
-
-
 
     <!-- Modal para mostrar detalles del usuario -->
     <!-- Modal -->
@@ -124,10 +144,10 @@
                                     E-mail: {{ $userDetails->email }}
                                 </p>
                                 <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                    Fecha de Naciemiento: {{ $userDetails->birthdate }}
+                                    Fecha de Naciemiento: {{ date('d-m-Y', strtotime($user->birthdate)) }}
                                 </p>
                                 <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                    Saldo simulador: {{ $userDetails->simulator_balance }}
+                                    Saldo simulador: {{ number_format($user->simulator_balance, 2) }} €
                                 </p>
                             </div>
                         </div>
@@ -177,10 +197,4 @@
             </div>
         </div>
     @endif
-
-
-
-
-
-
 </div>

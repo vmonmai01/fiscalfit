@@ -9,15 +9,17 @@ use App\Models\Notification;
 use App\Models\User;
 class NotificationController extends Controller
 {
+   
+
     public function index()
     {
         $notifications = auth()->user()->notifications()->latest()->paginate(10);
         return view('notifications.index', compact('notifications'));
     }
 
-    public function markAsRead(Request $request)
+    public function markAsRead($id)
     {
-        auth()->user()->notifications()->where('id', $request->notification_id)->update(['read' => true]);
+        auth()->user()->notifications()->where('id', $id)->update(['read' => true]);
         return redirect()->back()->with('success', 'Notificación marcada como leída.');
     }
 }
