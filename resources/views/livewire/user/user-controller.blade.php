@@ -125,12 +125,12 @@
                         </button>
                     </div>
                     <!-- Modal body -->
-                    <div class="p-4 md:p-5 space-y-4">
+                    <div class="p-2 space-y-4">
                         <div class="flex flex-wrap">
-                            <div class="w-1/3 p-4">
+                            <div class="w-1/3 p-4 flex items-center justify-center">
                                 <!-- Contenido de la primera columna -->
                                 <img src="{{ asset('storage/user_avatar/' . $userDetails->avatar) }}"
-                                    alt="Avatar de {{ $userDetails->name }}" class="w-auto h-auto rounded-full mx-auto">
+                                    alt="Avatar de {{ $userDetails->name }}" class="w-24 h-24 rounded-full mx-auto">
                             </div>
                             <div class="w-2/3 p-4 pt-5">
                                 <!-- Contenido de la segunda columna -->
@@ -188,7 +188,7 @@
                             class="mb-2 md:mb-2 bg-gray-700 px-5 py-2 text-sm shadow-sm font-medium tracking-wider border-2 border-gray-600 hover:border-gray-700 text-gray-300 rounded-full hover:shadow-lg hover:bg-gray-800 transition ease-in duration-300">
                             Cancelar
                         </button>
-                        <button wire:click="deleteUser({{ $userDelete->id }})"
+                        <button wire:click="showUserDelete({{ $user->id }})"
                             class="bg-red-500 hover:bg-transparent px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-red-500 hover:border-red-500 text-white hover:text-red-500 rounded-full transition ease-in duration-300">
                             Confirmar
                         </button>
@@ -197,4 +197,28 @@
             </div>
         </div>
     @endif
+    <script>
+        document.addEventListener('livewire:load', function () {
+            Livewire.on('showDeleteConfirmation', () => {
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        @this.call('deleteUser');
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your file has been deleted.",
+                            icon: "success"
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </div>
