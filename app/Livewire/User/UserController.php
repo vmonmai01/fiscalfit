@@ -82,12 +82,15 @@ class UserController extends Component
         // Ocultar el modal
         $this->showModalDelete = false;
     }
+    
     // Función para eliminar el usuario
     public function deleteUser($userId)
     {
+        // Ocultar el modal
+        $this->showModalDelete = false;
         $user = User::findOrFail($userId);
         $user->delete();
-       
+        
     }
 
 }

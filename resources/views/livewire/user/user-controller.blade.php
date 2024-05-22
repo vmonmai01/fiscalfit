@@ -1,12 +1,12 @@
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-5 my-5" >
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-5 my-5 py-5 px-5" >
     <!-- Búsqueda -->
-    <form class="max-w-lg mx-auto">
+    <form class="max-w-lg mx-auto py-5 px-5">
         <div class="flex">                    
             <div class="relative w-full">
                 <input type="text" id="search" wire:model.live="search"
                     class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-s-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
                     placeholder="Buscar por nombre, apellido, email, etc..."  />
-                <button 
+                <button disabled
                     class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-blue-700 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 20 20">
@@ -20,7 +20,7 @@
     </form>
 
     <!-- Tabla de usuarios -->
-    <table class="w-full text-md text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <table class="w-full text-md text-left rtl:text-right text-gray-500 dark:text-gray-400 rounded-md">
         <thead class="text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3 tracking-wider">
@@ -81,7 +81,7 @@
                     <td class="px-6 py-4">{{ $user->name }}</td>
                     <td class="px-6 py-4">{{ $user->lastname }}</td>
                     <td class="px-6 py-4">{{ date('d-m-Y', strtotime($user->birthdate)) }}</td>
-                    <td class="px-6 py-4">{{ number_format($user->simulator_balance, 2) }}</td>
+                    <td class="px-6 py-4">{{ number_format($user->simulator_balance, 2) }} €</td>
                     <td class="px-6 py-4">{{ $user->email }}</td>
                     <td class="px-6 py-4" >{{ $user->rol }}</td>
                     <td class="px-6 py-4">
@@ -146,10 +146,10 @@
                                     E-mail: {{ $userDetails->email }}
                                 </p>
                                 <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                    Fecha de Naciemiento: {{ $userDetails->birthdate }}
+                                    Fecha de Naciemiento: {{ date('d-m-Y', strtotime($user->birthdate)) }}
                                 </p>
                                 <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                    Saldo simulador: {{ $userDetails->simulator_balance }}
+                                    Saldo simulador: {{ number_format($user->simulator_balance, 2) }} €
                                 </p>
                             </div>
                         </div>                  
@@ -172,11 +172,11 @@
             class="shadow-xl fixed inset-0 z-50 overflow-y-auto bg-gray-900 bg-opacity-60 flex justify-center items-center">
             <div class="fixed inset-0 z-50 overflow-y-auto bg-gray-900 bg-opacity-60 flex justify-center items-center ">
                 <!-- Modal content -->
-                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 min-w-[300px] min-h-[300px]">
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 min-w-[300px]">
                     <!-- Modal header -->
                     <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                         <h3 class="text-xl font-medium text-gray-900 dark:text-white">
-                            ¿Realmente deseas eliminar el usuario {{ $userDetails->name }} ? 
+                            ¿Realmente deseas eliminar el usuario {{ $userDelete->name }} ? 
                         </h3>
                         <button type="button"
                             class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -190,17 +190,22 @@
                         </button>
                     </div>
                     <!-- Modal body -->
-                    <div class="p-4 md:p-5 space-y-4">
+                    {{-- <div class="p-4 md:p-5 space-y-4">
                         <div class="flex flex-wrap">
 
                                 
                         </div>                  
-                    </div>
+                    </div> --}}
                     <!-- Modal footer -->
-                    <div class="flex items-center p-2 md:p-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                        
+                    <div class="flex items-center px-2 md:p-2 border-t border-gray-200 rounded-b dark:border-gray-600">                        
                         <button wire:click="closeUserDelete" type="button"
-                            class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Cerrar</button>
+                            class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                            Cerrar
+                        </button>
+                        <button wire:click="deleteUser({{ $userDelete->id }})" type="button"
+                            class="py-2.5 px-5 ms-3 text-sm font-medium text-red-400 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-red-500 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-red-500 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                            Eliminar
+                        </button>
                     </div>
                 </div>
             </div>            

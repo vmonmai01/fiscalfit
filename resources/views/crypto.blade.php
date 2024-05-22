@@ -30,8 +30,6 @@
                     <td>{{ $crypto[0]['cmc_rank'] }}</td>
                 </tr>
             @endforeach
-
-
         </tbody>
     </table>
 
