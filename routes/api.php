@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\FinanceController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -29,3 +30,5 @@ Route::get('/incomes/{userId}/{numberOfMonths}', [IncomeController::class, 'getI
 Route::get('expenses/percentage-by-category/{userId}/{startDate}/{endDate}', [ExpenseController::class, 'getPercentageByCategory']);
 
 Route::get('finance/{userId}/{numMonths}/expenses-incomes', [FinanceController::class, 'getExpensesAndIncomesByMonth']);
+
+Route::delete('/user/{id}', [UserController::class, 'delete'])->name('api.user.delete');

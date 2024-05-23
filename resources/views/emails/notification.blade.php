@@ -9,15 +9,17 @@
     <h1>Notificación de Gasto</h1>
     
     <h2> Hola {{$user->name }} {{$user->lastname }}, tiene un gasto proximamente. </h2>
-    <img src="{{ asset($user->avatar) }}"alt="Avatar de {{ $user->name }}">
+    <img src="{{ URL::asset('storage/user_avatar/UserProfile.png') }}"alt="Avatar de {{ $user->name }}">
 
     <p>Detalles del gasto:</p>
     <ul>
         <li><strong>Descripción:</strong> {{ $expenseDescription }}</li>
         <li><strong>Fecha:</strong> {{ $expenseDate }}</li>
         <li><strong>Monto:</strong> {{ $expenseAmount }}</li>
+        <li><strong>Categoria del gasto :</strong> {{ $expense->category->type }}</li>
     </ul>
     
     <p>¡Gracias por usar nuestra aplicación!</p>
 </body>
 </html>
+

@@ -1,11 +1,11 @@
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-5 my-5 py-5 px-5" >
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-5 my-5 py-5 px-5">
     <!-- Búsqueda -->
     <form class="max-w-lg mx-auto py-5 px-5">
-        <div class="flex">                    
+        <div class="flex">
             <div class="relative w-full">
                 <input type="text" id="search" wire:model.live="search"
                     class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-s-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
-                    placeholder="Buscar por nombre, apellido, email, etc..."  />
+                    placeholder="Buscar por nombre, apellido, email, etc..." />
                 <button disabled
                     class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-blue-700 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -73,23 +73,23 @@
             </tr>
         </thead>
         <tbody>
-            @if(count($users) != 0)
-            @foreach ($users as $user)
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                    <td class="px-6 py-4"><img src="{{ asset('storage/user_avatar/' . $user->avatar) }}"
-                            alt="Avatar de {{ $user->name }}" class="w-12 h-12 rounded-full mx-2"></td>
-                    <td class="px-6 py-4">{{ $user->name }}</td>
-                    <td class="px-6 py-4">{{ $user->lastname }}</td>
-                    <td class="px-6 py-4">{{ date('d-m-Y', strtotime($user->birthdate)) }}</td>
-                    <td class="px-6 py-4">{{ number_format($user->simulator_balance, 2) }} €</td>
-                    <td class="px-6 py-4">{{ $user->email }}</td>
-                    <td class="px-6 py-4" >{{ $user->rol }}</td>
-                    <td class="px-6 py-4">
-                        <button wire:click="showUserDetail({{ $user->id }})">Ver Detalles</button>
-                        <x-boton-delete wire:click="showUserDelete({{ $user->id }})" />
-                    </td>
-                
-            @endforeach
+            @if (count($users) != 0)
+                @foreach ($users as $user)
+                    <tr
+                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <td class="px-6 py-4"><img src="{{ asset('storage/user_avatar/' . $user->avatar) }}"
+                                alt="Avatar de {{ $user->name }}" class="w-12 h-12 rounded-full mx-2"></td>
+                        <td class="px-6 py-4">{{ $user->name }}</td>
+                        <td class="px-6 py-4">{{ $user->lastname }}</td>
+                        <td class="px-6 py-4">{{ date('d-m-Y', strtotime($user->birthdate)) }}</td>
+                        <td class="px-6 py-4">{{ number_format($user->simulator_balance, 2) }} €</td>
+                        <td class="px-6 py-4">{{ $user->email }}</td>
+                        <td class="px-6 py-4">{{ $user->rol }}</td>
+                        <td class="px-6 py-4">
+                            <button wire:click="showUserDetail({{ $user->id }})">Ver Detalles</button>
+                            <x-boton-delete onClick="confirmUserDelete({{ $user->id }})" />
+                        </td>
+                @endforeach
             @else
                 <td colspan="8" class="text-red-500 font-bold py-4">No se encontraron usuarios de la aplicación.</td>
             @endif
@@ -111,7 +111,7 @@
                     <!-- Modal header -->
                     <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                         <h3 class="text-xl font-medium text-gray-900 dark:text-white">
-                            Detalles del Usuario: {{$userDetails->name}} {{$userDetails->lastname}}
+                            Detalles del Usuario: {{ $userDetails->name }} {{ $userDetails->lastname }}
                         </h3>
                         <button type="button"
                             class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -162,63 +162,56 @@
             </div>
     @endif
 
-    <!-- Modal para confirmar eliminación del usuario -->
-    @if ($showModalDelete)
-        <div class="modal" id="medium-modal" tabindex="-1"
-            class="shadow-xl fixed inset-0 z-50 overflow-y-auto bg-gray-900 bg-opacity-60 flex justify-center items-center">
-            <div
-                class="group select-none w-[250px] flex flex-col p-4 relative items-center justify-center bg-gray-800 border border-gray-800 shadow-lg rounded-2xl">
-                <div class="">
-                    <div class="text-center p-3 flex-auto justify-center">
-                        <svg fill="currentColor" viewBox="0 0 20 20"
-                            class="group-hover:animate-bounce w-12 h-12 flex items-center text-gray-600 fill-red-500 mx-auto"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path clip-rule="evenodd"
-                                d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                                fill-rule="evenodd"></path>
-                        </svg>
-                        <h2 class="text-xl font-bold py-4 text-gray-200">¿ Estás seguro que deseas borrar el usuario
-                            {{ $userDelete->name }} {{ $userDelete->lastname }}.?</h2>
-                        <p class="font-bold text-sm text-gray-500 px-2">
-                            ¿De verdad quieres continuar? Este proceso no se puede deshacer.
-                        </p>
-                    </div>
-                    <div class="p-2 mt-2 text-center space-x-1 md:block">
-                        <button wire:click="closeUserDelete"
-                            class="mb-2 md:mb-2 bg-gray-700 px-5 py-2 text-sm shadow-sm font-medium tracking-wider border-2 border-gray-600 hover:border-gray-700 text-gray-300 rounded-full hover:shadow-lg hover:bg-gray-800 transition ease-in duration-300">
-                            Cancelar
-                        </button>
-                        <button wire:click="showUserDelete({{ $user->id }})"
-                            class="bg-red-500 hover:bg-transparent px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-red-500 hover:border-red-500 text-white hover:text-red-500 rounded-full transition ease-in duration-300">
-                            Confirmar
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endif
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <script>
-        document.addEventListener('livewire:load', function () {
-            Livewire.on('showDeleteConfirmation', () => {
-                Swal.fire({
-                    title: "Are you sure?",
-                    text: "You won't be able to revert this!",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "Yes, delete it!"
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        @this.call('deleteUser');
+        function confirmUserDelete(userId) {
+            Swal.fire({
+                title: "¿Estás seguro que deseas eliminar el usuario?",
+                text: "¡No podrás revertir este proceso!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Sí, borrar!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                    console.log(csrfToken);
+                    fetch(`http://127.0.0.1:8000/api/user/${userId}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'X-CSRF-TOKEN': csrfToken,
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.message === 'User deleted successfully.') {
+                            Swal.fire({
+                                title: "¡Eliminado!",
+                                text: "El usuario ha sido eliminado correctamente.",
+                                icon: "success"
+                            }).then(() => {
+                                location.reload(); // Recargar la página para actualizar la tabla
+                            });
+                        } else {
+                            Swal.fire({
+                                title: "Error",
+                                text: "Hubo un problema al eliminar el usuario. ",
+                                icon: "error"
+                            });
+                        }
+                    })
+                    .catch(error => {
                         Swal.fire({
-                            title: "Deleted!",
-                            text: "Your file has been deleted.",
-                            icon: "success"
+                            title: "Error",
+                            text: "Hubo un problema al eliminar el usuario.",
+                            icon: "error"
                         });
-                    }
-                });
+                    });
+                }
             });
-        });
+        }
     </script>
 </div>

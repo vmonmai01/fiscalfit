@@ -62,38 +62,4 @@ class UserController extends Component
         $this->showModalDetails = false;
     }
 
-    // Función para lanzar el modal de Seguridad antes de borrar usuario
-    // public function showUserDelete($userId)
-    // {
-    //     // Cargar los detalles del usuario basados en el ID recibido
-    //     $this->userDelete = User::find($userId);
-    //     // Mostrar el modal
-    //     $this->showModalDelete = true;
-    // }
-    public function showUserDelete($userId)
-    {
-        $this->userDelete = $userId;
-        // Emite un evento de JavaScript
-        $this->emit('showDeleteConfirmation');
-    }
-    public function closeUserDelete()
-    {
-        // Ocultar el modal
-        $this->showModalDelete = false;
-    }
-    
-    // Función para eliminar el usuario
-    public function deleteUser($userId)
-    {      
-        
-        // Esperar 1 segundo antes de eliminar el usuario
-        sleep(1);
-        $user = User::findOrFail($userId);
-        $user->delete();
-        
-        //  // Redirigir al usuario de vuelta a la página de la tabla de usuarios
-        // return redirect('/users');
-        
-        
-    }
 }
