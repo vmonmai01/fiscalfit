@@ -8,17 +8,20 @@
 </head>
 
 <body style="font-family: Arial, sans-serif; background-color: #f3eeee; margin: 0; padding: 20px;">
-    <div style="text-align: center;">
-        <?php
-        $imagePath = public_path('storage/fiscalfit/logo.jpg');
-        $imageData = base64_encode(file_get_contents($imagePath));
-        $imageBase64 = 'data:image/png;base64,' . $imageData;
-        ?>
-        <img src="{{ $imageBase64 }}" alt="Avatar de {{ $user->name }}"
-            style="border-radius: 50%; width: 100px; height: 100px;">
-    </div>
+
     <div
         style="max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+
+        <div style="display: flex; align-items: center;">
+            <h1 style="color: #333333; margin-start: 20px;">FiscalFit</h1>
+            <?php
+            $imagePath = public_path('storage/fiscalfit/logo.jpg');
+            $imageData = base64_encode(file_get_contents($imagePath));
+            $imageBase64 = 'data:image/png;base64,' . $imageData;
+            ?>
+            <img src="{{ $imageBase64 }}" alt="logo FiscalFit" style="max-width: 150px; height: auto; margin-left: auto;">
+        </div>
+
         <h1 style="text-align: center; color: #333333;">Notificación de Gasto</h1>
 
         <h2 style="color: #555555;">Hola {{ $user->name }} {{ $user->lastname }}, tienes un gasto próximamente.</h2>

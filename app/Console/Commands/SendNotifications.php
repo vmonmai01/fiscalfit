@@ -33,7 +33,8 @@ class SendNotifications extends Command
                 $notification->expense->amount,
                 $notification->user,
                 $notification->expense->category->type,
-                $notification->expense->photo
+                $notification->expense->photo,
+                $notification->logo
             ));
 
             // Marcar la notificación como enviada, No está contemplado en la BBDD -> modificar al crear la migración y añadir en el resto de pasos
