@@ -24,7 +24,7 @@
                             class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <td class="px-2 py-4">{{ $crypto[0]['name'] }}</td>
                             <td class="px-2 py-4">{{ $symbol }}</td>
-                            <td class="px-2 py-4">{{ $crypto[0]['quote']['EUR']['price'] }}</td>
+                            <td id="price-{{ $symbol }}" class="px-2 py-4">{{ $crypto[0]['quote']['EUR']['price'] }}</td>
                             <td class="px-2 py-4">{{ number_format($crypto[0]['quote']['EUR']['percent_change_24h'],2) }} % </td>
                             <td class="px-2 py-4">{{ number_format($crypto[0]['quote']['EUR']['percent_change_7d'],2) }}%</td>
                             <td class="px-2 py-4">{{ $crypto[0]['quote']['EUR']['market_cap'] }}</td>
@@ -43,4 +43,9 @@
             </tbody>
         </table>
     </div>
+    <div class="w-[500px] items-center p-4 pt-[500px]">
+        @livewire('buy-crypto') 
+    </div>
+   
+
 </div>
