@@ -20,7 +20,7 @@
     {{-- 'resources/js/chartExpesesDates.js', 'resources/js/chartIncomesDates.js', 'resources/js/chartBtwIncExp.js', 'resources/js/noticias.js' --}}
 
     @include('layouts.navigation')
-    <div class="flex bg-medio dark:bg-gray-900">
+    <div class="flex bg-medio ">
         <!-- Sidebar -->
         <div class="basis-1/12">
             @include('prueba2')
@@ -31,8 +31,8 @@
         <div class="basis-11/12 px-[80px]">
             <!-- Encabezado -->
             @if (isset($header))
-                <header class="bg-white dark:bg-gray-800 shadow rounded-md mt-3 mx-4 py-4 px-4">
-                    <div class="">
+                <header class="bg-oscuro text-white shadow rounded-md mt-3 mx-4 py-4 px-4">
+                    <div class="text-center">
                         {{ $header }}
                     </div>
                 </header>
