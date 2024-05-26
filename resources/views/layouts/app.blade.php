@@ -28,10 +28,10 @@
         
 
         <!-- Contenido principal -->
-        <div class="basis-11/12 pl-[150px]">
+        <div class="basis-11/12 px-[80px]">
             <!-- Encabezado -->
             @if (isset($header))
-                <header class="bg-white dark:bg-gray-800 shadow">
+                <header class="bg-white dark:bg-gray-800 shadow rounded-md mt-3 mx-4 py-4 px-4">
                     <div class="">
                         {{ $header }}
                     </div>

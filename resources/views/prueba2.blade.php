@@ -4,7 +4,7 @@
 
     /* Estilos personalizados */
     .sidebar {
-        height: 100vh;
+        
         /* Establece la altura del contenedor de la barra lateral al 100% de la ventana gráfica */
         position: fixed;
     }
@@ -29,7 +29,7 @@
 
     {{-- Div colapsed --}}
     <div id="sidebarCollapsed"
-        class="sidebar absolute flex flex-col items-center w-16 h-full overflow-hidden text-claro bg-oscuro rounded-br-2xl rounded-tr-2xl">
+        class="sidebar absolute flex flex-col items-center w-16 h-auto  text-claro bg-oscuro rounded-br-2xl rounded-tr-2xl pb-2">
         <button id="toggleSidebarCollapsed" class="flex items-center justify-center mt-3" href="#">
             <svg class="w-8 h-8 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                 <path
@@ -98,7 +98,7 @@
 
     <!-- Component Expanded -->
     <div id="sidebarExpanded"
-        class="sidebar absolute hidden flex flex-col items-center w-40 h-full overflow-hidden text-claro bg-oscuro rounded-br-2xl rounded-tr-2xl" onmouseleave="collapseSidebar()">
+        class="sidebar absolute hidden flex flex-col items-center w-40 h-auto  text-claro bg-oscuro rounded-br-2xl rounded-tr-2xl pb-2" onmouseleave="collapseSidebar()">
         <button id="toggleSidebarExpanded" class="flex items-center w-full px-3 mt-3" href="#">
             <svg class="w-8 h-8 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                 fill="currentColor">
@@ -110,7 +110,7 @@
         <div class="w-full px-2">
             <div class="flex flex-col items-center w-full mt-3 border-t border-gray-700">
                 <a class="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-medio hover:text-amarillo " 
-                    href="#">
+                href="dashboard">
                     <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -202,12 +202,10 @@
             // Si el sidebar expandido tiene la clase 'hidden', significa que está oculto.
             if (expandedSidebar.classList.contains('hidden')) {
                 // Por lo tanto, lo mostramos y ocultamos el sidebar colapsado.
-                expandedSidebar.classList.remove('hidden');
-                collapsedSidebar.classList.add('hidden');
+                expandSidebar() 
             } else {
                 // De lo contrario, si el sidebar expandido no tiene la clase 'hidden', lo ocultamos y mostramos el sidebar colapsado.
-                expandedSidebar.classList.add('hidden');
-                collapsedSidebar.classList.remove('hidden');
+                collapseSidebar() 
             }
         });
     </script>
