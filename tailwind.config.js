@@ -15,6 +15,13 @@ export default {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
         },
+        colors: {
+            'oscuro': '#181A20',
+            'medio': '#2B313A',
+            'claro': '#848E9C',
+            'amarillo': '#EFB90D',
+            
+          },
     },
 
     plugins: [

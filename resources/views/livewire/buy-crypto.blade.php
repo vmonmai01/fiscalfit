@@ -104,6 +104,19 @@
     </div>
 
     <script>
+        document.addEventListener('livewire:load', function() {
+            window.livewire.on('mensajeExito', function() {
+                setTimeout(function() {
+                    window.livewire.emit('borrarMensajeExito');
+                }, 6000);
+            });
+
+            window.livewire.on('mensajeError', function() {
+                setTimeout(function() {
+                    window.livewire.emit('borrarMensajeError');
+                }, 6000);
+            });
+        });
         // Obtener referencias a los elementos del formulario
         const priceInput = document.getElementById('price');
         const amountInput = document.getElementById('amount');
@@ -154,26 +167,6 @@
 
         // Event listener para detectar el cambio en la selección de moneda
         document.getElementById('currency').addEventListener('change', updatePrice);
-
-
-        document.getElementById('buyForm').addEventListener('submit', function() {
-            console.log('Enviando formulario de compra');
-            // Ocultar mensaje de éxito después de 3 segundos si está presente
-            @if ($mensajeExito)
-                setTimeout(function() {
-                    // @this.set('mensajeExito', null); // Eliminar la variable de mensaje de éxito
-                    document.getElementById('infoSucces').style.display = 'none';
-                }, 3000);
-            @endif
-
-            // Ocultar mensaje de error después de 3 segundos si está presente
-            @if ($mensajeError)
-                setTimeout(function() {
-                    // @this.set('mensajeError', null); // Eliminar la variable de mensaje de error
-                    document.getElementById('infoError').classList.add('hidden');
-                }, 3000);
-            @endif
-        });
     </script>
 
 </div>

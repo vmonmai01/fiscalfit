@@ -16,12 +16,11 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts" async></script>
-    @vite(['resources/css/app.css', 'resources/css/news.css', 'resources/js/app.js', 'resources/js/chartExpesesDates.js', 'resources/js/chartIncomesDates.js', 'resources/js/chartBtwIncExp.js', 'resources/js/noticias.js'])
+    @vite(['resources/css/app.css', 'resources/css/news.css', 'resources/js/app.js'])  
+    {{-- 'resources/js/chartExpesesDates.js', 'resources/js/chartIncomesDates.js', 'resources/js/chartBtwIncExp.js', 'resources/js/noticias.js' --}}
 
-</head>
-
-<body class="font-sans antialiased">
-    <div class="flex bg-gray-100 dark:bg-gray-900">
+    @include('layouts.navigation')
+    <div class="flex bg-medio dark:bg-gray-900">
         <!-- Sidebar -->
         <div class="basis-1/12">
             @include('prueba2')
@@ -29,7 +28,7 @@
         
 
         <!-- Contenido principal -->
-        <div class="w-full">
+        <div class="basis-11/12 pl-[150px]">
             <!-- Encabezado -->
             @if (isset($header))
                 <header class="bg-white dark:bg-gray-800 shadow">
@@ -40,7 +39,7 @@
             @endif
 
             <!-- Contenido de la página -->
-            <main class="">
+            <main class="bg-zinc-800 ">
                 {{ $slot }}
             </main>
         </div>

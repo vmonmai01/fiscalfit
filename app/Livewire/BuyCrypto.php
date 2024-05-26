@@ -7,9 +7,12 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Transaction;
 use App\Models\Balance;
+use Livewire\Attributes\On;
+use Illuminate\Support\Facades\Log;
 
 class BuyCrypto extends Component
 {
+    protected $listeners = ['borrarMensajeExito', 'borrarMensajeError'];
 
     public $currency;
     public $amount;
@@ -52,18 +55,31 @@ class BuyCrypto extends Component
             $balance->amount += $this->amount;
             $balance->save();
 
-            
-            // Mostrar mensaje de éxito
+
+            // Mostrar mensaje de éxito y retiurar a los 3 segundos
+
             $this->mensajeExito = 'Compra realizada con éxito.';
-           
+            $this->dispatch('mensajeExito');
         } else {
-            
+
             // Mostrar mensaje de error
             $this->mensajeError = 'No dispones del saldo suficiente para realizar la compra.';
-           
+            $this->dispatch('mensajeError');
         }
         // Reiniciar el formulario
         $this->resetForm();
+    }
+
+    #[On('mensajeExito')] 
+    public function borrarMensajeExito()
+    {
+        $this->mensajeExito = null;
+    }
+
+    #[On('mensajeError')]
+    public function borrarMensajeError()
+    {
+        $this->mensajeError = null;
     }
 
     public function render()
@@ -76,5 +92,6 @@ class BuyCrypto extends Component
         $this->amount = null;
         $this->currency = null;
         $this->price = null;
+        $this->total_cost = null;
     }
 }

@@ -43,7 +43,7 @@
             </tbody>
         </table>
     </div>
-    <div class="w-[500px] items-center p-4 pt-[500px]">
+    <div class="w-[500px] items-center p-4 ">
         @livewire('buy-crypto') 
     </div>
    
