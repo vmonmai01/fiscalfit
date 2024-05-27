@@ -130,6 +130,8 @@
             const price = parseFloat(priceInput.value);
             const amount = parseFloat(amountInput.value);
             const totalCost = price * amount;
+
+            
             // Mostrar el costo total en el campo correspondiente
             totalCostInput.value = isNaN(totalCost) ? '' : totalCost.toFixed(8);
         }

@@ -13,7 +13,7 @@
             @forelse($balances as $balance)
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <td class="px-6 py-4">{{ $balance->currency }} </td>                        
-                    <td class="px-6 py-4">{{ $balance->amount }}</td>
+                    <td id="monto-{{ $balance->currency }}" class="px-6 py-4">{{ $balance->amount }}</td>
                     <td id="precio-{{ $balance->currency }}"class="px-6 py-4"> </td>
                     <td id="saldo-{{ $balance->currency }}"class="px-6 py-4"> </td>
                 </tr>
@@ -31,4 +31,29 @@
             Añadir saldo
         </button>
     </div>
+    <script>
+   function updateBalanceTable() {
+    // Actualizar el saldo en euros para cada criptomoneda
+    // Reemplaza 'ADA', 'BNB', 'BTC', 'ETH' y 'SOL' con los símbolos de tus criptomonedas
+    ['ADA', 'BNB', 'BTC', 'ETH', 'SOL'].forEach(currency => {
+        var priceElement = document.getElementById('price-' + currency);
+        var amountElement = document.getElementById('monto-' + currency);
+        var saldoElement = document.getElementById('saldo-' + currency);
+
+        // Verificar si los elementos existen antes de acceder a sus propiedades
+        if (priceElement && amountElement && saldoElement) {
+            var price = parseFloat(priceElement.innerText);
+            var amount = parseFloat(amountElement.innerText);
+            var saldoEuros = price * amount;
+            if (document.getElementById('precio-' + currency)) {
+                document.getElementById('precio-' + currency).innerText = price;
+                document.getElementById('saldo-' + currency).innerText = saldoEuros.toFixed(2);
+            }
+        }
+    });
+}
+        // Llamar a la función de actualización al cargar la página
+        document.addEventListener('DOMContentLoaded', updateBalanceTable);
+    
+    </script>
 </div>
