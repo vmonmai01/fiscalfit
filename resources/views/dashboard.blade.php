@@ -7,7 +7,7 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-8 lg:px-8">
-            <div class="bg-oscuro  overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-oscuro rounded-lg">
                 <div class="p-6 text-gray-900 ">
                     @if (session('status'))
                         <div class="mb-4 font-medium text-sm text-green-600 ">
