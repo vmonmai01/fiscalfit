@@ -1,21 +1,21 @@
-<div>
+<div class="bg-claro p-5 rounded-lg m-2">
 
-    <h1 class="font-bold text-3xl"> Gastos Registrados </h1>
+    <h1 class="font-bold text-3xl text-oscuro text-center"> Gastos Registrados </h1>
     @if (session()->has('message'))
         <div>{{ session('message') }}</div>
     @endif
 
-    <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-5 my-5">
+    <div class="relative rounded-lg mx-5 my-5">
         {{-- Busqueda  --}}
-        <form class="max-w-lg mx-auto">
+        <form class="max-w-lg mx-auto py-5 px-5">
             <div class="flex">
                         
                 <div class="relative w-full">
                     <input type="text" id="search" wire:model.live="expenseSearch"
-                        class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-s-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
+                        class="block p-2.5 w-full z-20 text-sm  rounded-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-amarillo focus:border-amarillo bg-gray-700 placeholder-gray-400 text-white"
                         placeholder="Buscar por descripción o fecha"  />
                     <button 
-                        class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-blue-700 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-amarillo rounded-e-lg hover:bg-amarillo focus:ring-4 focus:outline-none focus:ring-amarillo ">
                         <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 20 20">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -29,8 +29,8 @@
 
         {{-- Tabla --}}
         
-        <table class="table-auto w-full text-md text-left rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead class="text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <table class="table-auto w-full text-md text-left rtl:text-right  text-gray-400 mb-2">
+            <thead class="text-sm uppercase bg-gray-700 text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3 tracking-wider">Marcar</th>                    
                     <th scope="col" class="px-6 py-3 tracking-wider" wire:click="sortBy('description')">Descripción</th>
@@ -42,7 +42,7 @@
             </thead>
             <tbody>
                 @forelse($expenses as $expense)
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <tr class="border-b bg-gray-800 border-gray-700 hover:bg-gray-600">
                         <td class="px-6 py-4"> <input id="{{ $expense->id }}" type="checkbox" wire:model="selectedExpenses"
                                 value="{{ $expense->id }}"> </td>                        
                         <td class="px-6 py-4">{{ $expense->description }}</td>

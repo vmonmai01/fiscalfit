@@ -39,7 +39,7 @@
             @endif
 
             <!-- Contenido de la página -->
-            <main class="bg-zinc-800 ">
+            <main class="bg-oscuro m-3 rounded-lg ">
                 {{ $slot }}
             </main>
         </div>
