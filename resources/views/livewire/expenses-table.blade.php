@@ -54,8 +54,8 @@
                         </td>
                     </tr>
                 @empty
-                    <tr>
-                        <td colspan="7" class="text-red-500 text-center font-bold py-4"> No se encontraron resultados para la búsqueda:
+                    <tr class="border-b bg-gray-800 border-gray-700 hover:bg-gray-600">
+                        <td colspan="7" class="border-b bg-gray-800 border-gray-700 hover:bg-gray-600"> No se encontraron resultados para la búsqueda:
                             "{{ $expenseSearch }}" </td>
                     </tr>
                 @endforelse

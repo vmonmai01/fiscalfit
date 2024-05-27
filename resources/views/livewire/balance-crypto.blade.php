@@ -1,7 +1,7 @@
-<div>
+<div class="bg-claro p-5 rounded-lg m-2">
     {{-- Care about people's approval and you will be their prisoner. --}}
-    <table class="table-auto w-full text-md text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead class="text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    <table class="table-auto w-full text-md text-left rtl:text-right  text-gray-400 mb-2">
+        <thead class="text-sm uppercase bg-gray-700 text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3 tracking-wider">MONEDA</th>                    
                 <th scope="col" class="px-6 py-3 tracking-wider">SALDO</th>
@@ -11,14 +11,14 @@
         </thead>
         <tbody>
             @forelse($balances as $balance)
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <tr class="border-b bg-gray-800 border-gray-700 hover:bg-gray-600">
                     <td class="px-6 py-4">{{ $balance->currency }} </td>                        
                     <td id="monto-{{ $balance->currency }}" class="px-6 py-4">{{ $balance->amount }}</td>
                     <td id="precio-{{ $balance->currency }}"class="px-6 py-4"> </td>
                     <td id="saldo-{{ $balance->currency }}"class="px-6 py-4"> </td>
                 </tr>
             @empty
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <tr class="border-b bg-gray-800 border-gray-700 hover:bg-gray-600">
                     <td colspan="3" class="text-red-500 text-center font-bold py-4"> Tu balance de cryptomonedas no tiene datos.</td>
                 </tr>
             @endforelse

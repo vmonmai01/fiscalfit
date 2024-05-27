@@ -1,13 +1,13 @@
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-5 my-5 py-5 px-5">
+<div class="bg-claro rounded-lg m-5 p-5">
     <!-- Búsqueda -->
     <form class="max-w-lg mx-auto py-5 px-5">
         <div class="flex">
             <div class="relative w-full">
                 <input type="text" id="search" wire:model.live="search"
-                    class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-s-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
+                class="block p-2.5 w-full z-20 text-sm  rounded-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-amarillo focus:border-amarillo bg-gray-700 placeholder-gray-400 text-white"
                     placeholder="Buscar por nombre, apellido, email, etc..." />
                 <button disabled
-                    class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-blue-700 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-amarillo rounded-e-lg hover:bg-amarillo focus:ring-4 focus:outline-none focus:ring-amarillo ">
                     <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 20 20">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -20,8 +20,8 @@
     </form>
 
     <!-- Tabla de usuarios -->
-    <table class="w-full text-md text-left rtl:text-right text-gray-500 dark:text-gray-400 rounded-md">
-        <thead class="text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    <table class="table-auto w-full text-md text-left rtl:text-right  text-gray-400 mb-2">
+        <thead class="text-sm uppercase bg-gray-700 text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3 tracking-wider">
                     <button>AVATAR</button>
@@ -76,7 +76,7 @@
             @if (count($users) != 0)
                 @foreach ($users as $user)
                     <tr
-                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    class="border-b bg-gray-800 border-gray-700 hover:bg-gray-600">
                         <td class="px-6 py-4"><img src="{{ asset('storage/user_avatar/' . $user->avatar) }}"
                                 alt="Avatar de {{ $user->name }}" class="w-12 h-12 rounded-full mx-2"></td>
                         <td class="px-6 py-4">{{ $user->name }}</td>
@@ -91,7 +91,8 @@
                         </td>
                 @endforeach
             @else
-                <td colspan="8" class="text-red-500 font-bold py-4">No se encontraron usuarios de la aplicación.</td>
+                <tr class="border-b bg-gray-800 border-gray-700 hover:bg-gray-600">
+                <td colspan="8" class="text-red-500 font-bold py-4 text-center">No se encontraron usuarios de la aplicación.</td>
             @endif
             </tr>
         </tbody>
