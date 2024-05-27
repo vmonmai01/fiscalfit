@@ -32,7 +32,7 @@
                             
                             <td class="px-2 py-4">{{ $crypto[0]['circulating_supply'] }}</td>
                             <td class="px-2 py-4">{{ $crypto[0]['total_supply'] }}</td>
-                            <td class="px-2 py-4 text-end">{{ $crypto[0]['cmc_rank'] }}</td>
+                            <td class="px-2 py-4 text-center">{{ $crypto[0]['cmc_rank'] }}</td>
                         </tr>
                     @endforeach
                 @else

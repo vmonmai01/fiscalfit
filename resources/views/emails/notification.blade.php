@@ -15,7 +15,7 @@
         <div style="display: flex; align-items: center;">
             <h1 style="color: #333333; margin-start: 20px;">FiscalFit</h1>
             <?php
-            $imagePath = public_path('storage/fiscalfit/logo.jpg');
+            $imagePath = public_path('storage/fiscalfit/logo.png');
             $imageData = base64_encode(file_get_contents($imagePath));
             $imageBase64 = 'data:image/png;base64,' . $imageData;
             ?>

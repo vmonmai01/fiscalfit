@@ -16,11 +16,6 @@
                     @endif
                     <hr>
                     
-                    <div>
-                        {{-- 
-                                @livewire('crypto-table') 
-                        --}}
-                    </div>
                     <hr>
                     <div>
                         @livewire('expenses-table')

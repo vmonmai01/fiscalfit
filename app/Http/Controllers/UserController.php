@@ -13,6 +13,7 @@ class UserController extends Controller
         // Borrar el usuario
         $user = User::findOrFail($userId);
         $user->delete();
-        return response()->json(['message' => 'User deleted successfully.'], 200);
+        return response()->json(['message' => 'Usuario eliminado correctamente.'], 200);
     }
+
 }

@@ -24,7 +24,7 @@
         <thead class="text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3 tracking-wider">
-                    <button>Avatar</button>
+                    <button>AVATAR</button>
                 </th>
                 <th scope="col" class="px-6 py-3 tracking-wider">
                     <button wire:click="sortBy('name')">NOMBRE</button>

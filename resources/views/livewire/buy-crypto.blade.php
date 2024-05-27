@@ -105,14 +105,17 @@
 
     <script>
         document.addEventListener('livewire:load', function() {
+            console.log("Livewire loaded"); 
             window.livewire.on('mensajeExito', function() {
                 setTimeout(function() {
+                    console.log("entra a borrar mensaje de exito");
                     window.livewire.emit('borrarMensajeExito');
                 }, 6000);
             });
 
             window.livewire.on('mensajeError', function() {
                 setTimeout(function() {
+                    console.log("entra a borrar mensaje de error");
                     window.livewire.emit('borrarMensajeError');
                 }, 6000);
             });

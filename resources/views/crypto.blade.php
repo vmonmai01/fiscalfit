@@ -1,5 +1,12 @@
 <x-app-layout>
     @livewire('crypto-table')
+
+    <div>
+        @livewire('balance-crypto')
+    </div>
+    <div>         
+        @livewire('transactions-crypto')         
+    </div>
     {{-- <h1>Precios de Criptomonedas</h1>
     <table >
         <thead>

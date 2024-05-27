@@ -7,7 +7,7 @@
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
                         {{-- <x-application-logo class="block h-9 w-auto fill-current text-amarillo" /> --}}
-                        <img src="{{ asset('storage/fiscalfit/logo.jpg') }}" alt="logo" class="block h-9 w-auto fill-current text-amarillo">
+                        <img src="{{ asset('storage/fiscalfit/logo.png') }}" alt="logo" class="block h-9 w-auto fill-current text-amarillo">
                     </a>
                 </div>
 
