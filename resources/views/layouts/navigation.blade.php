@@ -24,7 +24,7 @@
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-oscuro bg-amarillo hover:text-gray-700  focus:outline-none transition ease-in-out duration-150">
-                            <img src="{{ asset('storage/user_avatar/' . Auth::user()->avatar) }}" alt="Avatar de {{ Auth::user()->name }}" class="w-6 h-6 rounded-full mx-auto">
+                            <img src="{{ asset('storage/user_avatar/' . Auth::user()->avatar) }}" alt="Avatar de {{ Auth::user()->name }}" class="w-6 h-6 rounded-full mr-2">
                             <div>{{ Auth::user()->name }}</div>
 
                             <div class="ms-1">
