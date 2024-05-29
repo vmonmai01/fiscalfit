@@ -54,69 +54,88 @@
             </div>
         </div>
     @endif
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-8 lg:px-8">
+            <div class="bg-claro rounded-lg">
+                <div class="p-6 text-gray-900 ">
+                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-5 my-5">
+                        <table class="table-auto w-full text-md text-left rtl:text-right  text-gray-400 mb-2">
+                            <thead class="text-sm uppercase bg-medio text-gray-400">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 tracking-wider">Descripción del gasto</th>
+                                    <th scope="col" class="px-6 py-3 tracking-wider">Importe gasto</th>
+                                    <th scope="col" class="px-6 py-3 tracking-wider">Fecha del gasto</th>
+                                    <th scope="col" class="px-6 py-3 tracking-wider">Fecha notificación</th>
+                                    <th scope="col" class="px-6 py-3 tracking-wider">Leída </th>
+                                    <th scope="col" class="px-6 py-3 tracking-wider">Marcar como leida </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if ($notifications->isNotEmpty())
+                                    @foreach ($notifications as $notification)
+                                        <tr class="border-b bg-oscuro border-gray-700 hover:bg-gray-600">
+                                            {{-- Verificar si el gasto asociado existe --}}
+                                            @if ($notification->expense)
+                                                <td class="px-6 py-4">{{ $notification->expense->description }}</td>
+                                                <td class="px-6 py-4">{{ $notification->expense->amount }}</td>
+                                                <td class="px-6 py-4">
+                                                    {{ \Carbon\Carbon::parse($notification->expense->date)->format('d-m-Y') }}
+                                                </td>
+                                            @else
+                                                {{-- Si el gasto asociado no existe, mostrar un mensaje --}}
+                                                <td colspan="3" class="text-center px-6 py-4 text-red-500 font-bold">
+                                                    El gasto asociado ha sido
+                                                    eliminado</td>
+                                            @endif
 
-    <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-5 my-5">
-        <table class="table-auto w-full text-md text-left rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead class="text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                <tr>
-                    <th scope="col" class="px-6 py-3 tracking-wider">Descripción del gasto</th>
-                    <th scope="col" class="px-6 py-3 tracking-wider">Importe gasto</th>
-                    <th scope="col" class="px-6 py-3 tracking-wider">Fecha del gasto</th>
-                    <th scope="col" class="px-6 py-3 tracking-wider">Fecha notificación</th>
-                    <th scope="col" class="px-6 py-3 tracking-wider">Leída </th>
-                    <th scope="col" class="px-6 py-3 tracking-wider">Marcar como leida </th>
-                </tr>
-            </thead>
-            <tbody>
-                @if ($notifications->isNotEmpty())
-                    @foreach ($notifications as $notification)
-                        <tr
-                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            {{-- Verificar si el gasto asociado existe --}}
-                            @if ($notification->expense)
-                                <td class="px-6 py-4">{{ $notification->expense->description }}</td>
-                                <td class="px-6 py-4">{{ $notification->expense->amount }}</td>
-                                <td class="px-6 py-4">
-                                    {{ \Carbon\Carbon::parse($notification->expense->date)->format('d-m-Y') }}</td>
-                            @else
-                                {{-- Si el gasto asociado no existe, mostrar un mensaje --}}
-                                <td colspan="3" class="text-center px-6 py-4 text-red-500 font-bold">El gasto asociado ha sido
-                                    eliminado</td>
-                            @endif
+                                            <td class="px-6 py-4">
+                                                {{ \Carbon\Carbon::parse($notification->send_at)->format('d-m-Y') }}
+                                            </td>
 
-                            <td class="px-6 py-4">{{ \Carbon\Carbon::parse($notification->send_at)->format('d-m-Y') }}
-                            </td>
-
-                            <td class="px-6 py-4">
-                                @if ($notification->read)
-                                    <svg class="w-3 h-3 text-green-500" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
-                                    </svg>
+                                            <td class="px-6 py-4">
+                                                @if ($notification->read)
+                                                    <svg class="w-3 h-3 text-green-500" aria-hidden="true"
+                                                        xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                        viewBox="0 0 16 12">
+                                                        <path stroke="currentColor" stroke-linecap="round"
+                                                            stroke-linejoin="round" stroke-width="2"
+                                                            d="M1 5.917 5.724 10.5 15 1.5" />
+                                                    </svg>
+                                                @else
+                                                    <svg class="w-3 h-3 text-red-500" aria-hidden="true"
+                                                        xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                        viewBox="0 0 14 14">
+                                                        <path stroke="currentColor" stroke-linecap="round"
+                                                            stroke-linejoin="round" stroke-width="2"
+                                                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                                    </svg>
+                                                @endif
+                                            </td>
+                                            <td class="px-6 py-4 text-center">
+                                                @if (!$notification->read)
+                                                    <form
+                                                        action="{{ route('notifications.markAsRead', $notification->id) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        <button type="submit" class="focus:outline-none">
+                                                            <i class="fa-solid fa-file-circle-check "
+                                                                style="color: #e0b51a;"></i>
+                                                        </button>
+                                                    </form>
+                                                @endif
+                                            </td>
+                                    @endforeach
                                 @else
-                                    <svg class="w-3 h-3 text-red-500" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                                    </svg>
+                                    <tr class="border-b bg-oscuro border-gray-700 hover:bg-gray-600">
+                                        <td colspan="6" class="text-red-500 font-bold py-4">No tienes notificaciones.
+                                        </td>
                                 @endif
-                            </td>
-                            <td class="px-6 py-4">
-                                @if (!$notification->read)
-                                    <form action="{{ route('notifications.markAsRead', $notification->id) }}"
-                                        method="POST">
-                                        @csrf
-                                        <button type="submit">Marcar como leída</button>
-                                    </form>
-                                @endif
-                            </td>
-                    @endforeach
-                @else
-                    <td colspan="6" class="text-red-500 font-bold py-4">No tienes notificaciones.</td>
-                @endif
-                <tr>
-        </table>
+                                <tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>

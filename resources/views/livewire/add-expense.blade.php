@@ -6,10 +6,10 @@
     <form wire:submit.prevent="submit" class="bg-oscuro">
         <div class="p-4 rounded-lg max-w-sm">
             <div class="relative bg-inherit">
-                <input type="text" id="amount" name="amount" wire:model="amount" placeholder="Amount (€)"
+                <input type="text" id="amount" name="amount" wire:model="amount" placeholder="importe (€)"
                     class="peer bg-transparent h-10 w-72 rounded-lg text-gray-200 placeholder-transparent ring-2 px-2 ring-gray-500 focus:ring-amarillo focus:outline-none focus:border-amarillo" />
                 <label for="amount"
-                    class="absolute cursor-text left-0 -top-3 text-sm text-claro bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-claro peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-white peer-focus:text-sm transition-all">Cantidad
+                    class="absolute cursor-text left-0 -top-3 text-sm text-claro bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-claro peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-white peer-focus:text-sm transition-all">Importe
                     (€):
                 </label>
             </div>
@@ -22,7 +22,7 @@
         <div class="p-4 rounded-lg max-w-sm max-w-sm">
             <div class="relative bg-inherit">
                 <input type="text" id="description" name="description" wire:model="description"
-                    placeholder="Description"
+                    placeholder="Descripción"
                     class="peer bg-transparent h-10 w-72 rounded-lg text-gray-200 placeholder-transparent ring-2 px-2 ring-gray-500 focus:ring-amarillo focus:outline-none focus:border-amarillo" />
                 <label for="description"
                     class="absolute cursor-text left-0 -top-3 text-sm text-claro bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-claro peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-white peer-focus:text-sm transition-all">Descripción:</label>

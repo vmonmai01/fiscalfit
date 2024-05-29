@@ -34,18 +34,18 @@ class AddExpense extends Component
     ];
 
     protected $messages = [
-        'amount.required' => 'The amount field is required.',
-        'amount.numeric' => 'The amount field must be a numeric value.',
-        'amount.min' => 'The amount field must be at least :min.',
-        'description.string' => 'The description field must be a string.',
-        'description.max' => 'The description field must not exceed :max characters.',
-        'date.required' => 'The date field is required.',
-        'date.date' => 'The date field must be a valid date.',
-        'expense_category_id.required' => 'You must select an expense category.',
-        'expense_category_id.exists' => 'The selected expense category is invalid.',
-        'recurringPeriod.in' => 'The recurring period must be none, daily, weekly, biweekly, monthly, bimonthly, quarterly, semiannually, or annually.',
-        'photo.image' => 'The attached file must be an image.',
-        'photo.max' => 'The maximum allowed size for the attached file is :max kilobytes.',
+        'amount.required' => 'El campo de importe es obligatorio.',
+        'amount.numeric' => 'El campo de importe debe ser numérico.',
+        'amount.min' => 'El campo de importe debe ser superior a :min.',
+        'description.string' => 'El campo descripción debe ser un texto.',
+        'description.max' => 'El campo descripción no debe superar :max caracteres.',
+        'date.required' => 'El campo fecha es obligatorio.',
+        'date.date' => 'El campo fecha debe tener una fecha válida.',
+        'expense_category_id.required' => 'Debes seleccionar una categoría.',
+        'expense_category_id.exists' => 'La categoría seleccionada no es válida.',
+        'recurringPeriod.in' => 'La periodicidad seleccionada no es válida.',
+        'photo.image' => 'El archivo debe ser una imagen.',
+        'photo.max' => 'El tamaño máximo permitido para el archivo adjunto es :max kilobytes.',
     ];
 
     public function submit()
@@ -122,7 +122,7 @@ class AddExpense extends Component
         }
 
         // Redireccionar
-        return redirect()->to('/dashboard');
+        return redirect()->to('/expenses');
     }
 
     // Método para calcular las fechas futuras basadas en la periodicidad
