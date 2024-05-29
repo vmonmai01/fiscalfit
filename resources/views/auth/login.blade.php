@@ -1,6 +1,5 @@
 <x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+    
     <div class="flex justify-center items-center w-full sm:max-w-md ">
         <div class="flex-1 h-full">
             <img src="{{ asset('storage/fiscalfit/login.png') }}" alt="Side Image" class="w-full h-full object-cover">
@@ -50,6 +49,8 @@
                             {{ __('Log in') }}
                         </x-primary-button>
                     </div>
+                    <!-- Session Status -->
+                    <x-auth-session-status class="mb-4" :status="session('status')" />
                 </form>
             </div>
         </div>
