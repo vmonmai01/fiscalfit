@@ -11,7 +11,7 @@
                 <input type="text" id="amount" wire:model="amount" placeholder="Amount"
                     class="peer bg-transparent h-10 w-72 rounded-lg text-gray-200 placeholder-transparent ring-2 px-2 ring-gray-500 focus:ring-amarillo focus:outline-none focus:border-amarillo" />
                 <label for="amount"
-                    class="absolute cursor-text left-0 -top-3 text-sm text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-claro peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-white peer-focus:text-sm transition-all">Cantidad:</label>
+                    class="absolute cursor-text left-0 -top-3 text-sm text-claro bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-claro peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-white peer-focus:text-sm transition-all">Cantidad:</label>
             </div>
             @error('amount')
                 <span class="text-red-500">{{ $message }}</span>
@@ -23,7 +23,7 @@
                 <input type="text" id="description" wire:model="description" placeholder="Description"
                     class="peer bg-transparent h-10 w-72 rounded-lg text-gray-200 placeholder-transparent ring-2 px-2 ring-gray-500 focus:ring-amarillo focus:outline-none focus:border-amarillo" />
                 <label for="description"
-                    class="absolute cursor-text left-0 -top-3 text-sm text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-white peer-focus:text-sm transition-all">Descripción:</label>
+                    class="absolute cursor-text left-0 -top-3 text-sm text-claro bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-claro peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-white peer-focus:text-sm transition-all">Descripción:</label>
             </div>
             @error('description')
                 <span class="text-red-500">{{ $message }}</span>
@@ -35,7 +35,7 @@
                 <input type="date" id="date" wire:model="date"
                     class="peer bg-transparent h-10 w-72 rounded-lg text-gray-200 placeholder-transparent ring-2 px-2 ring-gray-500 focus:ring-amarillo focus:outline-none focus:border-amarillo" />
                 <label for="date"
-                    class="absolute cursor-text left-0 -top-5 text-sm text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-white peer-focus:text-sm transition-all">Fecha:</label>
+                    class="absolute cursor-text left-0 -top-5 text-sm text-claro bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-claro peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-white peer-focus:text-sm transition-all">Fecha:</label>
             </div>
             @error('date')
                 <span class="text-red-500">{{ $message }}</span>
@@ -57,7 +57,7 @@
                     <option class="bg-oscuro" value="annually">Anual</option>
                 </select>
                 <label for="recurring_period"
-                    class="absolute cursor-text left-0 -top-5 text-sm text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-white peer-focus:text-sm transition-all">
+                    class="absolute cursor-text left-0 -top-5 text-sm text-claro bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-claro peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-white peer-focus:text-sm transition-all">
                     Periodicidad:</label>
             </div>
             @error('recurringPeriod')
@@ -75,7 +75,7 @@
                     @endforeach
                 </select>
                 <label for="income_category_id"
-                    class="absolute cursor-text left-0 -top-5 text-sm text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-white peer-focus:text-sm transition-all">
+                    class="absolute cursor-text left-0 -top-5 text-sm text-claro bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-claro peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-white peer-focus:text-sm transition-all">
                     Categoría de ingreso:</label>
             </div>
             @error('income_category_id')
@@ -89,7 +89,7 @@
                 <input type="file" id="photo" wire:model="photo"
                     class="peer bg-transparent h-10 w-72 rounded-lg text-gray-200 placeholder-transparent ring-2 px-2 ring-gray-500 focus:ring-amarillo focus:outline-none focus:border-amarillo" />
                 <label for="photo"
-                    class="absolute cursor-text left-0 -top-5 text-sm text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sky-600 peer-focus:text-sm transition-all">Imagen:</label>
+                    class="absolute cursor-text left-0 -top-5 text-sm text-claro bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-claro peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sky-600 peer-focus:text-sm transition-all">Imagen:</label>
             </div>
             @error('photo')
                 <span class="text-red-500">{{ $message }}</span>
@@ -102,7 +102,7 @@
             @endif
         </div>
 
-        <button class="bg-amarillo hover:amarillo text-oscuro font-bold m-3 py-2 px-4 rounded" type="submit">Submit</button>
+        <button class="bg-amarillo hover:amarillo hover:border-black text-oscuro font-bold m-3 py-2 px-4 rounded" type="submit"> Añadir Ingreso</button>
     </form>
     
 </div>
