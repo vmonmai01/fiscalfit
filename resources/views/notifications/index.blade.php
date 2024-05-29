@@ -124,13 +124,15 @@
                                                     </form>
                                                 @endif
                                             </td>
+                                        <tr>
                                     @endforeach
                                 @else
                                     <tr class="border-b bg-oscuro border-gray-700 hover:bg-gray-600">
                                         <td colspan="6" class="text-red-500 font-bold py-4">No tienes notificaciones.
                                         </td>
+                                        <tr>
                                 @endif
-                                <tr>
+                               
                         </table>
                     </div>
                 </div>
