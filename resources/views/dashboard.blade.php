@@ -15,53 +15,29 @@
                         </div>
                     @endif
                     
-                    <div>
-                        @livewire('expenses-table')
-                    </div>
-                    
-                    <div>
-                        @livewire('incomes-table')
-                    </div>
-                    <div>
-                        <!-- Aquí renderizamos el componente ChartBarDiferenceBtwIncExp -->
-                        <x-chart-bar-diference-btw-inc-exp />
-                    </div>
-
-                    <div>
-                        @livewire('chart-incomes-date')
-                    </div>
-                    {{-- @livewire('bar-charts.profit-diference') --}}
-
-                    <hr>
-
-                    @livewire('chart-expense-date')
-
-
-
-                    <hr>
-
-
-
-                    {{-- <h1> Grafico de ingresos</h1>
-                    @livewire('income-chart') --}}
-                    <hr>
-    {{-- 
-                    <h1> Grafico de gastos</h1>
-                    @livewire('expense-chart')
-                    
-                    
-                    <hr>
                     @livewire('monthly-income-total')
                     @livewire('monthly-expense-total')
                     @livewire('monthly-balance-total')
-
-                    <hr>
---}}
-                    @livewire('add-income')    
                     
-                    <hr>
-                       
-                    @livewire('add-expense') 
+                    <!-- Aquí renderizamos el componente ChartBarDiferenceBtwIncExp -->
+                         <x-chart-bar-diference-btw-inc-exp /> 
+                
+  
+                    {{-- @livewire('bar-charts.profit-diference') --}}
+
+      
+
+
+
+
+        
+                    
+                    
+         
+                  
+
+               
+
                     
                     
 

@@ -43,6 +43,16 @@ Route::post('/notifications/mark-as-read/{id}', [NotificationController::class, 
 //     return view('prueba2');
 // });
 
+// Ruta para expenses.blade.php
+Route::get('/expenses', function () {
+    return view('expenses');
+})->name('expenses');
+
+// Ruta para incomes.blade.php
+Route::get('/incomes', function () {
+    return view('incomes');
+})->name('incomes');
+
 Route::get('/cryptos', [CryptoController::class, 'getPrices']);
 Route::get('/users', function () {
     return view('user.user'); 
