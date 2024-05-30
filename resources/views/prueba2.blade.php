@@ -100,12 +100,12 @@
                     <span class="ml-2 text-sm font-medium"> Inicio</span>
                 </a>
                 <a class="flex items-center w-full h-12 px-3 mt-2 hover:bg-medio hover:text-amarillo rounded"
-                    href="#">
+                    href="{{ route('incomes') }}">
                     <i class="fa-solid fa-arrow-right" style="color: #63E6BE;"></i>
                     <span class="ml-2 text-sm font-medium"> Ingresos</span>
                 </a>
                 <a class="flex items-center w-full h-12 px-3 mt-2 hover:bg-medio hover:text-amarillo rounded"
-                    href="#">
+                    href="{{ route('expenses') }}">
                     <i class="fa-solid fa-arrow-right fa-flip-horizontal" style="color: #f90606;"></i>
                     <span class="ml-2 text-sm font-medium"> Gastos</span>
                 </a>
