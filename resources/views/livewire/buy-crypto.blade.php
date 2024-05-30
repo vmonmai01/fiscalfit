@@ -59,53 +59,72 @@
 
     {{-- Formulario de compra de criptomonedas --}}
 
-    <div class="mx-5 px-[100px]">
-        <h2>Comprar Criptomonedas</h2>
+    <div class="mx-5 pl-[100px]">
+        <h3 class="font-bold text-2xl text-white leading-tight text-center mt-4 mb-2 py-2">Comprar Criptomonedas</h3>
         <form wire:submit.prevent="buy" id="buyForm">
-            <div class="form-group">
-                <label for="currency">Moneda:</label>
-                <select wire:model="currency" id="currency" class="form-control">
-                    <option value="">Seleccione una moneda</option>
-                    <option value="ADA"> Cardano (ADA) </option>
-                    <option value="BNB"> Binance Coin (BNB) </option>
-                    <option value="BTC"> Bitcoin (BTC) </option>
-                    <option value="ETH"> Ethereum (ETH) </option>
-                    <option value="SOL"> Solana (SOL) </option>
-                </select>
-
+            {{-- Formulario donde meter compra criptos (formato bien ) --}}
+            <div class="p-4 rounded-lg max-w-sm">
+                <div class="relative bg-inherit">
+                    <select wire:model="currency" id="currency"
+                        class="peer bg-transparent h-10 w-72 rounded-lg text-white placeholder-transparent ring-2 px-2 ring-gray-500 focus:ring-amarillo focus:outline-none focus:border-amarillo">
+                        <option class="bg-oscuro" value="">Seleccione una moneda</option>
+                        <option class="bg-oscuro" value="ADA"> Cardano (ADA) </option>
+                        <option class="bg-oscuro" value="BNB"> Binance Coin (BNB) </option>
+                        <option class="bg-oscuro" value="BTC"> Bitcoin (BTC) </option>
+                        <option class="bg-oscuro" value="ETH"> Ethereum (ETH) </option>
+                        <option class="bg-oscuro" value="SOL"> Solana (SOL) </option>
+                    </select>
+                    <label for="currency" 
+                        class="absolute cursor-text left-0 -top-5 text-sm text-claro bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-claro peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-white peer-focus:text-sm transition-all">
+                        Moneda:</label>
+                </div>
                 @error('currency')
-                    <span class="text-danger">{{ $message }}</span>
+                    <span class="text-red-500">{{ $message }}</span>
                 @enderror
             </div>
-            <div class="form-group">
-                <label for="price">Precio por Unidad (€):</label>
-                <input type="number" step="0.00000000000001" wire:model.lazy="price" id="price"
-                    class="form-control">
-                @error('price')
-                    <span class="text-danger">{{ $message }}</span>
-                @enderror
-            </div>
-
-            <div class="form-group">
-                <label for="amount">Cantidad:</label>
-                <input type="number" step="0.00000000000001" wire:model="amount" id="amount" class="form-control">
+            <div class="p-4 rounded-lg max-w-sm">
+                <div class="relative bg-inherit ">
+                    <input type="number" id="amount" wire:model="amount" placeholder="Cantidad"
+                        class="peer bg-transparent h-10 w-72 rounded-lg text-gray-200 placeholder-transparent ring-2 px-2 ring-gray-500 focus:ring-amarillo focus:outline-none focus:border-amarillo" />
+                    <label for="amount"
+                        class="absolute cursor-text left-0 -top-5 text-sm text-claro bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-claro peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-white peer-focus:text-sm transition-all">Cantidad:</label>
+                </div>
                 @error('amount')
-                    <span class="text-danger">{{ $message }}</span>
+                    <span class="text-red-500">{{ $message }}</span>
                 @enderror
             </div>
 
-            <div class="form-group">
-                <label for="total-cost">Costo Total (€):</label>
-                <input type="text" id="total-cost" class="form-control" readonly>
+            <div class="p-4 rounded-lg max-w-sm">
+                <div class="relative bg-inherit">
+                    <input type="number" step="0.00000000000001" wire:model.lazy="price" id="price" placeholder="0.000000000"
+                        class="peer bg-transparent h-10 w-72 rounded-lg text-gray-200 placeholder-transparent ring-2 px-2 ring-gray-500 focus:ring-amarillo focus:outline-none focus:border-amarillo" />
+                    <label for="price"
+                        class="absolute cursor-text left-0 -top-5 text-sm text-claro bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-claro peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-white peer-focus:text-sm transition-all">Precio por Unidad (€):</label>
+                </div>
+                @error('price')
+                    <span class="text-red-500">{{ $message }}</span>
+                @enderror
             </div>
-
-            <button type="submit" class="btn btn-primary">Comprar</button>
+            <div class="p-4 rounded-lg max-w-sm">
+                <div class="relative bg-inherit">
+                    <input type="text" id="total-cost" readonly  placeholder="total-cost"
+                        class="peer bg-transparent h-10 w-72 rounded-lg text-gray-200 placeholder-transparent ring-2 px-2 ring-gray-500 focus:ring-amarillo focus:outline-none focus:border-amarillo" />
+                    <label for="total-cost"
+                        class="absolute cursor-text left-0 -top-5 text-sm text-claro bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-claro peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-white peer-focus:text-sm transition-all">Coste Total (€):</label>
+                </div>
+                @error('total-cost')
+                    <span class="text-red-500">{{ $message }}</span>
+                @enderror
+            </div>                                   
+            <div class="p-4 rounded-lg max-w-sm content-center text-center">
+                <button type="submit" id="compra" class="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded" >Comprar</button>
+            </div>
         </form>
     </div>
 
     <script>
         document.addEventListener('livewire:load', function() {
-            console.log("Livewire loaded"); 
+            console.log("Livewire loaded");
             window.livewire.on('mensajeExito', function() {
                 setTimeout(function() {
                     console.log("entra a borrar mensaje de exito");
@@ -131,7 +150,7 @@
             const amount = parseFloat(amountInput.value);
             const totalCost = price * amount;
 
-            
+
             // Mostrar el costo total en el campo correspondiente
             totalCostInput.value = isNaN(totalCost) ? '' : totalCost.toFixed(8);
         }
@@ -172,6 +191,7 @@
 
         // Event listener para detectar el cambio en la selección de moneda
         document.getElementById('currency').addEventListener('change', updatePrice);
+
     </script>
 
 </div>

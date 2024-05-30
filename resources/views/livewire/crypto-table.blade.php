@@ -2,9 +2,8 @@
     <div class="bg-claro p-5 rounded-lg m-2 p-5">
 
         <div class="relative rounded-lg mx-5 my-5">
-            <h1 class="font-bold text-3xl text-oscuro text-center mb-4">Precios de Criptomonedas</h1>
-            <table class="table-auto w-full text-md text-left rtl:text-right  text-gray-400 mb-2">
-                <thead class="text-sm uppercase bg-gray-700 text-gray-400">
+            <table class="table-auto w-full text-md text-left rtl:text-right text-gray-400 mb-2">
+                <thead class="text-sm uppercase bg-medio text-gray-400">
                     <tr>
                         <th scope="col" class="px-2 py-3 tracking-wider">Cryptomoneda</th>
                         <th scope="col" class="px-2 py-3 tracking-wider"> Simbolo </th>
@@ -22,9 +21,9 @@
                 <tbody>
                     @if ($data)
                         @foreach ($data as $symbol => $crypto)
-                            <tr class="border-b bg-gray-800 border-gray-700 hover:bg-gray-600">
-                                <td class="px-2 py-4">{{ $crypto[0]['name'] }}</td>
-                                <td class="px-2 py-4">{{ $symbol }}</td>
+                            <tr class="border-b bg-oscuro border-gray-700 hover:bg-gray-600">
+                                <td class="px-2 py-4 text-center">{{ $crypto[0]['name'] }}</td>
+                                <td class="px-2 py-4 text-center">{{ $symbol }}</td>
                                 <td id="price-{{ $symbol }}" class="px-2 py-4">
                                     {{ $crypto[0]['quote']['EUR']['price'] }}</td>
                                 <td class="px-2 py-4">
@@ -40,7 +39,7 @@
                             </tr>
                         @endforeach
                     @else
-                        <tr class="border-b bg-gray-800 border-gray-700 hover:bg-gray-600">
+                        <tr class="border-b bg-oscuro border-gray-700 hover:bg-gray-600">
                             <td colspan="10" class="text-red-500 font-bold py-4">No se encontraron criptomonedas.</td>
                         </tr>
                     @endif

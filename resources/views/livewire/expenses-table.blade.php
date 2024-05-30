@@ -38,7 +38,7 @@
                     <th scope="col" class="px-6 py-3 tracking-wider"> Imagen </th>
                     <th scope="col" class="px-6 py-3 tracking-wider" wire:click="sortBy('description')">Descripción
                     </th>
-                    <th scope="col" class="px-6 py-3 tracking-wider" wire:click="sortBy('amount')">Monto</th>
+                    <th scope="col" class="px-6 py-3 tracking-wider" wire:click="sortBy('amount')">Cantidad</th>
                     <th scope="col" class="px-6 py-3 tracking-wider" wire:click="sortBy('date')">Fecha</th>
                     <th scope="col" class="px-6 py-3 tracking-wider" wire:click="sortBy('expense_category_id')">
                         Categoría</th>

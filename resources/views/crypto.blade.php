@@ -1,6 +1,10 @@
 <x-app-layout>
-
-    <section name="tablaprecios" class="mb-6 px-6">
+    <x-slot name="header">
+        <h2 class="font-bold text-4xl text-white leading-tight">
+            Simulador Criptomonedas
+        </h2>
+    </x-slot>
+    <section name="tablaprecios" class="mb-6 px-6 pt-4">
         <h3 class="font-bold text-2xl text-white leading-tight text-center mt-4 mb-2 py-2">
             Precios criptomonedas
         </h3>    

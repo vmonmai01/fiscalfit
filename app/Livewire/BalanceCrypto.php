@@ -22,6 +22,6 @@ class BalanceCrypto extends Component
         $user = auth()->user();
         $user->simulator_balance += 1000;
         $user->save();
-        return $this->render();
+        return view('cryptos');
     }
 }

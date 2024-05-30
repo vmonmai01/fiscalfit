@@ -44,7 +44,7 @@
             </li>
             <li style="margin-right: 10px; padding: 15px 0;"><strong>Categoría:</strong> {{ $expenseCategory }}</li>
             <li style="margin-right: 10px; padding: 15px 0;"><strong>Fecha:</strong> {{ $expenseDate }}</li>
-            <li style="margin-right: 10px; padding: 15px 0;"><strong>Monto:</strong> {{ $expenseAmount }}</li>
+            <li style="margin-right: 10px; padding: 15px 0;"><strong>Cantidad:</strong> {{ $expenseAmount }}</li>
             @if (isset($expenseImg))
                 <div style="text-align: center;">
                     <?php   

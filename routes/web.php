@@ -53,7 +53,7 @@ Route::get('/incomes', function () {
     return view('incomes');
 })->name('incomes');
 
-Route::get('/cryptos', [CryptoController::class, 'getPrices']);
+Route::get('/cryptos', [CryptoController::class, 'getPrices'])->name('cryptos');
 Route::get('/users', function () {
     return view('user.user'); 
 })->name('users');
