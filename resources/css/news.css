@@ -1,21 +1,29 @@
 /* Estilos para los elementos específicos */
+/* 
+            'oscuro': '#181A20',
+            'medio': '#2B313A',
+            'claro': '#848E9C',
+            'amarillo': '#EFB90D',
+*/
 .news-item {
     margin: 30px;
-    background-color: #fff;
+    background-color: #2B313A;
     padding: 50px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(212, 153, 153, 0.1);
+    border-color:#EFB90D ;
+    box-shadow: 0 0 10px #EFB90D;
 }
 
 .news-title {
     font-size: 24px;
-    color: #0a0b0c; /* Azul */
+    color: #f8f8f8; /* Azul */
     margin-bottom: 10px;
     font-weight: bold;
+    text-align: center;
 }
 
 .news-author {
-    color: #666; /* Gris */
+    color: #cacaca; /* Gris */
     font-style: italic;
     margin-bottom: 5px;
 }
@@ -23,12 +31,13 @@
 .news-description {
     font-size: 18px;
     margin-bottom: 10px;
+    color: #ffffff; 
 }
 
 .news-content {
     font-size: 16px;
     line-height: 1.5;
-    color: #000; /* Negro */
+    color: #e2d9d9; 
     margin-bottom: 20px;
 }
 
