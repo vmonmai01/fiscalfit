@@ -8,6 +8,7 @@ use Livewire\WithPagination;
 use Livewire\WithoutUrlPagination;
 use Livewire\Attributes\On;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class IncomesTable extends Component
 {
@@ -44,11 +45,6 @@ class IncomesTable extends Component
         return view('livewire.incomes-table', ['incomes' => $incomes]);
     }
 
-    public function editIncome($incomeId)
-    {
-        // Redirigir a la página de edición de ingreso
-        // Implementa esta lógica -> 
-    }
 
     public function deleteIncome($incomeId)
     {

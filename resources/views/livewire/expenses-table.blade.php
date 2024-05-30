@@ -2,9 +2,11 @@
 
     <h1 class="font-bold text-3xl text-oscuro text-center"> Gastos Registrados </h1>
     @if (session()->has('message'))
-        <div>{{ session('message') }}</div>
+    <div class="p-4 mb-4 mt-4 text-sm bg-medio rounded-lg max-w-lg mx-auto text-center">
+        <p class="text-green-400">{{ session('message') }}</p>
+    </div>
     @endif
-
+    
     <div class="relative rounded-lg mx-5 my-5">
         {{-- Busqueda  --}}
         <form class="max-w-lg mx-auto py-5 px-5">

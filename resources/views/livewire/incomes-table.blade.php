@@ -1,7 +1,9 @@
 <div class="bg-claro p-5 rounded-lg m-2">
     <h1 class="font-bold text-3xl text-oscuro text-center"> Ingresos Registrados </h1>
     @if (session()->has('message'))
-        <div>{{ session('message') }}</div>
+        <div class="p-4 mb-4 mt-4 text-sm bg-medio rounded-lg max-w-lg mx-auto text-center">
+            <p class="text-green-400">{{ session('message') }}</p>
+        </div>
     @endif
     <div class="relative rounded-lg mx-5 my-5">
         {{-- Busqueda  --}}
@@ -27,7 +29,7 @@
 
         {{-- Tabla --}}
 
-        <table  class="table-auto w-full text-md text-left rtl:text-right  text-gray-400 mb-2">
+        <table  class="table-auto w-full text-md text-left rtl:text-right text-gray-400 mb-2">
             <thead class="text-sm uppercase bg-medio text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3 tracking-wider">Marcar</th>
@@ -64,8 +66,8 @@
         </table>
         {{ $incomes->links() }}
 
-        <button class="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded" wire:click="deleteSelected" >Eliminar
-            Seleccionados
+        <button class="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded" wire:click="deleteSelected" >
+            Eliminar Seleccionados
         </button>
 
     </div>

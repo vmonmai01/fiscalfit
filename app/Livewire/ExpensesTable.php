@@ -41,10 +41,6 @@ class ExpensesTable extends Component
         return view('livewire.expenses-table', ['expenses' => $expenses]);
     }
 
-    public function editExpense($expenseId)
-    {
-        // Implementa la lógica para editar un gasto
-    }
 
     public function deleteExpense($expenseId)
     {
