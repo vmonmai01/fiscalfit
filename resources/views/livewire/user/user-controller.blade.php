@@ -6,10 +6,10 @@
             <div class="flex">
                 <div class="relative w-full">
                     <input type="text" id="search" wire:model.live="search"
-                        class="block p-2.5 w-full z-20 text-sm  rounded-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-amarillo focus:border-amarillo bg-gray-700 placeholder-gray-400 text-white"
+                        class="block p-2.5 w-full z-20 text-sm  rounded-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-amarillo focus:border-amarillo bg-oscuro placeholder-gray-400 text-white"
                         placeholder="Buscar por nombre, apellido, email, etc..." />
                     <button disabled
-                        class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-amarillo rounded-e-lg hover:bg-amarillo focus:ring-4 focus:outline-none focus:ring-amarillo ">
+                        class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-black bg-amarillo rounded-e-lg hover:bg-amarillo focus:ring-4 focus:outline-none focus:ring-amarillo ">
                         <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 20 20">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -23,7 +23,7 @@
 
         <!-- Tabla de usuarios -->
         <table class="table-auto w-full text-md text-left rtl:text-right  text-gray-400 mb-2">
-            <thead class="text-sm uppercase bg-gray-700 text-gray-400">
+            <thead class="text-sm uppercase bg-medio text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3 tracking-wider">
                         <button>AVATAR</button>
@@ -82,7 +82,7 @@
             <tbody>
                 @if (count($users) != 0)
                     @foreach ($users as $user)
-                        <tr class="border-b bg-gray-800 border-gray-700 hover:bg-gray-600">
+                        <tr class="border-b bg-oscuro border-gray-700 hover:bg-gray-600">
                             <td class="px-6 py-4"><img src="{{ asset('storage/user_avatar/' . $user->avatar) }}"
                                     alt="Avatar de {{ $user->name }}" class="w-12 h-12 rounded-full mx-2"></td>
                             <td class="px-6 py-4">{{ $user->name }}</td>
@@ -91,16 +91,16 @@
                             <td class="px-6 py-4">{{ number_format($user->simulator_balance, 2) }} €</td>
                             <td class="px-6 py-4">{{ $user->email }}</td>
                             <td class="px-6 py-4">{{ $user->rol }}</td>
-                            <td class="px-6 py-4">
-                                <button wire:click="showUserDetail({{ $user->id }})">Ver Detalles</button>
+                            <td class="px-6 py-4" style="display: flex; align-items: center; gap: 10px;">
+                                <button wire:click="showUserDetail({{ $user->id }})"><i class="fa-regular fa-eye"
+                                        style="color: #FFD43B;"></i></button>
                                 <x-boton-delete onClick="confirmUserDelete({{ $user->id }})" />
                             </td>
                     @endforeach
                 @else
-                    <tr class="border-b bg-gray-800 border-gray-700 hover:bg-gray-600">
+                    <tr class="border-b bg-oscuro border-gray-700 hover:bg-gray-600">
                         <td colspan="8" class="text-red-500 font-bold py-4 text-center">No se encontraron usuarios de
-                            la
-                            aplicación.</td>
+                            la aplicación.</td>
                 @endif
                 </tr>
             </tbody>
@@ -113,19 +113,18 @@
         <!-- Modal -->
         @if ($showModalDetails)
             <div class="modal" id="medium-modal" tabindex="-1"
-                class="shadow-xl fixed inset-0 z-50 overflow-y-auto bg-gray-900 bg-opacity-60 flex justify-center items-center">
+                class="shadow-xl fixed inset-0 z-50 overflow-y-auto bg-oscuro bg-opacity-60 flex justify-center items-center">
                 <div
-                    class="fixed inset-0 z-50 overflow-y-auto bg-gray-900 bg-opacity-60 flex justify-center items-center ">
+                    class="fixed inset-0 z-50 overflow-y-auto bg-oscuro bg-opacity-60 flex justify-center items-center ">
                     <!-- Modal content -->
-                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 min-w-[300px] min-h-[300px]">
+                    <div class="relative bg-oscuro rounded-lg shadow min-w-[300px] min-h-[300px]">
                         <!-- Modal header -->
-                        <div
-                            class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                            <h3 class="text-xl font-medium text-gray-900 dark:text-white">
+                        <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-600">
+                            <h3 class="text-xl font-medium text-white">
                                 Detalles del Usuario: {{ $userDetails->name }} {{ $userDetails->lastname }}
                             </h3>
                             <button type="button"
-                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center "
                                 wire:click="closeUserDetail">
                                 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                     fill="none" viewBox="0 0 14 14">
@@ -169,7 +168,7 @@
                             class="flex items-center p-2 md:p-2 border-t border-gray-200 rounded-b dark:border-gray-600">
 
                             <button wire:click="closeUserDetail" type="button"
-                                class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Cerrar</button>
+                                class="py-2.5 px-5 ms-3 text-sm font-medium text-white focus:outline-none bg-oscuro rounded-lg border border-gray-200 hover:bg-medio hover:text-amarillo focus:z-10 focus:ring-4 focus:ring-gray-100  ">Cerrar</button>
                         </div>
                     </div>
                 </div>
@@ -186,7 +185,11 @@
                     showCancelButton: true,
                     confirmButtonColor: "#3085d6",
                     cancelButtonColor: "#d33",
-                    confirmButtonText: "Sí, borrar!"
+                    confirmButtonText: "Sí, borrar!",
+                    background: '#181A20',
+                    customClass: {
+                        popup: 'swal2-custom'
+                    }
                 }).then((result) => {
                     if (result.isConfirmed) {
                         const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
@@ -200,11 +203,15 @@
                             })
                             .then(response => response.json())
                             .then(data => {
-                                if (data.message === 'User deleted successfully.') {
+                                if (data.message === 'Usuario eliminado correctamente.') {
                                     Swal.fire({
                                         title: "¡Eliminado!",
                                         text: "El usuario ha sido eliminado correctamente.",
-                                        icon: "success"
+                                        icon: "success",
+                                        background: '#181A20',
+                                        customClass: {
+                                            popup: 'swal2-custom'
+                                        }
                                     }).then(() => {
                                         location.reload(); // Recargar la página para actualizar la tabla
                                     });
@@ -212,7 +219,11 @@
                                     Swal.fire({
                                         title: "Error",
                                         text: "Hubo un problema al eliminar el usuario. ",
-                                        icon: "error"
+                                        icon: "error",
+                                        background: '#181A20',
+                                        customClass: {
+                                            popup: 'swal2-custom'
+                                        }
                                     });
                                 }
                             })
@@ -220,7 +231,11 @@
                                 Swal.fire({
                                     title: "Error",
                                     text: "Hubo un problema al eliminar el usuario.",
-                                    icon: "error"
+                                    icon: "error",
+                                    background: '#181A20',
+                                    customClass: {
+                                        popup: 'swal2-custom'
+                                    }
                                 });
                             });
                     }

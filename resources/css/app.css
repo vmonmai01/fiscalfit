@@ -2,24 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-/* En tu archivo CSS personalizado */
-/* .table-tailwind {
-    background-color: #2B313A;
-    border-color: #848E9C;
+.swal2-custom .swal2-title {
+    color: #ffffff; /* Cambia el color del título a rojo */
 }
 
-.table-tailwind th {
-     
+.swal2-custom .swal2-content {
+    color: #f0f0f0; /* Cambia el color del contenido a verde */
 }
-
-.table-tailwind td {
-    
-}
-
-.table-tailwind tr:hover {
-    
-} */
-
 
 /* 
 
