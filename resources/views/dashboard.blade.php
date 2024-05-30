@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl  leading-tight">
-            {{ __('Dashboard') }}
+        <h2 class="font-bold text-4xl text-white leading-tight">
+            Inicio
         </h2>
     </x-slot>
 
@@ -15,7 +15,7 @@
                         </div>
                     @endif
 
-                    <div class="flex flex-wrap space-x-8 items-center justify-center my-8">
+                    <div class="flex flex-wrap space-x-8 items-center justify-center my-4">
                         @livewire('monthly-income-total')
                         @livewire('monthly-expense-total')
                         @livewire('monthly-balance-total')

@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-bold text-4xl text-gray-900 dark:text-gray-200 leading-tight">
+        <h2 class="font-bold text-4xl text-white leading-tight">
             Noticas última hora
         </h2>
     </x-slot>

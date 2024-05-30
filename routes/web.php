@@ -56,6 +56,6 @@ Route::get('/incomes', function () {
 Route::get('/cryptos', [CryptoController::class, 'getPrices']);
 Route::get('/users', function () {
     return view('user.user'); 
-});
+})->name('users');
 
 require __DIR__.'/auth.php';

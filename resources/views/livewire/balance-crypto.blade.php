@@ -1,4 +1,5 @@
 <div class="bg-claro p-5 rounded-lg m-2">
+    
     {{-- Care about people's approval and you will be their prisoner. --}}
     <table class="table-auto w-full text-md text-left rtl:text-right  text-gray-400 mb-2">
         <thead class="text-sm uppercase bg-gray-700 text-gray-400">
