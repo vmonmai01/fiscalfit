@@ -14,32 +14,38 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    
-                    @livewire('monthly-income-total')
-                    @livewire('monthly-expense-total')
-                    @livewire('monthly-balance-total')
-                    
+
+                    <div class="flex flex-wrap space-x-8 items-center justify-center my-8">
+                        @livewire('monthly-income-total')
+                        @livewire('monthly-expense-total')
+                        @livewire('monthly-balance-total')
+                    </div>
+
+
                     <!-- Aquí renderizamos el componente ChartBarDiferenceBtwIncExp -->
-                         <x-chart-bar-diference-btw-inc-exp /> 
-                
-  
+                    <div class="flex justify-center my-4 mx-auto">
+                        <x-chart-bar-diference-btw-inc-exp />
+                    </div>
+                   
+
+
                     {{-- @livewire('bar-charts.profit-diference') --}}
 
-      
 
 
 
 
-        
-                    
-                    
-         
-                  
 
-               
 
-                    
-                    
+
+
+
+
+
+
+
+
+
 
 
                 </div>

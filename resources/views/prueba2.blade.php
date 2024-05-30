@@ -122,7 +122,7 @@
                     <span class="ml-2 text-sm font-medium"> Gráficos</span>
                 </a>
                 <a class="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-medio hover:text-amarillo"
-                    href="#">
+                    href="news">
                     <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -133,7 +133,7 @@
             </div>
             <div class="flex flex-col items-center w-full mt-2 border-t border-gray-700">
                 <a class="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-medio hover:text-amarillo"
-                    href="#">
+                    href="cryptos">
                     <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -151,7 +151,7 @@
                     <span class="ml-2 text-sm font-medium">Services</span>
                 </a>
                 <a class="relative flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-medio hover:text-amarillo"
-                    href="#">
+                    href="notifications">
                     <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
