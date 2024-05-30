@@ -52,7 +52,7 @@ class AddExpense extends Component
     {
         $this->validate();
 
-        $photoName = null;
+        $photoName = NULL;
         $limit = 40; // Cantidad que marca el corte para enviar o no notificaciones, si es > se envía. 
 
         // Verificar si se ha proporcionado una foto

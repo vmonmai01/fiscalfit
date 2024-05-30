@@ -29,11 +29,13 @@
 
         {{-- Tabla --}}
 
-        <table  class="table-auto w-full text-md text-left rtl:text-right text-gray-400 mb-2">
+        <table class="table-auto w-full text-md text-left rtl:text-right text-gray-400 mb-2">
             <thead class="text-sm uppercase bg-medio text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3 tracking-wider">Marcar</th>
-                    <th scope="col" class="px-6 py-3 tracking-wider" wire:click="sortBy('description')">Descripción </th>
+                    <th scope="col" class="px-6 py-3 tracking-wider"> Imagen </th>
+                    <th scope="col" class="px-6 py-3 tracking-wider" wire:click="sortBy('description')">Descripción
+                    </th>
                     <th scope="col" class="px-6 py-3 tracking-wider" wire:click="sortBy('amount')">Monto</th>
                     <th scope="col" class="px-6 py-3 tracking-wider" wire:click="sortBy('date')">Fecha</th>
                     <th scope="col" class="px-6 py-3 tracking-wider">Categoría</th>
@@ -42,17 +44,31 @@
             </thead>
             <tbody>
                 @forelse($incomes as $income)
-                    <tr
-                    class="border-b bg-oscuro border-gray-700 hover:bg-gray-600">
-                        <td class="px-6 py-4"> <input id="{{ $income->id }}" type="checkbox" wire:model="selectedIncomes" value="{{ $income->id }}"
-                            class="w-4 h-4 text-amarillo bg-gray-100 border-gray-300 rounded focus:ring-amarillo focus:ring-2"> 
+                    <tr class="border-b bg-oscuro border-gray-700 hover:bg-gray-600">
+                        <td class="px-6 py-4"> <input id="{{ $income->id }}" type="checkbox"
+                                wire:model="selectedIncomes" value="{{ $income->id }}"
+                                class="w-4 h-4 text-amarillo bg-gray-100 border-gray-300 rounded focus:ring-amarillo focus:ring-2">
+                        </td>
+                        <td class="px-6 py-4 flex justify-center ">
+                            @if ($income->photo != null)
+                                <a href="{{ asset('storage/incomes_photos/' . $income->photo) }}" target="_blank">
+                                    <img src="{{ asset('storage/incomes_photos/' . $income->photo) }}"
+                                        alt="Imagen del Ingreso {{ $income->id }}" width="50" height="50">
+                                </a>
+                            @else
+                                <svg class="w-4 h-4 text-red-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 14 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                </svg>
+                            @endif
                         </td>
                         <td class="px-6 py-4">{{ $income->description }}</td>
                         <td class="px-6 py-4">{{ $income->amount }}</td>
                         <td class="px-6 py-4">{{ $income->date }}</td>
                         <td class="px-6 py-4">{{ $income->category->type }}</td>
                         <td class="px-6 py-4">
-                            <x-boton-delete wire:click="deleteIncome({{ $income->id }})"/>
+                            <x-boton-delete wire:click="deleteIncome({{ $income->id }})" />
                         </td>
                     </tr>
                 @empty
@@ -66,7 +82,7 @@
         </table>
         {{ $incomes->links() }}
 
-        <button class="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded" wire:click="deleteSelected" >
+        <button class="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded" wire:click="deleteSelected">
             Eliminar Seleccionados
         </button>
 

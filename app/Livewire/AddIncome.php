@@ -48,7 +48,7 @@ class AddIncome extends Component
     {
         $this->validate();
 
-        $photoName = null;
+        $photoName = NULL;
 
         // Verificar si se ha proporcionado una foto
         if ($this->photo) {
