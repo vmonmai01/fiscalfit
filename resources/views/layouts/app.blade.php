@@ -17,16 +17,18 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts" async></script>
-    @vite(['resources/css/app.css', 'resources/css/news.css', 'resources/js/app.js'])  
+    @vite(['resources/css/app.css', 'resources/css/news.css', 'resources/js/app.js'])
     {{-- 'resources/js/chartExpesesDates.js', 'resources/js/chartIncomesDates.js', 'resources/js/chartBtwIncExp.js', 'resources/js/noticias.js' --}}
 
     @include('layouts.navigation')
-    <div class="flex bg-medio ">
+
+<body class="bg-medio text-gray-900 flex flex-col min-h-screen">
+    <div class="flex flex-grow bg-medio">
         <!-- Sidebar -->
         <div class="basis-1/12">
             @include('prueba2')
         </div>
-        
+
 
         <!-- Contenido principal -->
         <div class="basis-11/12 px-[80px]">
@@ -40,11 +42,12 @@
             @endif
 
             <!-- Contenido de la página -->
-            <main class="bg-oscuro m-3 rounded-lg ">
+            <main class="bg-oscuro m-3 rounded-lg flex-grow ">
                 {{ $slot }}
             </main>
         </div>
     </div>
+    @include('layouts.footer')
 
     <!-- Aquí se incluirán los scripts específicos de la página -->
     @yield('scripts')
