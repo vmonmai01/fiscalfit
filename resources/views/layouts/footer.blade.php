@@ -5,9 +5,14 @@
             <!-- Logo y Nombre del Sitio -->
             <div
                 class="w-full md:w-1/3 text-center md:text-left mb-4 md:mb-0 flex items-center justify-center md:justify-start pt-5 pl-5">
-                <a href="{{ url('/') }}" class="text-2xl font-bold text-amarillo">FiscalFit</a>
-                <img src="{{ asset('storage/fiscalfit/logo.png') }}" alt="logo"
-                    class="block h-9 w-auto fill-current text-amarillo">
+                <div class="flex flex-col items-center justify-center">
+                    <a href="/">
+                        <img class="w-auto h-10" src="{{ asset('storage/fiscalfit/fiscal.png') }}">    
+                    </a>
+                    <a href="/">
+                        <img class="w-auto h-24 self-start" src="{{ asset('storage/fiscalfit/logo.png') }}">            
+                    </a>
+                </div>
             </div>
             <!-- Enlaces de Navegación -->
             <div class="w-full md:w-1/3 text-center mb-4 md:mb-0 flex items-center justify-center pt-5">
