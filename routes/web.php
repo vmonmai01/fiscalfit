@@ -33,15 +33,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/news', [NewsController::class, 'index'])->name('news.index');
 Route::get('/notifications', [NotificationController::class, 'index']);
 Route::post('/notifications/mark-as-read/{id}', [NotificationController::class, 'markAsRead'])->name('notifications.markAsRead');
-// Route::get('/prueba', function () {
-//     return view('prueba');
-// });
-// Route::get('/prueba1', function () {
-//     return view('prueba1');
-// });
-// Route::get('/prueba2', function () {
-//     return view('prueba2');
-// });
+
 
 // Ruta para expenses.blade.php
 Route::get('/expenses', function () {
@@ -57,5 +49,12 @@ Route::get('/cryptos', [CryptoController::class, 'getPrices'])->name('cryptos');
 Route::get('/users', function () {
     return view('user.user'); 
 })->name('users');
+
+Route::get('/policy', function () {
+    return view('politica');
+})->name('policy');
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
 
 require __DIR__.'/auth.php';

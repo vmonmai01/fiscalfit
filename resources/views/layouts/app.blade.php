@@ -42,7 +42,7 @@
             @endif
 
             <!-- Contenido de la página -->
-            <main class="bg-oscuro m-3 rounded-lg flex-grow ">
+            <main class="bg-oscuro m-3 rounded-lg flex-grow p-4">
                 {{ $slot }}
             </main>
         </div>

@@ -13,7 +13,7 @@
             <div class="w-full md:w-1/3 text-center mb-4 md:mb-0 flex items-center justify-center pt-5">
                 <ul class="flex flex-wrap justify-center space-x-6">
                     <li><a href="{{ url('/') }}" class="hover:text-amarillo">Inicio</a></li>
-                    <li><a href="{{ url('/about') }}" class="hover:text-amarillo">Politica de Privacidad</a></li>
+                    <li><a href="{{ url('/policy') }}" class="hover:text-amarillo">Politica de Privacidad</a></li>
                     <li><a href="{{ url('/contact') }}" class="hover:text-amarillo">Contacto</a></li>
                 </ul>
             </div>
