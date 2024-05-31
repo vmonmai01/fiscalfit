@@ -26,28 +26,7 @@
                     <div class="flex justify-center my-4 mx-auto">
                         <x-chart-bar-diference-btw-inc-exp />
                     </div>
-                   
-
-
                     {{-- @livewire('bar-charts.profit-diference') --}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 </div>
             </div>
         </div>
