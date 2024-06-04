@@ -60,7 +60,7 @@
     {{-- Formulario de compra de criptomonedas --}}
 
     <div class="mx-5 pl-[100px]">
-        <h3 class="font-bold text-2xl text-white leading-tight text-center mt-4 mb-2 py-2">Comprar Criptomonedas</h3>
+        <h3 class="font-bold text-2xl text-white leading-tight text-center mt-4 mb-2 py-2">Compra Criptomonedas</h3>
         <form wire:submit.prevent="buy" id="buyForm">
             {{-- Formulario donde meter compra criptos (formato bien ) --}}
             <div class="p-4 rounded-lg max-w-sm">

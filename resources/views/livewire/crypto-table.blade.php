@@ -46,6 +46,9 @@
     <div class="w-[500px] items-center p-4 ">
         @livewire('buy-crypto')
     </div>
+    <div class="w-[500px] items-center p-4 ">
+        @livewire('sell-crypto')
+    </div>
 
 
 </div>
