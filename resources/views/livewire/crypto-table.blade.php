@@ -11,8 +11,6 @@
                         <th scope="col" class="px-2 py-3 tracking-wider">Cambio de precio en 24H (%)</th>
                         <th scope="col" class="px-2 py-3 tracking-wider"> Cambio de precio en 7 días (%)</th>
                         <th scope="col" class="px-2 py-3 tracking-wider"> Cap. Mercado </th>
-                        <th scope="col" class="px-2 py-3 tracking-wider"> Volumen Op 24h</th>
-
                         <th scope="col" class="px-2 py-3 tracking-wider"> Suministro en circulación </th>
                         <th scope="col" class="px-2 py-3 tracking-wider">Suministro total</th>
                         <th scope="col" class="px-2 py-3 tracking-wider">Clasificación</th>
@@ -31,8 +29,6 @@
                                 <td class="px-2 py-4">
                                     {{ number_format($crypto[0]['quote']['EUR']['percent_change_7d'], 2) }}%</td>
                                 <td class="px-2 py-4">{{ $crypto[0]['quote']['EUR']['market_cap'] }}</td>
-                                <td class="px-2 py-4">{{ $crypto[0]['quote']['EUR']['volume_24h'] }}</td>
-
                                 <td class="px-2 py-4">{{ $crypto[0]['circulating_supply'] }}</td>
                                 <td class="px-2 py-4">{{ $crypto[0]['total_supply'] }}</td>
                                 <td class="px-2 py-4 text-center">{{ $crypto[0]['cmc_rank'] }}</td>
@@ -40,7 +36,7 @@
                         @endforeach
                     @else
                         <tr class="border-b bg-oscuro border-gray-700 hover:bg-gray-600">
-                            <td colspan="10" class="text-red-500 font-bold py-4">No se encontraron criptomonedas.</td>
+                            <td colspan="9" class="text-red-500 font-bold py-4">No se encontraron criptomonedas.</td>
                         </tr>
                     @endif
                 </tbody>

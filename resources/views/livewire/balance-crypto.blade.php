@@ -20,7 +20,7 @@
                 </tr>
             @empty
                 <tr class="border-b bg-oscuro border-gray-700 hover:bg-gray-600">
-                    <td colspan="3" class="text-red-500 text-center font-bold py-4"> Tu balance de cryptomonedas no
+                    <td colspan="4" class="text-red-500 text-center font-bold py-4"> Tu balance de cryptomonedas no
                         tiene datos.</td>
                 </tr>
             @endforelse
