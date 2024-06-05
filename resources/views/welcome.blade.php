@@ -870,6 +870,28 @@
                                     d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
                             </svg>
                         </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                            class="scale-100 p-6 bg-medio bg-gradient-to-bl from-claro via-transparent rounded-lg shadow-2xl flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-amarillo">
+                            <div>
+                                <div class="h-16 w-16 bg-amarillo flex items-center justify-center rounded-full">
+                                    <img width="26" height="26" src="https://img.icons8.com/ios/50/exit--v1.png" alt="exit--v1"/>
+                                </div>
+
+                                <h2 class="mt-6 text-xl font-semibold text-white"> Cerrar sesión </h2>
+
+
+                            </div>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                class="self-center shrink-0 stroke-amarillo w-6 h-6 ml-[70px]">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                            </svg>
+                        </a>
+
                     @else
                         {{-- Card Login --}}
                         <a href="{{ route('login') }}"
