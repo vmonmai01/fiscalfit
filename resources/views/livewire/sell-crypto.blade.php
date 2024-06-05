@@ -121,6 +121,7 @@
                     <span class="text-red-500">{{ $message }}</span>
                 @enderror
             </div>
+            <p id="errorMessage" class="text-red-500 hidden">No posees unidades de la criptomoneda seleccionada</p>
             <div class="p-4 rounded-lg max-w-sm content-center text-center">
                 <button type="button" id="maxAmount"
                     class="bg-medio text-white hover:bg-amarillo hover:text-oscuro font-bold py-2 px-4 rounded"> Máxima
@@ -159,11 +160,24 @@
             const selectedCurrency = currencySelect.value;
             if (selectedCurrency) {
                 const montoInput = document.getElementById(`monto-${selectedCurrency}`);
-                console.log(montoInput.textContent.trim());
                 if (montoInput) {
-                    amountInputSell.value = montoInput.textContent.trim();
+                    const montoValue = montoInput.textContent.trim();
+                    if (montoValue === '' || montoValue === '0.00000000') {
+                        // Mostrar el mensaje de error si el monto es vacío o 0
+                        document.getElementById('errorMessage').classList.remove('hidden');
+                        // Establecer el valor en 0 o dejarlo vacío según lo necesites
+                        amountInputSell.value = ''; // O también puedes establecerlo en 0
+                    } else {
+                        // Ocultar el mensaje de error si se encuentra el monto y no es 0
+                        document.getElementById('errorMessage').classList.add('hidden');
+                        amountInputSell.value = montoValue;
+                    }
                 } else {
-                    console.error(`No se encontró el input con id "monto-${selectedCurrency}"`);
+                    // Si no se encontró el elemento, mostrar el mensaje de error
+                    document.getElementById('errorMessage').classList.remove('hidden');
+                    // Establecer el valor en 0 o dejarlo vacío según lo necesites
+                    amountInputSell.value = ''; // O también puedes establecerlo en 0
+                    console.error(`No posees la criptomoneda ${selectedCurrency}`);
                 }
             } else {
                 console.error('No se ha seleccionado ninguna moneda');
