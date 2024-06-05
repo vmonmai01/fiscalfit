@@ -27,7 +27,7 @@
                     <button id="dropdownIncomes" data-dropdown-toggle="lastDaysIncomes" data-dropdown-placement="bottom"
                         class="text-sm font-medium text-gray-400 hover:text-white text-center inline-flex items-center"
                         type="button">
-                        Time
+                        Período
                         <svg class="w-2.5 m-2.5 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                             fill="none" viewBox="0 0 10 6">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

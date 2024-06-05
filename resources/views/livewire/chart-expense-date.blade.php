@@ -1,8 +1,8 @@
 <div>
-    {{-- <script>
+     <script>
         const userId = {{ $userId ?? 'null' }};
         console.log('ID del usuario:', userId);
-    </script> --}}
+    </script> 
 
     <!-- Gráfico de porcentage de gastos por fecha -->
     <div class="div">
@@ -27,7 +27,7 @@
                         data-dropdown-placement="bottom"
                         class="text-sm font-medium text-gray-400 hover:text-white text-center inline-flex items-center"
                         type="button">
-                        Time
+                        Período
                         <svg class="w-2.5 m-2.5 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 10 6">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -38,16 +38,16 @@
                         class="z-10 hidden bg-oscuro divide-y divide-gray-100 rounded-lg shadow w-44 ">
                         <ul class="py-2 text-sm text-white text-center" aria-labelledby="dropdownExpenses">
                             <li>
-                                <button class="btn btn-primary py-2" type="button" value="1"> 1 Mes</button>
+                                <button id="btn1" class="btn btn-primary py-2" type="button" value="1"> 1 Mes</button>
                             </li>
                             <li>
-                                <button class="btn btn-primary py-2" type="button" value="3"> 3 Meses</button>
+                                <button id="btn3" class="btn btn-primary py-2" type="button" value="3"> 3 Meses</button>
                             </li>
                             <li>
-                                <button class="btn btn-primary py-2" type="button" value="6"> 6 Meses</button>
+                                <button id="btn6"  class="btn btn-primary py-2" type="button" value="6"> 6 Meses</button>
                             </li>
                             <li>
-                                <button class="btn btn-primary py-2" type="button" value="12"> 1 Año</button>
+                                <button id="btn12"  class="btn btn-primary py-2" type="button" value="12"> 1 Año</button>
                             </li>
                         </ul>
                     </div>
