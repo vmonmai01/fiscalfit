@@ -20,57 +20,45 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // Panel principal
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/news', [NewsController::class, 'index'])->name('news.index');
 
-    // Notificaciones
     Route::get('/notifications', [NotificationController::class, 'index']);
     Route::post('/notifications/mark-as-read/{id}', [NotificationController::class, 'markAsRead'])->name('notifications.markAsRead');
 
-    // Ruta para gastos
+    // Ruta para expenses.blade.php
     Route::get('/expenses', function () {
         return view('expenses');
     })->name('expenses');
 
-    // Ruta para ingresos
+    // Ruta para incomes.blade.php
     Route::get('/incomes', function () {
         return view('incomes');
     })->name('incomes');
 
-    // Ruta para cryptos
     Route::get('/cryptos', [CryptoController::class, 'getPrices'])->name('cryptos');
     
-    // Rutas para administradores -> usuarios
-    Route::middleware('admin')->group(function () {
-        // Rutas que requieren que el usuario sea administrador
-        Route::get('/users', function () {
-            return view('user.user'); 
-        })->name('users');
-});
-
-});
-
-
-
-
-
-
-    Route::get('/news', [NewsController::class, 'index'])->name('news.index');
-
     Route::get('/policy', function () {
         return view('politica');
     })->name('policy');
     Route::get('/contact', function () {
         return view('contact');
     })->name('contact');
+});
+
+Route::middleware(['auth', 'verified','admin'])->group(function () { 
+    Route::get('/users', function () {
+        return view('user.user'); 
+    })->name('users');
+});
+
 
 require __DIR__.'/auth.php';
