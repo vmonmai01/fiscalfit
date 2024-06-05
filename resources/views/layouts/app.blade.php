@@ -14,7 +14,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/9537eb5475.js" crossorigin="anonymous"></script>
-
+    
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts" async></script>
     @vite(['resources/css/app.css', 'resources/css/news.css', 'resources/js/app.js'])
