@@ -82,14 +82,14 @@ class SellCrypto extends Component
     public function borrarMensajeExitoSell()
     {
         $this->mensajeExitoSell = null;
-        return view('cryptos');
+        return redirect()->to('/cryptos');
     }
 
     #[On('mensajeErrorSell')]
     public function borrarMensajeErrorSell()
     {
         $this->mensajeErrorSell = null;
-        return view('cryptos');
+        return redirect()->to('/cryptos');
     }
     public function render()
     {

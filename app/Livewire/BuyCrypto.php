@@ -74,14 +74,14 @@ class BuyCrypto extends Component
     public function borrarMensajeExito()
     {
         $this->mensajeExito = null;
-        return view('cryptos');
+        return redirect()->to('/cryptos');
     }
 
     #[On('mensajeError')]
     public function borrarMensajeError()
     {
         $this->mensajeError = null;
-        return view('cryptos');
+        return redirect()->to('/cryptos');
     }
 
     public function render()
