@@ -121,7 +121,10 @@
                     <span class="text-red-500">{{ $message }}</span>
                 @enderror
             </div>
-            <p id="errorMessage" class="text-red-500 hidden">No posees unidades de la criptomoneda seleccionada</p>
+            <div class="p-4 rounded-lg max-w-sm">
+                <p id="errorMessage" class="text-red-500 hidden">No posees unidades de la criptomoneda seleccionada</p>
+                <p id="noCurrency"class="text-red-500 hidden">No has seleccionado ninguna moneda</p>
+            </div>
             <div class="p-4 rounded-lg max-w-sm content-center text-center">
                 <button type="button" id="maxAmount"
                     class="bg-medio text-white hover:bg-amarillo hover:text-oscuro font-bold py-2 px-4 rounded"> Máxima
@@ -170,17 +173,21 @@
                     } else {
                         // Ocultar el mensaje de error si se encuentra el monto y no es 0
                         document.getElementById('errorMessage').classList.add('hidden');
+                        document.getElementById('noCurrency').classList.add('hidden');
                         amountInputSell.value = montoValue;
                     }
                 } else {
                     // Si no se encontró el elemento, mostrar el mensaje de error
                     document.getElementById('errorMessage').classList.remove('hidden');
+                    document.getElementById('noCurrency').classList.add('hidden');
                     // Establecer el valor en 0 o dejarlo vacío según lo necesites
                     amountInputSell.value = ''; // O también puedes establecerlo en 0
                     console.error(`No posees la criptomoneda ${selectedCurrency}`);
                 }
             } else {
                 console.error('No se ha seleccionado ninguna moneda');
+                document.getElementById('noCurrency').classList.remove('hidden');
+                document.getElementById('errorMessage').classList.add('hidden');
             }
         });
 
