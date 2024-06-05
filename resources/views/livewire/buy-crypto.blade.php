@@ -84,7 +84,7 @@
             </div>
             <div class="p-4 rounded-lg max-w-sm">
                 <div class="relative bg-inherit ">
-                    <input type="number" id="amount" wire:model="amount" placeholder="Cantidad"
+                    <input type="number" id="amount" step="0.00000000000001" wire:model="amount" placeholder="Cantidad"
                         class="peer bg-transparent h-10 w-72 rounded-lg text-gray-200 placeholder-transparent ring-2 px-2 ring-gray-500 focus:ring-amarillo focus:outline-none focus:border-amarillo" />
                     <label for="amount"
                         class="absolute cursor-text left-0 -top-5 text-sm text-claro bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-claro peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-white peer-focus:text-sm transition-all">Cantidad:</label>
@@ -184,7 +184,6 @@
                     document.getElementById('price').value = ''; // Limpiar el campo si no se selecciona ninguna moneda
                     break;
             }
-            console.log('Llega a updatePrice');
             // Le damos foco al campo de precio para que livewire lo detecte!
             document.getElementById('price').focus();
         }

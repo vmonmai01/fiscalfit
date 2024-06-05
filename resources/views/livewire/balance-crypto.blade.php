@@ -5,7 +5,7 @@
         <thead class="text-sm uppercase bg-medio text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3 tracking-wider">MONEDA</th>
-                <th scope="col" class="px-6 py-3 tracking-wider">SALDO</th>
+                <th scope="col" class="px-6 py-3 tracking-wider">CANTIDAD</th>
                 <th scope="col" class="px-6 py-3 tracking-wider">PRECIO HOY</th>
                 <th scope="col" class="px-6 py-3 tracking-wider">SALDO (€)</th>
             </tr>

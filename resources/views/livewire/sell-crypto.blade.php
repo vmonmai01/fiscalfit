@@ -1,6 +1,6 @@
 <div>
     {{-- Care about people's approval and you will be their prisoner. --}}
-    @if ($mensajeExito)
+    @if ($mensajeExitoSell)
         <div id="infoSucces" class="fixed inset-0 flex items-center justify-center z-50  text-green-500">
             <div class="flex bg-green-200 max-w-sm mb-4">
                 <div class="w-16 bg-green-400">
@@ -19,7 +19,7 @@
                         Información
                     </span>
                     <p class="leading-tight">
-                        {{ $mensajeExito }}
+                        {{ $mensajeExitoSell }}
                     </p>
                 </div>
             </div>
@@ -27,7 +27,7 @@
         </div>
     @endif
 
-    @if ($mensajeError)
+    @if ($mensajeErrorSell)
         <div id="infoError" class="fixed inset-0 flex items-center justify-center z-50 text-w">
             <div class="flex bg-red-400 max-w-md mb-4">
                 <div class="w-16 bg-red-600">
@@ -51,7 +51,7 @@
                         Error
                     </span>
                     <p class="leading-tight">
-                        {{ $mensajeError }}
+                        {{ $mensajeErrorSell }}
                     </p>
                 </div>
             </div>
@@ -66,7 +66,7 @@
             {{-- Formulario donde meter compra criptos (formato bien ) --}}
             <div class="p-4 rounded-lg max-w-sm">
                 <div class="relative bg-inherit">
-                    <select wire:model="currency" id="currency"
+                    <select wire:model="currencySell" id="currencySell"
                         class="peer bg-transparent h-10 w-72 rounded-lg text-white placeholder-transparent ring-2 px-2 ring-gray-500 focus:ring-amarillo focus:outline-none focus:border-amarillo">
                         <option class="bg-oscuro" value="">Seleccione una moneda</option>
                         <option class="bg-oscuro" value="ADA"> Cardano (ADA) </option>
@@ -85,7 +85,7 @@
             </div>
             <div class="p-4 rounded-lg max-w-sm">
                 <div class="relative bg-inherit ">
-                    <input type="number" id="amount" wire:model="amount" placeholder="Cantidad"
+                    <input type="number" id="amountSell" wire:model="amountSell" step="0.00000000000001" placeholder="Cantidad"
                         class="peer bg-transparent h-10 w-72 rounded-lg text-gray-200 placeholder-transparent ring-2 px-2 ring-gray-500 focus:ring-amarillo focus:outline-none focus:border-amarillo" />
                     <label for="amount"
                         class="absolute cursor-text left-0 -top-5 text-sm text-claro bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-claro peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-white peer-focus:text-sm transition-all">Cantidad:</label>
@@ -97,7 +97,7 @@
 
             <div class="p-4 rounded-lg max-w-sm">
                 <div class="relative bg-inherit">
-                    <input type="number" step="0.00000000000001" wire:model.lazy="price" id="price" placeholder="0.000000000"
+                    <input type="number" step="0.00000000000001" wire:model.lazy="priceSell" id="priceSell" placeholder="0.000000000"
                         class="peer bg-transparent h-10 w-72 rounded-lg text-gray-200 placeholder-transparent ring-2 px-2 ring-gray-500 focus:ring-amarillo focus:outline-none focus:border-amarillo" />
                     <label for="price"
                         class="absolute cursor-text left-0 -top-5 text-sm text-claro bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-claro peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-white peer-focus:text-sm transition-all">Precio por Unidad (€):</label>
@@ -119,8 +119,80 @@
             </div>                                   
             <div class="p-4 rounded-lg max-w-sm content-center text-center">
                 <button type="button" id="maxAmount" class="bg-medio text-white hover:bg-amarillo hover:text-oscuro font-bold py-2 px-4 rounded"> Máxima cantidad  </button>
-                <button type="submit" id="compra" class="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded" > Vender</button>                
+                <button type="submit" id="venta" class="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded" > Vender</button>                
             </div>
         </form>
     </div>
+
+    <script>
+        document.addEventListener('livewire:load', function() {
+            console.log("Livewire loaded");
+            window.livewire.on('mensajeExitoSell', function() {
+                setTimeout(function() {
+                    console.log("entra a borrar mensaje de exito");
+                    window.livewire.emit('borrarMensajeExitoSell');
+                }, 6000);
+            });
+
+            window.livewire.on('mensajeErrorSell', function() {
+                setTimeout(function() {
+                    console.log("entra a borrar mensaje de error");
+                    window.livewire.emit('borrarMensajeErrorSell');
+                }, 6000);
+            });
+        });
+        // Obtener referencias a los elementos del formulario
+        const priceInputSell = document.getElementById('priceSell');
+        const amountInputSell = document.getElementById('amountSell');
+        const totalInputSell = document.getElementById('total_earnings');
+
+        // Función para calcular el costo total y actualizar el campo correspondiente
+        function calculateTotalEarnings() {
+            const priceSell = parseFloat(priceInputSell.value);
+            const amountSell = parseFloat(amountInputSell.value);
+            const totalEarnings = priceSell * amountSell;
+
+
+            // Mostrar el costo total en el campo correspondiente
+            totalInputSell.value = isNaN(totalEarnings) ? '' : totalEarnings.toFixed(8);
+        }
+
+        // Event Listeners para calcular el costo total cuando cambien los valores de precio o cantidad
+        priceInputSell.addEventListener('input', calculateTotalEarnings);
+        amountInputSell.addEventListener('input', calculateTotalEarnings);
+
+        // Función para actualizar el precio en el formulario según la moneda seleccionada
+        function updatePriceSell() {
+            // Obtener el valor seleccionado de la lista desplegable
+            const currencySell = document.getElementById('currencySell').value;
+            // Actualizar el precio en el formulario según la moneda seleccionada
+            switch (currencySell) {
+                case 'ADA':
+                    document.getElementById('priceSell').value = document.getElementById('price-ADA').innerText;
+                    break;
+                case 'BNB':
+                    document.getElementById('priceSell').value = document.getElementById('price-BNB').innerText;
+                    break;
+                case 'BTC':
+                    document.getElementById('priceSell').value = document.getElementById('price-BTC').innerText;
+                    break;
+                case 'ETH':
+                    document.getElementById('priceSell').value = document.getElementById('price-ETH').innerText;
+                    break;
+                case 'SOL':
+                    document.getElementById('priceSell').value = document.getElementById('price-SOL').innerText;
+                    break;
+                default:
+                    document.getElementById('priceSell').value = ''; // Limpiar el campo si no se selecciona ninguna moneda
+                    break;
+            }
+            // Le damos foco al campo de precio para que livewire lo detecte!
+            document.getElementById('priceSell').focus();
+        }
+
+        // Event listener para detectar el cambio en la selección de moneda
+        document.getElementById('currencySell').addEventListener('change', updatePriceSell);
+
+    </script>
+
 </div>
