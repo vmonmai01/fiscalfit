@@ -75,51 +75,58 @@
                         <option class="bg-oscuro" value="ETH"> Ethereum (ETH) </option>
                         <option class="bg-oscuro" value="SOL"> Solana (SOL) </option>
                     </select>
-                    <label for="currency" 
+                    <label for="currency"
                         class="absolute cursor-text left-0 -top-5 text-sm text-claro bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-claro peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-white peer-focus:text-sm transition-all">
                         Moneda:</label>
                 </div>
-                @error('currency')
+                @error('currencySell')
                     <span class="text-red-500">{{ $message }}</span>
                 @enderror
             </div>
             <div class="p-4 rounded-lg max-w-sm">
                 <div class="relative bg-inherit ">
-                    <input type="number" id="amountSell" wire:model="amountSell" step="0.00000000000001" placeholder="Cantidad"
+                    <input type="number" id="amountSell" wire:model="amountSell" step="0.00000000000001"
+                        placeholder="Cantidad"
                         class="peer bg-transparent h-10 w-72 rounded-lg text-gray-200 placeholder-transparent ring-2 px-2 ring-gray-500 focus:ring-amarillo focus:outline-none focus:border-amarillo" />
                     <label for="amount"
                         class="absolute cursor-text left-0 -top-5 text-sm text-claro bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-claro peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-white peer-focus:text-sm transition-all">Cantidad:</label>
                 </div>
-                @error('amount')
+                @error('amountSell')
                     <span class="text-red-500">{{ $message }}</span>
                 @enderror
             </div>
 
             <div class="p-4 rounded-lg max-w-sm">
                 <div class="relative bg-inherit">
-                    <input type="number" step="0.00000000000001" wire:model.lazy="priceSell" id="priceSell" placeholder="0.000000000"
+                    <input type="number" step="0.00000000000001" wire:model.lazy="priceSell" id="priceSell"
+                        placeholder="0.000000000"
                         class="peer bg-transparent h-10 w-72 rounded-lg text-gray-200 placeholder-transparent ring-2 px-2 ring-gray-500 focus:ring-amarillo focus:outline-none focus:border-amarillo" />
                     <label for="price"
-                        class="absolute cursor-text left-0 -top-5 text-sm text-claro bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-claro peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-white peer-focus:text-sm transition-all">Precio por Unidad (€):</label>
+                        class="absolute cursor-text left-0 -top-5 text-sm text-claro bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-claro peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-white peer-focus:text-sm transition-all">Precio
+                        por Unidad (€):</label>
                 </div>
-                @error('price')
+                @error('priceSell')
                     <span class="text-red-500">{{ $message }}</span>
                 @enderror
             </div>
             <div class="p-4 rounded-lg max-w-sm">
                 <div class="relative bg-inherit">
-                    <input type="text" id="total_earnings" readonly  placeholder="total_earnings"
+                    <input type="text" id="total_earnings" readonly placeholder="total_earnings"
                         class="peer bg-transparent h-10 w-72 rounded-lg text-gray-200 placeholder-transparent ring-2 px-2 ring-gray-500 focus:ring-amarillo focus:outline-none focus:border-amarillo" />
                     <label for="total_earnings"
-                        class="absolute cursor-text left-0 -top-5 text-sm text-claro bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-claro peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-white peer-focus:text-sm transition-all">Total por venta (€):</label>
+                        class="absolute cursor-text left-0 -top-5 text-sm text-claro bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-claro peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-white peer-focus:text-sm transition-all">Total
+                        por venta (€):</label>
                 </div>
                 @error('total_earnings')
                     <span class="text-red-500">{{ $message }}</span>
                 @enderror
-            </div>                                   
+            </div>
             <div class="p-4 rounded-lg max-w-sm content-center text-center">
-                <button type="button" id="maxAmount" class="bg-medio text-white hover:bg-amarillo hover:text-oscuro font-bold py-2 px-4 rounded"> Máxima cantidad  </button>
-                <button type="submit" id="venta" class="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded" > Vender</button>                
+                <button type="button" id="maxAmount"
+                    class="bg-medio text-white hover:bg-amarillo hover:text-oscuro font-bold py-2 px-4 rounded"> Máxima
+                    cantidad </button>
+                <button type="submit" id="venta"
+                    class="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded"> Vender</button>
             </div>
         </form>
     </div>
@@ -145,6 +152,23 @@
         const priceInputSell = document.getElementById('priceSell');
         const amountInputSell = document.getElementById('amountSell');
         const totalInputSell = document.getElementById('total_earnings');
+        const maxAmountButton = document.getElementById('maxAmount');
+        const currencySelect = document.getElementById('currencySell');
+
+        maxAmountButton.addEventListener('click', function() {
+            const selectedCurrency = currencySelect.value;
+            if (selectedCurrency) {
+                const montoInput = document.getElementById(`monto-${selectedCurrency}`);
+                console.log(montoInput.textContent.trim());
+                if (montoInput) {
+                    amountInputSell.value = montoInput.textContent.trim();
+                } else {
+                    console.error(`No se encontró el input con id "monto-${selectedCurrency}"`);
+                }
+            } else {
+                console.error('No se ha seleccionado ninguna moneda');
+            }
+        });
 
         // Función para calcular el costo total y actualizar el campo correspondiente
         function calculateTotalEarnings() {
@@ -192,7 +216,6 @@
 
         // Event listener para detectar el cambio en la selección de moneda
         document.getElementById('currencySell').addEventListener('change', updatePriceSell);
-
     </script>
 
 </div>
