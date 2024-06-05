@@ -30,9 +30,6 @@ class CryptoController extends Controller
 
         $data = json_decode($response->getBody()->getContents(), true);
 
-        // Añadir la depuración aquí
-        // Esto mostrará la estructura de $data antes de pasarlo a la vista
-        // dd($data);
         return view('crypto', ['data' => $data]);
     }
 }
