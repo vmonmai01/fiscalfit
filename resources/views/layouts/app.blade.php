@@ -18,7 +18,6 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts" async></script>
     @vite(['resources/css/app.css', 'resources/css/news.css', 'resources/js/app.js'])
-    {{-- 'resources/js/chartExpesesDates.js', 'resources/js/chartIncomesDates.js', 'resources/js/chartBtwIncExp.js', 'resources/js/noticias.js' --}}
 
     @include('layouts.navigation')
 

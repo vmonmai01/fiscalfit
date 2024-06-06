@@ -1,4 +1,7 @@
+
 document.addEventListener("DOMContentLoaded", function () {
+    const userId = document.getElementById('user-data').getAttribute('data-user-id');
+    console.log('ID del usuario:', userId);
     var myChartBar = document.getElementById("barChartBtwIncExp");
     var barChart = null; // Variable para mantener una referencia al gráfico renderizado
 
@@ -75,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
         };
 
         $.ajax({
-            url: `http://127.0.0.1:8000/api/finance/1/${numMonths}/expenses-incomes`,
+            url: `http://127.0.0.1:8000/api/finance/${userId}/${numMonths}/expenses-incomes`,
             method: "GET",
             dataType: "json",
             success: function (data) {
@@ -125,14 +128,14 @@ document.addEventListener("DOMContentLoaded", function () {
             totalIncome += income;
             totalExpenses += expenses;
         });
-
+        console.log(data);
         // Calcular la diferencia entre ingresos y gastos
         const difference = totalIncome - totalExpenses;
 
         // Mostrar los resultados
-        console.log(`Ingresos totales: ${totalIncome.toFixed(2)}`);
-        console.log(`Gastos totales: ${totalExpenses.toFixed(2)}`);
-        console.log(`Diferencia: ${difference.toFixed(2)}`);
+        // console.log(`Ingresos totales: ${totalIncome.toFixed(2)}`);
+        // console.log(`Gastos totales: ${totalExpenses.toFixed(2)}`);
+        // console.log(`Diferencia: ${difference.toFixed(2)}`);
 
         // Actualizar los elementos HTML con los resultados calculados
         document.getElementById("totalIncome").textContent =  totalIncome.toFixed(2) + "€";

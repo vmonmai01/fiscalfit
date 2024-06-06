@@ -1,4 +1,4 @@
-<div class="max-w-md w-full rounded-lg shadow bg-oscuro p-4 md:p-6">
+<div class="max-w-md w-full rounded-lg shadow shadow-amarillo bg-oscuro p-4 mt-8 md:p-6">
     <div class="flex justify-between border-amarillo border-b pb-3">
         <dl>
             <dt class="text-base font-normal text-white pb-1"> Diferencia </dt>
@@ -16,9 +16,15 @@
                 <dd id="totalExpenses" class="leading-none text-xl font-bold text-red-600 dark:text-red-500"></dd>
             </dl>
         </div>
-
+        <!-- Mensaje de No hay datos disponibles -->
+        <div class="grid grid-cols-1 items-center border-amarillo border-t  justify-between">
+            <div id="noDataMessage" class="hidden text-lg text-center text-amarillo p-4 ">
+                No hay datos disponibles para mostrar el gráfico.
+            </div>
+        </div>
+        <!-- Main Chart -->
         <div id="barChartBtwIncExp" style="width: 400px; height: 300px;"></div>
-
+        <!-- Dropdown -->
         <button id="dropdownBtwIncExp" data-dropdown-toggle="lastDaysBtwIncExp" data-dropdown-placement="bottom"
                         class="text-sm font-medium text-gray-400 hover:text-white text-center inline-flex items-center"
                         type="button">
