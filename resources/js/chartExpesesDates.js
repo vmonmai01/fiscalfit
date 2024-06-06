@@ -4,11 +4,10 @@ var total_amount;
 
 console.log('Id del usuario gastos: ', userId);
 
-
+// Renderizamos el gráfico inicialmente con 1 mes.
 document.addEventListener("DOMContentLoaded", function () {
     generateExpenseChart(userId, 1);
 });
-
 
 function generateExpenseChart(userId, numOfMonths) {
     $.ajax({
@@ -17,6 +16,14 @@ function generateExpenseChart(userId, numOfMonths) {
         success: function (response) {
             const seriesData = response.map(item => parseFloat(item.total_amount));
             const labels = response.map(item => item.category);
+            // Si el array de cantidad o categoría viene vacío mostramos mensaje al usuario
+            if (seriesData.length === 0 || labels.length === 0) {
+                displayNoDataMessage();     // Mostrar mensaje si no hay datos
+                hideChart();                // Ocultar el gráfico si no hay datos
+                return;
+            }
+            hideNoDataMessage();    // Ocultar el mensaje si hay datos
+            showChart();            // Mostrar el gráfico si hay datos
 
             if (!window.chartExpensesDates) {
                 const options = getChartOptionsExpenseDates(seriesData, labels);
@@ -51,8 +58,8 @@ const getChartOptionsExpenseDates = (seriesData, labels) => {
             
         },
         stroke: {
-            colors: ["grey"],
-            lineCap: "",
+            colors: ["#181A20"],
+            lineCap: "round",
         },
         plotOptions: {
             pie: {
@@ -75,48 +82,33 @@ const getChartOptionsExpenseDates = (seriesData, labels) => {
         legend: {
             position: "top",
             fontFamily: "Inter, sans-serif",
-        },
-        yaxis: {
-            labels: {
-                formatter: function (val, opts) {
-                    const index = opts.dataPointIndex;
-                    const amount = seriesData[index];
-                    return `${amount} €`;
-                },
-            },
-        },
-        xaxis: {
-            labels: {
-                formatter: function (value) {
-                    return value + "% aqwui"
-                },
-            },
-            axisTicks: {
-                show: false,
-            },
-            axisBorder: {
-                show: false,
-            },
-        },
+        }
     }
 }
- 
-document.addEventListener("DOMContentLoaded", function () {
-    // Tu código JavaScript aquí
 
-    // Por ejemplo, inicializar el gráfico con ApexCharts
-    if (document.getElementById("expenseDate-chart") && typeof ApexCharts !== 'undefined') {
-        const chart2 = new ApexCharts(document.getElementById("expenseDate-chart"), getChartOptionsExpenseDates());
-        chart2.render();
-    }
-});
+const displayNoDataMessage = () => {
+    const message = document.getElementById("noDataMessage");
+    message.classList.remove("hidden");
+}
+const hideNoDataMessage = () => {
+    const message = document.getElementById("noDataMessage");
+    message.classList.add("hidden");
+}
+const hideChart = () => {
+    const chartContainer = document.getElementById("expenseDate-chart2");
+    chartContainer.classList.add("hidden");
+}
+const showChart = () => {
+    const chartContainer = document.getElementById("expenseDate-chart2");
+    chartContainer.classList.remove("hidden");
+}
 
 document.addEventListener("DOMContentLoaded", function () {
     const dropdownButton = document.getElementById("dropdownExpenses");
     const dropdownList = document.getElementById("lastDaysExpenses");
 
     dropdownButton.addEventListener("click", function () {
-        dropdownList.classList.toggle("hidden"); // Mostrar/ocultar el dropdown al hacer clic en el botón
+        dropdownList.classList.toggle("hidden"); // Ocultar el dropdown al hacer clic en el botón
     });
 
     // Capturar clics en los botones del dropdown
@@ -126,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
            
             if (!isNaN(numOfMonths) && numOfMonths > 0) {
                 generateExpenseChart(userId, numOfMonths);
-                console.log('numOfMonths gastos seleccionado:', numOfMonths);
+                console.log('Número de meses gastos seleccionados:', numOfMonths);
                 dropdownList.classList.add("hidden"); // Ocultar el dropdown después de seleccionar una opción
             } else {
                 console.error("Número de meses no válido:", numOfMonths);

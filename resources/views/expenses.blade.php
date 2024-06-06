@@ -29,5 +29,7 @@
             </div>
         </div>
     </div>
-    
+    @push('scripts')
+    @vite('resources/js/chartExpesesDates.js')
+    @endpush
 </x-app-layout>

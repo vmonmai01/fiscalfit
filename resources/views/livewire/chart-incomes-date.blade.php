@@ -5,8 +5,8 @@
         console.log('ID del usuario:', userId);
     </script>
 
-    <div class="div">
-        <div class="max-w-md w-full rounded-lg shadow bg-oscuro p-4 md:p-6">
+    <div class="div" id="graficoIngresos">
+        <div class="max-w-md w-full rounded-lg shadow shadow-amarillo bg-oscuro p-4 md:p-6">
 
             <div class="flex justify-between border-amarillo border-b pb-3">
                 <div class="flex-col items-center">
@@ -17,11 +17,17 @@
                     </div>
                 </div>
             </div>
-            <!-- Pie Chart -->
-            <div class="py-6" id="incomesDate-chart">
-
+            
+            <!-- Mensaje de No hay datos disponibles -->
+            <div class="grid grid-cols-1 items-center border-amarillo border-t  justify-between">
+                <div id="noDataMessage" class="hidden text-lg text-center text-amarillo p-4 ">
+                    No hay datos disponibles para mostrar el gráfico.
+                </div>
             </div>
-            <div class="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between">
+            <!-- Main Chart -->
+            <div class="py-6" id="incomesDate-chart"></div>
+            <!-- Dropdown -->
+            <div class="grid grid-cols-1 items-center border-amarillo border-t  justify-between">
                 <div class="flex justify-between items-center pt-5">
                     <!-- Button -->
                     <button id="dropdownIncomes" data-dropdown-toggle="lastDaysIncomes" data-dropdown-placement="bottom"
@@ -35,7 +41,7 @@
                         </svg>
                     </button>
                     <div id="lastDaysIncomes"
-                        class="z-10 hidden bg-oscuro divide-y divide-gray-100 rounded-lg shadow w-44 ">
+                        class="z-10 hidden bg-oscuro divide-y divide-amarillo rounded-lg shadow w-44 ">
                         <ul class="py-2 text-sm text-white text-center" aria-labelledby="dropdownIncomes">
                             <li>
                                 <button class="btn btn-primary py-2" type="button" value="1"> 1 Mes</button>

@@ -29,5 +29,7 @@
             </div>
         </div>
     </div>
-
+    @push('scripts')
+    @vite('resources/js/chartIncomesDates.js')
+    @endpush
 </x-app-layout>
