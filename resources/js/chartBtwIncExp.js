@@ -10,12 +10,12 @@ document.addEventListener("DOMContentLoaded", function () {
         var options = {
             series: [
                 {
-                    name: "Income",
+                    name: "Ingresos",
                     color: "#31C48D",
                     data: [],
                 },
                 {
-                    name: "Expense",
+                    name: "Gastos",
                     data: [],
                     color: "#F05252",
                 }
@@ -40,6 +40,9 @@ document.addEventListener("DOMContentLoaded", function () {
             legend: {
                 show: true,
                 position: "bottom",
+                labels: {
+                    colors: "#FFFFFF"
+                }
             },
             dataLabels: {
                 enabled: false,
@@ -47,12 +50,18 @@ document.addEventListener("DOMContentLoaded", function () {
             xaxis: {
                 labels: {
                     show: true,
+                    style: {
+                        colors: "white" // Cambiar el color de los meses a blanco
+                    }
                 },
                 categories: [],
             },
             yaxis: {
                 labels: {
                     show: true,
+                    style: {
+                        colors: "white" // Cambiar el color de los meses a blanco
+                    }
                 }
             },
             tooltip: {

@@ -9,11 +9,11 @@
         <div class="grid grid-cols-2 py-3 ">
             <dl>
                 <dt class="text-base font-normal text-white pb-1 ml-3">Ingresos</dt>
-                <dd id="totalIncome" class="leading-none text-xl font-bold text-green-500 dark:text-green-400"></dd>
+                <dd id="totalIncome" class="pl-3 leading-none text-xl font-bold text-green-500"></dd>
             </dl>
             <dl>
                 <dt class="text-base font-normal text-white pb-1"> Gastos</dt>
-                <dd id="totalExpenses" class="leading-none text-xl font-bold text-red-600 dark:text-red-500"></dd>
+                <dd id="totalExpenses" class="pl-1 leading-none text-xl font-bold text-red-500"></dd>
             </dl>
         </div>
         <!-- Mensaje de No hay datos disponibles -->
