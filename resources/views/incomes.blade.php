@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl  leading-tight">
+        <h2 class="font-bold text-4xl text-white leading-tight">
             INGRESOS
         </h2>
     </x-slot>

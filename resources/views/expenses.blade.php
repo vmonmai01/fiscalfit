@@ -1,10 +1,9 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl  leading-tight">
+        <h2 class="font-bold text-4xl text-white leading-tight">
             GASTOS
         </h2>
     </x-slot>
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-8 lg:px-8">
             <div class="bg-oscuro rounded-lg">

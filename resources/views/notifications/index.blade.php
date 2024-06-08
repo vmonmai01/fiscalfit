@@ -1,4 +1,9 @@
 <x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-bold text-4xl text-white leading-tight">
+            NOTIFICACIONES
+        </h2>
+    </x-slot>
     @if (session()->has('success'))
         <div id="infoSucces" class="fixed inset-0 flex items-center justify-center z-50 hidden text-green-500">
             <div class="flex bg-green-200 max-w-sm mb-4">

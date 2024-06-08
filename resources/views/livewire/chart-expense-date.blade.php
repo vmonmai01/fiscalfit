@@ -1,4 +1,8 @@
 <div>
+    <script>
+        const userId = {{ $userId ?? 'null' }};
+        console.log('ID del usuario:', userId);
+    </script>
     <!-- Gráfico de porcentage de gastos por fecha -->
     <div class="div" id="graficoGastos">
         <div class="max-w-md w-full rounded-lg shadow shadow-amarillo bg-oscuro p-4 md:p-6">

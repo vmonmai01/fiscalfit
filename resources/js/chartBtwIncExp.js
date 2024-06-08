@@ -5,6 +5,9 @@ document.addEventListener("DOMContentLoaded", function () {
     var myChartBar = document.getElementById("barChartBtwIncExp");
     var barChart = null; // Variable para mantener una referencia al gráfico renderizado
 
+    // Array meses en español
+    const monthsInSpanish = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+
     // Función para hacer la llamada a la API y actualizar/renderizar el gráfico
     function renderChart(numMonths, chartHeight) {
         var options = {
@@ -97,9 +100,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 // Obtener los nombres de los meses del arreglo de objetos de la respuesta de la API
                 const months = data.map(item => item.month);
+                // Convertir los nombres de los meses a español
+                const monthsInSpanishMapped = months.map(month => monthsInSpanish[new Date(`${month} 1, 2000`).getMonth()]);
 
                 // Actualizar las categorías del eje X con los nombres de los meses
-                options.xaxis.categories = months;
+                options.xaxis.categories = monthsInSpanishMapped;
 
                 // Renderizar el gráfico o actualizar los datos del gráfico existente
                 if (barChart) {
