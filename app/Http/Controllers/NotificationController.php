@@ -22,4 +22,12 @@ class NotificationController extends Controller
         auth()->user()->notifications()->where('id', $id)->update(['read' => true]);
         return redirect()->back()->with('success', 'Notificación marcada como leída.');
     }
+
+    public function destroy($id)
+    {
+        $notification = auth()->user()->notifications()->findOrFail($id);
+        $notification->delete();
+
+         return response()->json(['success' => true]);
+    }
 }

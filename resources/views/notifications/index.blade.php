@@ -73,6 +73,7 @@
                                     <th scope="col" class="px-6 py-3 tracking-wider">Fecha notificación</th>
                                     <th scope="col" class="px-6 py-3 tracking-wider">Leída </th>
                                     <th scope="col" class="px-6 py-3 tracking-wider">Marcar como leida </th>
+                                    <th scope="col" class="px-6 py-3 tracking-wider">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -129,22 +130,26 @@
                                                     </form>
                                                 @endif
                                             </td>
+                                            <td class="px-6 py-4 text-center">
+                                                <x-boton-delete
+                                                    onclick="confirmDeleteNotification({{ $notification->id }})" />
+                                            </td>
                                         <tr>
                                     @endforeach
                                 @else
                                     <tr class="border-b bg-oscuro border-gray-700 hover:bg-gray-600">
-                                        <td colspan="6" class="text-red-500 font-bold py-4">No tienes notificaciones.
+                                        <td colspan="7" class="text-red-500 font-bold py-4">No tienes notificaciones.
                                         </td>
-                                        <tr>
+                                    <tr>
                                 @endif
-                               
+
                         </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             if (document.getElementById('infoSucces')) {
@@ -162,6 +167,66 @@
             setTimeout(function() {
                 element.classList.add('hidden'); // Ocultar el elemento después de 5 segundos
             }, 5000);
+        }
+
+        function confirmDeleteNotification(notificationId) {
+            Swal.fire({
+                title: "¿Estás seguro que deseas eliminar la notificación?",
+                text: "¡No podrás revertir este proceso!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Sí, borrar!",
+                background: '#181A20',
+                customClass: {
+                    popup: 'swal2-custom'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    deleteNotification(notificationId);
+                }
+            });
+        }
+
+        function deleteNotification(notificationId) {
+            fetch(`/notifications/${notificationId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        Swal.fire(
+                            'Eliminada!',
+                            'La notificación ha sido eliminada.',
+                            'success'
+                        ).then(() => {
+                            location.reload();
+                        });
+                    } else {
+                        Swal.fire(
+                            'Error!',
+                            'No se pudo eliminar la notificación.',
+                            'error'
+                        );
+                    }
+                })
+                .catch(error => {
+                    Swal.fire(
+                        'Error!',
+                        'Hubo un problema con la solicitud: ' + error.message,
+                        'error'
+                    );
+                });
         }
     </script>
 
