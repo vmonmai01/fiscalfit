@@ -1,8 +1,8 @@
 <div class="max-w-md w-full rounded-lg shadow shadow-amarillo bg-oscuro p-4 mt-8 md:p-6">
     <div class="flex justify-between border-amarillo border-b pb-3">
         <dl>
-            <dt class="text-base font-normal text-white pb-1"> Diferencia </dt>
-            <dd id="Diferencia" class="leading-none text-3xl font-bold text-white"></dd>
+            <dt class="text-base font-normal text-white pb-1 pl-5"> Diferencia </dt>
+            <dd id="Diferencia" class="leading-none text-3xl font-bold text-white pl-5"></dd>
         </dl>
     </div>
     <div>

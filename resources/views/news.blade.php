@@ -4,6 +4,14 @@
             Noticas última hora
         </h2>
     </x-slot>
+    <script>
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
     <div class="p-4 mb-5">
         <h1 class="news-title">Últimas noticias</h1>
 
@@ -81,5 +89,7 @@
                 </div>
             @endforeach
         </div>
+         <!-- Botón "Volver arriba" -->
+    <button id="backToTop" onclick="scrollToTop()">↑ Volver arriba ↑</button>
     </div>
 </x-app-layout>

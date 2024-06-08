@@ -7,11 +7,10 @@
 */
 .news-item {
     margin: 30px;
-    background-color: #2B313A;
+    background-color: #181A20;
     padding: 50px;
     border-radius: 8px;
-    border-color:#EFB90D ;
-    box-shadow: 0 0 10px #EFB90D;
+    box-shadow: 0 0 10px #ffffff;
 }
 
 .news-title {
@@ -84,7 +83,26 @@
       animation-range: cover 0% cover 120%;
     }
   }
-  
+  #backToTop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 150px; /* Ajusta el ancho según necesites */
+    height: 40px; /* Ajusta la altura según necesites */
+    background-color: #2B313A;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px; /* Ajusta el radio de borde según necesites */
+    font-size: 16px; /* Ajusta el tamaño de fuente según necesites */
+    cursor: pointer;
+    z-index: 1000;
+}
+
+#backToTop:hover {
+    background-color: #EFB90D;
+    color: black;
+}
   @keyframes move-and-fade {
     from, to {
       filter: var(--filter) blur(100px) saturate(20);
