@@ -138,7 +138,7 @@
                                     @endforeach
                                 @else
                                     <tr class="border-b bg-oscuro border-gray-700 hover:bg-gray-600">
-                                        <td colspan="7" class="text-red-500 font-bold py-4">No tienes notificaciones.
+                                        <td colspan="7" class="text-red-500 font-bold py-4 text-center">No tienes notificaciones.
                                         </td>
                                     <tr>
                                 @endif

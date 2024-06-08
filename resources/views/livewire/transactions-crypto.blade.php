@@ -7,6 +7,7 @@
                     <th scope="col" class="px-6 py-3 tracking-wider">TIPO</th>
                     <th scope="col" class="px-6 py-3 tracking-wider" >CANTIDAD</th>
                     <th scope="col" class="px-6 py-3 tracking-wider" >PRECIO</th>
+                    <th scope="col" class="px-6 py-3 tracking-wider" >COSTE TOTAL</th>
                     <th scope="col" class="px-6 py-3 tracking-wider">FECHA</th>
                     
                 </tr>
@@ -18,6 +19,7 @@
                         <td class="px-6 py-4">{{ $transaction->type }}</td>
                         <td class="px-6 py-4">{{ $transaction->amount }}</td>
                         <td class="px-6 py-4">{{ $transaction->price }}</td>
+                        <td class="px-6 py-4">{{ $transaction->multiplication_result}}</td>
                         <td class="px-6 py-4">{{ date('d-m-Y', strtotime( $transaction->date)) }}</td>
                     </tr>
                 @empty
