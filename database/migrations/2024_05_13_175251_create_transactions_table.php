@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->enum('type', ['buy', 'sale']);
+            $table->enum('type', ['compra', 'venta']);
             $table->string('currency');
             $table->decimal('amount', 20, 8); 
             $table->decimal('price', 20, 8); 
