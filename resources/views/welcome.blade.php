@@ -839,8 +839,10 @@
 
         <div class="max-w-7xl mx-auto p-6 lg:p-8">
             <div class="flex flex-col items-center">
-                <h1 class="text-4xl font-bold text-amarillo mb-4">FiscalFit</h1>
-                <img class="w-auto h-[200px]" src="{{ asset('storage/fiscalfit/logo.png') }}" alt="Logo de FiscalFit">
+                <a href="/">
+                    <img class="w-auto h-16" src="{{ asset('storage/fiscalfit/fiscal.png') }}">    
+                </a>
+                <img class="w-auto h-[150px]" src="{{ asset('storage/fiscalfit/logo.png') }}" alt="Logo de FiscalFit">
             </div>
 
 

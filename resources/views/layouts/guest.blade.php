@@ -23,10 +23,10 @@
     <div class="containerBackground min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0  ">
         <div class="flex flex-col items-center justify-center">
             <a href="/">
-                <img class="w-auto h-24" src="{{ asset('storage/fiscalfit/fiscal.png') }}">    
+                <img class="w-auto h-20" src="{{ asset('storage/fiscalfit/fiscal.png') }}">    
             </a>
             <a href="/">
-                <img class="w-auto h-24 self-start" src="{{ asset('storage/fiscalfit/logo.png') }}">            
+                <img class="w-auto h-20 self-start" src="{{ asset('storage/fiscalfit/logo.png') }}">            
             </a>
         </div>
         
