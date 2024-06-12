@@ -50,7 +50,7 @@ function generateExpenseChart(userId, numOfMonths) {
 const getChartOptionsExpenseDates = (seriesData, labels) => {
     return {
         series: seriesData,
-        colors: ["#1C64F2", "#16BDCA", "#9061F9", "#FF1212","#1C64F2", "#16BDCA", "#9061F9",],
+        colors:  ["#1C64F2", "#16BDCA", "#9061F9", "#FF1212", "#FFD700", "#FF8C00", "#32CD32", "#FF1493", "#00CED1", "#9400D3", "#8B4513", "#FF4500", "#2E8B57", "#DA70D6", "#4682B4"],
         chart: {
             height: 520,
             width: "100%",
