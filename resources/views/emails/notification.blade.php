@@ -13,7 +13,7 @@
         style="max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
 
         <div style="display: flex; align-items: center;">
-            <h1 style="color: #333333; margin-start: 20px;">FiscalFit</h1>
+            <h1 style="color: #EFB90D; margin-start: 20px;">FiscalFit</h1>
             <?php
             $imagePath = public_path('storage/fiscalfit/logo.png');
             $imageData = base64_encode(file_get_contents($imagePath));
@@ -28,7 +28,7 @@
         <div style="text-align: right;">
             <div style="text-align: center;">
                 <?php
-                $imagePath = public_path('storage/user_avatar/UserProfile.jpg');
+                $imagePath = public_path('storage/user_avatar/' . $user->avatar);
                 $imageData = base64_encode(file_get_contents($imagePath));
                 $imageBase64 = 'data:image/png;base64,' . $imageData;
                 ?>
